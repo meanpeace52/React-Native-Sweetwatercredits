@@ -7,7 +7,7 @@ import StatusBarBackground from '../components/StatusBarBackground'
 import ViewContainer from '../components/ViewContainer'
 
 class Root extends Component {
-  navigator(routeName) {
+  navigate(routeName) {
     this.props.navigator.push({
       name: routeName
     })
@@ -16,7 +16,7 @@ class Root extends Component {
   render() {
     return (
       <ViewContainer>
-        <StatusBarBackground style={{backgroundColor: 'lightsteelblue'}}/>
+        <StatusBarBackground/>
         <View style={styles.ImageContainer}>
           <Image
           style={styles.SplashImage}
@@ -33,7 +33,7 @@ class Root extends Component {
           </Text>
         </TouchableHighlight>
 
-        <TouchableHighlight style={styles.bottomButton}>
+        <TouchableHighlight onPress={this.navigate.bind(this, 'signin')} style={styles.bottomButton}>
           <Text style={styles.bottomButtonText}>
             Sign In/Register
           </Text>

@@ -4,12 +4,19 @@ import React, { Component } from 'react'
 import { AppRegistry, Navigator, StyleSheet, Text, View } from 'react-native'
 
 import Root from './app/screens/Root'
+import SignIn from './app/screens/SignIn'
 
 class sweetwaterCredits extends Component {
   renderScene(route, navigator) {
     console.log(route);
-    if(route.name =='root') {
+    if(route.name == 'root') {
       return <Root navigator={navigator} />
+    }
+    if(route.name == 'signin') {
+      return <SignIn navigator={navigator} />
+    }
+    if(route.name == 'register') {
+      return <Register navigator={navigator} />
     }
   }
 
