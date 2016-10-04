@@ -1,13 +1,12 @@
 'use strict'
 
-
 import React, { Component } from 'react'
 import { Image, StyleSheet, Text, TextInput, TouchableHighlight, View } from 'react-native'
 
 import StatusBarBackground from '../components/StatusBarBackground'
 import ViewContainer from '../components/ViewContainer'
 
-class SignIn extends Component {
+class Register extends Component {
   navigate(routeName) {
     this.props.navigator.push({
       name: routeName
@@ -30,6 +29,10 @@ class SignIn extends Component {
           placeholder="Email Address">
         </TextInput>
 
+        <Text style={styles.descriptionText}>
+          You will be asked to click a confirmation email
+        </Text>
+
         <TextInput
           onChangeText={ (text) => this.setState({password: text})}
           style={styles.input}
@@ -37,16 +40,23 @@ class SignIn extends Component {
           secureTextEntry={true}>
         </TextInput>
 
+        <TextInput
+          onChangeText={ (text) => this.setState({password_confirmation: text})}
+          style={styles.input}
+          placeholder="Password Confirmation"
+          secureTextEntry={true}>
+        </TextInput>
+
         <TouchableHighlight style={styles.button}>
           <Text style={styles.buttonText}>
-            Sign In
+            Register
           </Text>
         </TouchableHighlight>
 
         <View style={styles.buttonRow}>
-          <TouchableHighlight onPress={this.navigate.bind(this, 'register')} style={styles.bottomButton}>
+          <TouchableHighlight style={styles.bottomButton}>
             <Text style={styles.bottomButtonText}>
-              I'm New Here
+              Current Users
             </Text>
           </TouchableHighlight>
 
@@ -57,9 +67,8 @@ class SignIn extends Component {
           </TouchableHighlight>
         </View>
 
-        <Text style={styles.IntroText}>
-          Registration is not required to use our calculator, but it is helpful to save your progrss, edit previous calculations, and share results with colleagues.
-        </Text>
+
+
       </ViewContainer>
     )
   }
@@ -97,6 +106,12 @@ const styles = StyleSheet.create({
     color: 'black',
     marginTop: 7
   },
+  descriptionText: {
+    marginLeft: 25,
+    marginLeft: 25,
+    fontSize: 16,
+    marginBottom: 35
+  },
   ImageContainer: {
     justifyContent: 'center',
     alignItems: 'center',
@@ -124,4 +139,4 @@ const styles = StyleSheet.create({
   }
 })
 
-module.exports = SignIn
+module.exports = Register

@@ -5,6 +5,8 @@ import { AppRegistry, Navigator, StyleSheet, Text, View } from 'react-native'
 
 import Root from './app/screens/Root'
 import SignIn from './app/screens/SignIn'
+import Register from './app/screens/Register'
+import Home from './app/screens/Home'
 
 class sweetwaterCredits extends Component {
   renderScene(route, navigator) {
@@ -17,6 +19,9 @@ class sweetwaterCredits extends Component {
     }
     if(route.name == 'register') {
       return <Register navigator={navigator} />
+    }
+    if(route.name == 'home') {
+      return <Home navigator={navigator} />
     }
   }
 
