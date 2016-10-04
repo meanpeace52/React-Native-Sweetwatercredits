@@ -10,7 +10,7 @@
 
 **Project Stack**
 
-* **ReactNative**
+* **ReactNative** (Typescript/ES6)
 
 **How To Get Started**
 

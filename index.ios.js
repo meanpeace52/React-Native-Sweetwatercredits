@@ -1,33 +1,25 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
+'use strict'
 
-import React, { Component } from 'react';
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
+import React, { Component } from 'react'
+import { AppRegistry, Navigator, StyleSheet, Text, View } from 'react-native'
+
+import Root from './app/screens/Root'
 
 class sweetwaterCredits extends Component {
+  renderScene(route, navigator) {
+    console.log(route);
+    if(route.name =='root') {
+      return <Root navigator={navigator} />
+    }
+  }
+
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-      </View>
-    );
+      <Navigator
+       initialRoute={{ name: 'root' }}
+       renderScene={this.renderScene.bind(this)}
+      />
+    )
   }
 }
 
@@ -48,6 +40,6 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
-});
+})
 
-AppRegistry.registerComponent('sweetwaterCredits', () => sweetwaterCredits);
+AppRegistry.registerComponent('sweetwaterCredits', () => sweetwaterCredits)
