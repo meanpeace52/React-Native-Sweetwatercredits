@@ -7,13 +7,13 @@ import StatusBarBackground from '../components/StatusBarBackground'
 import ViewContainer from '../components/ViewContainer'
 
 class Register extends Component {
-  navigate(routeName) {
+  navigate (routeName) {
     this.props.navigator.push({
       name: routeName
     })
   }
 
-  render() {
+  render () {
     return (
       <ViewContainer>
         <StatusBarBackground />
@@ -23,29 +23,15 @@ class Register extends Component {
           source={require('../assets/images/sweetwater_white_logo_small.jpg')}/>
         </View>
 
-        <TextInput
-          onChangeText={ (text) => this.setState({email: text})}
-          style={styles.input}
-          placeholder="Email Address">
-        </TextInput>
+        <TextInput onChangeText={ (text) => this.setState({email: text})} style={styles.input} placeholder='Email Address' />
 
         <Text style={styles.descriptionText}>
           You will be asked to click a confirmation email
         </Text>
 
-        <TextInput
-          onChangeText={ (text) => this.setState({password: text})}
-          style={styles.input}
-          placeholder="Password"
-          secureTextEntry={true}>
-        </TextInput>
+        <TextInput onChangeText={ (text) => this.setState({password: text})} style={styles.input} placeholder='Password' secureTextEntry />
 
-        <TextInput
-          onChangeText={ (text) => this.setState({password_confirmation: text})}
-          style={styles.input}
-          placeholder="Password Confirmation"
-          secureTextEntry={true}>
-        </TextInput>
+        <TextInput onChangeText={ (text) => this.setState({password_confirmation: text})} style={styles.input} placeholder='Password Confirmation' secureTextEntry />
 
         <TouchableHighlight style={styles.button}>
           <Text style={styles.buttonText}>
@@ -66,9 +52,6 @@ class Register extends Component {
             </Text>
           </TouchableHighlight>
         </View>
-
-
-
       </ViewContainer>
     )
   }
@@ -108,7 +91,7 @@ const styles = StyleSheet.create({
   },
   descriptionText: {
     marginLeft: 25,
-    marginLeft: 25,
+    marginRight: 25,
     fontSize: 16,
     marginBottom: 35
   },
@@ -121,10 +104,10 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 40,
-    borderColor: "gray",
+    borderColor: 'gray',
     borderWidth: 1,
     marginLeft: 25,
-    marginRight:  25,
+    marginRight: 25,
     marginBottom: 10
   },
   IntroText: {

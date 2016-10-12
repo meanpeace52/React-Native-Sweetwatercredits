@@ -1,49 +1,73 @@
 'use strict'
 
-import React, { Component } from 'react'
-import { Image, StyleSheet, Text, View, TouchableHighlight } from 'react-native'
+import React, { Component, PropTypes } from 'react'
+import { Image, NavigatorIOS, StyleSheet, Text, TouchableHighlight, View } from 'react-native'
 
 import StatusBarBackground from '../components/StatusBarBackground'
 import ViewContainer from '../components/ViewContainer'
 
 class Root extends Component {
-  navigate(routeName) {
+  static propTypes = {
+    navigator: PropTypes.object.isRequired,
+  }
+
+  constructor(props, context) {
+    super(props, context);
+    this._onForward = this._onForward.bind(this);
+    this._onBack = this._onBack.bind(this);
+  }
+
+  _onForward(routeName) {
     this.props.navigator.push({
       name: routeName
     })
   }
 
-  render() {
+  _onBack() {
+    this.props.navigator.pop()
+  }
+
+  render () {
     return (
       <ViewContainer>
         <StatusBarBackground/>
-        <View style={styles.ImageContainer}>
+
+        <View
+          style={styles.ImageContainer}>
           <Image
-          style={styles.SplashImage}
-          source={require('../assets/images/sweetwater_white_logo_small.jpg')}/>
+            style={styles.SplashImage}
+            source={require('../assets/images/sweetwater_white_logo_small.jpg')}/>
         </View>
 
-        <Text style={styles.IntroText}>
+        <Text
+          style={styles.IntroText}>
           The Sweetwater River Conservancy (SRC) is made up of 638,000 acres of contiguous Wyoming landscape that is actively managed in perpetuity for Sage-grouse, mule deer, cattle, elk, antelope and other native plant and obligate species.
         </Text>
 
-        <TouchableHighlight style={styles.button}>
-          <Text style={styles.buttonText}>
+        <TouchableHighlight
+          style={styles.button}>
+          <Text
+            style={styles.buttonText}>
             Calculate Credits
           </Text>
         </TouchableHighlight>
 
-        <TouchableHighlight onPress={this.navigate.bind(this, 'signin')} style={styles.bottomButton}>
-          <Text style={styles.bottomButtonText}>
+        <TouchableHighlight
+          style={styles.bottomButton}>
+          <Text
+            style={styles.bottomButtonText}>
             Sign In/Register
           </Text>
         </TouchableHighlight>
 
-        <TouchableHighlight style={styles.bottomButton}>
-          <Text style={styles.bottomButtonText}>
+        <TouchableHighlight
+          style={styles.bottomButton}>
+          <Text
+            style={styles.bottomButtonText}>
           How This App Works
           </Text>
         </TouchableHighlight>
+
       </ViewContainer>
     )
   }
@@ -82,6 +106,14 @@ const styles = StyleSheet.create({
     marginRight: 20,
     marginBottom: 40
   },
+  input: {
+    height: 40,
+    borderColor: 'gray',
+    borderWidth: 1,
+    marginLeft: 25,
+    marginRight: 25,
+    marginBottom: 10
+  },
   IntroText: {
     justifyContent: 'center',
     alignItems: 'center',
@@ -91,6 +123,12 @@ const styles = StyleSheet.create({
   SplashImage: {
     width: 300,
     height: 184
+  },
+  TopRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 5,
+    marginBottom: 5
   }
 })
 

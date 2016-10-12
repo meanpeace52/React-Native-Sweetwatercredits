@@ -1,20 +1,28 @@
 'use strict'
 
-
 import React, { Component } from 'react'
-import { Image, StyleSheet, Text, TextInput, TouchableHighlight, View } from 'react-native'
+import { Image, Modal, StyleSheet, Text, TextInput, TouchableHighlight, View } from 'react-native'
 
 import StatusBarBackground from '../components/StatusBarBackground'
 import ViewContainer from '../components/ViewContainer'
 
 class SignIn extends Component {
-  navigate(routeName) {
+  constructor (props) {
+    super(props)
+    this.state = {modalVisible: false}
+  }
+
+  setModalVisible (visible) {
+    this.setState({modalVisible: visible})
+  }
+
+  navigate (routeName) {
     this.props.navigator.push({
       name: routeName
     })
   }
 
-  render() {
+  render () {
     return (
       <ViewContainer>
         <StatusBarBackground />
@@ -23,43 +31,66 @@ class SignIn extends Component {
           style={styles.SplashImage}
           source={require('../assets/images/sweetwater_white_logo_small.jpg')}/>
         </View>
-
-        <TextInput
-          onChangeText={ (text) => this.setState({email: text})}
-          style={styles.input}
-          placeholder="Email Address">
-        </TextInput>
-
-        <TextInput
-          onChangeText={ (text) => this.setState({password: text})}
-          style={styles.input}
-          placeholder="Password"
-          secureTextEntry={true}>
-        </TextInput>
-
-        <TouchableHighlight style={styles.button}>
+        <TouchableHighlight
+          onPress={ () => { this.setModalVisible(true) } }
+          style={styles.button}
+          >
           <Text style={styles.buttonText}>
             Sign In
           </Text>
         </TouchableHighlight>
-
-        <View style={styles.buttonRow}>
-          <TouchableHighlight onPress={this.navigate.bind(this, 'register')} style={styles.bottomButton}>
-            <Text style={styles.bottomButtonText}>
-              I'm New Here
-            </Text>
-          </TouchableHighlight>
-
-          <TouchableHighlight onPress={this.navigate.bind(this, 'home')} style={styles.bottomButton}>
-            <Text style={styles.bottomButtonText}>
-              Home
-            </Text>
-          </TouchableHighlight>
-        </View>
+        <TouchableHighlight style={styles.button}>
+          <Text style={styles.buttonText}>
+            Register
+          </Text>
+        </TouchableHighlight>
 
         <Text style={styles.IntroText}>
           Registration is not required to use our calculator, but it is helpful to save your progrss, edit previous calculations, and share results with colleagues.
         </Text>
+
+        <Modal
+          animationType={"slide"}
+          transparent={false}
+          visible={this.state.modalVisible}
+          onRequestClose={ () => { alert('Modal has been closed.') } }
+          >
+          <StatusBarBackground style={{backgroundColor: 'white'}}/>
+          <View style={styles.TopRow}>
+            <TouchableHighlight
+              onPress={ () => { this.setModalVisible(!this.state.modalVisible) } }
+              >
+              <Text style={styles.CancelButton}>
+                Cancel
+              </Text>
+            </TouchableHighlight>
+          </View>
+          <ViewContainer>
+          <View style={styles.ImageContainer}>
+            <Image
+            style={styles.SplashImage}
+            source={require('../assets/images/sweetwater_white_logo_small.jpg')}/>
+          </View>
+
+          <TextInput
+            onChangeText={ (text) => this.setState({email: text})}
+            style={styles.input}
+            placeholder='Email Address' />
+
+          <TextInput
+            onChangeText={ (text) => this.setState({password: text})}
+            style={styles.input}
+            placeholder='Password'
+            secureTextEntry />
+
+          <TouchableHighlight style={styles.button}>
+            <Text style={styles.buttonText}>
+              Sign In
+            </Text>
+          </TouchableHighlight>
+
+          </ViewContainer>
+        </Modal>
       </ViewContainer>
     )
   }
@@ -90,12 +121,17 @@ const styles = StyleSheet.create({
     backgroundColor: 'mistyrose',
     width: 325,
     height: 40,
-    marginTop: 30
+    marginTop: 25
   },
   buttonText: {
     fontSize: 20,
     color: 'black',
     marginTop: 7
+  },
+  CancelButton: {
+    fontSize: 16,
+    marginLeft: 7,
+    color: 'dodgerblue'
   },
   ImageContainer: {
     justifyContent: 'center',
@@ -106,17 +142,18 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 40,
-    borderColor: "gray",
+    borderColor: 'gray',
     borderWidth: 1,
     marginLeft: 25,
-    marginRight:  25,
+    marginRight: 25,
     marginBottom: 10
   },
   IntroText: {
     justifyContent: 'center',
     alignItems: 'center',
     marginLeft: 25,
-    marginRight: 25
+    marginRight: 25,
+    marginTop: 25
   },
   SplashImage: {
     width: 300,

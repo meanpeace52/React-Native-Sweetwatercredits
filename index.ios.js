@@ -1,57 +1,77 @@
 'use strict'
 
 import React, { Component } from 'react'
-import { AppRegistry, Navigator, StyleSheet, Text, View } from 'react-native'
+import { AppRegistry, NavigatorIOS, StyleSheet, TabBarIOS, Text } from 'react-native'
+import Icon from 'react-native-vector-icons/FontAwesome'
 
 import Root from './app/screens/Root'
-import SignIn from './app/screens/SignIn'
-import Register from './app/screens/Register'
-import Home from './app/screens/Home'
+import Settings from './app/screens/Settings'
 
 class sweetwaterCredits extends Component {
-  renderScene(route, navigator) {
-    console.log(route);
-    if(route.name == 'root') {
-      return <Root navigator={navigator} />
-    }
-    if(route.name == 'signin') {
-      return <SignIn navigator={navigator} />
-    }
-    if(route.name == 'register') {
-      return <Register navigator={navigator} />
-    }
-    if(route.name == 'home') {
-      return <Home navigator={navigator} />
-    }
+  constructor (props) {
+    super(props)
+    this.state = {selectedTab: 'home'}
   }
 
-  render() {
+  render () {
     return (
-      <Navigator
-       initialRoute={{ name: 'root' }}
-       renderScene={this.renderScene.bind(this)}
-      />
+      <TabBarIOS selectedTab={this.state.selectedTab}>
+        <Icon.TabBarItem
+        selected={this.state.selectedTab === 'home'}
+        title='Home'
+        iconName='home'
+        onPress={() => {
+          this.setState({
+            selectedTab: 'home'
+          })
+        }}>
+          <NavigatorIOS
+            initialRoute={{
+              component: Root,
+              title: 'Root.js',
+              name: 'root'
+            }}
+            style={{flex: 1}}
+          />
+        </Icon.TabBarItem>
+
+        <Icon.TabBarItem
+        selected={this.state.selectedTab === 'info'}
+        title='Info'
+        iconName='info'
+        onPress={() => {
+          this.setState({
+            selectedTab: 'info'
+          })
+        }}>
+          <Text style={styles.tabText}>
+            Info Tab
+          </Text>
+        </Icon.TabBarItem>
+
+        <Icon.TabBarItem
+        selected={this.state.selectedTab === 'settings'}
+        title='Settings'
+        iconName='gear'
+        onPress={() => {
+          this.setState({
+            selectedTab: 'settings'
+          })
+        }}>
+          <Settings/>
+        </Icon.TabBarItem>
+
+      </TabBarIOS>
     )
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
+  tabText: {
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+    alignSelf: 'center',
+    marginTop: 50
+  }
 })
 
 AppRegistry.registerComponent('sweetwaterCredits', () => sweetwaterCredits)
