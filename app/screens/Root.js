@@ -8,13 +8,13 @@ import ViewContainer from '../components/ViewContainer'
 
 class Root extends Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    navigator: PropTypes.object.isRequired
   }
 
   constructor(props, context) {
-    super(props, context);
-    this._onForward = this._onForward.bind(this);
-    this._onBack = this._onBack.bind(this);
+    super(props, context)
+    this._onForward = this._onForward.bind(this)
+    this._onBack = this._onBack.bind(this)
   }
 
   _onForward(routeName) {
@@ -64,10 +64,9 @@ class Root extends Component {
           style={styles.bottomButton}>
           <Text
             style={styles.bottomButtonText}>
-          How This App Works
+            How This App Works
           </Text>
         </TouchableHighlight>
-
       </ViewContainer>
     )
   }

@@ -5,7 +5,8 @@ import { AppRegistry, NavigatorIOS, StyleSheet, TabBarIOS, Text } from 'react-na
 import Icon from 'react-native-vector-icons/FontAwesome'
 
 import Root from './app/screens/Root'
-import Settings from './app/screens/Settings'
+import Settings from './app/screens/Settings.ios'
+import About from './app/screens/About.ios'
 
 class sweetwaterCredits extends Component {
   constructor (props) {
@@ -44,9 +45,14 @@ class sweetwaterCredits extends Component {
             selectedTab: 'info'
           })
         }}>
-          <Text style={styles.tabText}>
-            Info Tab
-          </Text>
+          <NavigatorIOS
+            initialRoute={{
+              component: About,
+              title: 'About.js',
+              name: 'about'
+            }}
+            style={{flex: 1}}
+          />
         </Icon.TabBarItem>
 
         <Icon.TabBarItem
@@ -58,7 +64,14 @@ class sweetwaterCredits extends Component {
             selectedTab: 'settings'
           })
         }}>
-          <Settings/>
+          <NavigatorIOS
+            initialRoute={{
+              component: Settings,
+              title: 'Settings.js',
+              name: 'settings'
+            }}
+            style={{flex: 1}}
+          />
         </Icon.TabBarItem>
 
       </TabBarIOS>

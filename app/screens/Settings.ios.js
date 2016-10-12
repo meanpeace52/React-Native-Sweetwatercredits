@@ -1,10 +1,13 @@
 'use strict'
 
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { ListView, StyleSheet, Text, TouchableHighlight, View } from 'react-native'
 import StatusBarBackground from '../components/StatusBarBackground'
 
 class Settings extends Component {
+  static propTypes = {
+    navigator: PropTypes.object.isRequired
+  }
 
   constructor (props) {
     super(props)
@@ -14,6 +17,18 @@ class Settings extends Component {
         'Tutorial', 'Change Email', 'Sign Out'
       ])
     }
+    this._onForward = this._onForward.bind(this)
+    this._onBack = this._onBack.bind(this)
+  }
+
+  _onForward(routeName) {
+    this.props.navigator.push({
+      name: routeName
+    })
+  }
+
+  _onBack() {
+    this.props.navigator.pop()
   }
 
   render () {
@@ -53,7 +68,6 @@ const styles = StyleSheet.create({
     fontSize: 16
   },
   list: {
-    marginTop: 30,
     height: 400
   }
 })
