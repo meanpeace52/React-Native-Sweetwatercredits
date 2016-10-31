@@ -16,7 +16,7 @@ class SignIn extends Component {
     this.setState({modalVisible: visible})
   }
 
-  navigate (routeName) {
+  _navigate (routeName) {
     this.props.navigator.push({
       name: routeName
     })
@@ -39,14 +39,16 @@ class SignIn extends Component {
             Sign In
           </Text>
         </TouchableHighlight>
-        <TouchableHighlight style={styles.button}>
+        <TouchableHighlight
+        style={styles.button}
+        onPress={this._navigate('register')}>
           <Text style={styles.buttonText}>
             Register
           </Text>
         </TouchableHighlight>
 
         <Text style={styles.IntroText}>
-          Registration is not required to use our calculator, but it is helpful to save your progrss, edit previous calculations, and share results with colleagues.
+          Registration is not required to use our calculator, but it is helpful to save your progress, edit previous calculations, and share results with colleagues.
         </Text>
 
         <Modal

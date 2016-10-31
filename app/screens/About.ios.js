@@ -5,24 +5,11 @@ import { Image, NavigatorIOS, ScrollView, StyleSheet, Text, TouchableHighlight, 
 import ViewContainer from '../components/ViewContainer'
 
 class About extends Component {
-  static propTypes = {
-    navigator: PropTypes.object.isRequired
-  }
 
-  constructor (props) {
-    super(props)
-    this._onForward = this._onForward.bind(this)
-    this._onBack = this._onBack.bind(this)
-  }
-
-  _onForward(routeName) {
+  _navigate (routeName) {
     this.props.navigator.push({
       name: routeName
     })
-  }
-
-  _onBack() {
-    this.props.navigator.pop()
   }
 
   render() {
@@ -88,7 +75,7 @@ const styles = StyleSheet.create({
     marginBottom: 5
   },
   sectionText: {
-    backgroundColor: 'aliceblue'
+    backgroundColor: '#C4D7E1'
   }
 })
 

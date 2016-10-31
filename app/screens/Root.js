@@ -7,24 +7,10 @@ import StatusBarBackground from '../components/StatusBarBackground'
 import ViewContainer from '../components/ViewContainer'
 
 class Root extends Component {
-  static propTypes = {
-    navigator: PropTypes.object.isRequired
-  }
-
-  constructor(props, context) {
-    super(props, context)
-    this._onForward = this._onForward.bind(this)
-    this._onBack = this._onBack.bind(this)
-  }
-
-  _onForward(routeName) {
+  _navigate (routeName) {
     this.props.navigator.push({
       name: routeName
     })
-  }
-
-  _onBack() {
-    this.props.navigator.pop()
   }
 
   render () {
@@ -45,7 +31,8 @@ class Root extends Component {
         </Text>
 
         <TouchableHighlight
-          style={styles.button}>
+          style={styles.button}
+          onPress={ () => this._navigate('home') }>
           <Text
             style={styles.buttonText}>
             Calculate Credits
