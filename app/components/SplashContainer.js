@@ -14,10 +14,10 @@ class SplashContainer extends Component {
 
 const styles = StyleSheet.create({
   splash: {
+    backgroundColor: 'transparent',
     flex: 1,
-    width: undefined,
     height: undefined,
-    backgroundColor: 'transparent'
+    width: undefined
   }
 })
 

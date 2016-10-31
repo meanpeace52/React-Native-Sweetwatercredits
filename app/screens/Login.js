@@ -55,14 +55,14 @@ class Login extends Component {
 
 const styles = StyleSheet.create({
   buttonBig: {
-    justifyContent: 'center',
     alignItems: 'center',
+    alignSelf: 'center',
     backgroundColor: '#3F51B5',
     height: 44,
-    width: 300,
+    justifyContent: 'center',
     marginBottom: 10,
     marginTop: 10,
-    alignSelf: 'center'
+    width: 300
   },
   buttonBigText: {
     color: 'white',
@@ -71,19 +71,19 @@ const styles = StyleSheet.create({
     fontWeight: '400'
   },
   buttonSmall: {
+    alignItems: 'center',
+    alignSelf: 'center',
     backgroundColor: '#FFC107',
+    height: 36,
+    justifyContent: 'center',
     marginTop: 10,
     marginBottom: 10,
-    width: 220,
-    height: 36,
-    alignSelf: 'center',
-    justifyContent: 'center',
-    alignItems: 'center'
+    width: 220
   },
   buttonSmallText: {
+    color: 'black',
     fontFamily: 'Helvetica',
     fontSize: 16,
-    color: 'black',
     textAlign: 'center'
   },
   logo: {
@@ -93,20 +93,20 @@ const styles = StyleSheet.create({
   },
   main: {
     flex: 1,
-    marginTop: 200,
+    marginLeft: 25,
     marginRight: 25,
-    marginLeft: 25
+    marginTop: 200
   },
   titleText: {
     fontSize: 24,
     fontWeight: 'bold'
   },
   underLogoText: {
-    fontSize: 28,
-    fontFamily: 'Helvetica',
-    textAlign: 'center',
     color: 'white',
+    fontFamily: 'Helvetica',
+    fontSize: 28,
     fontWeight: 'bold',
+    textAlign: 'center',
     textShadowColor: 'black',
     textShadowOffset: { width: 1, height: 1 },
     textShadowRadius: 6
