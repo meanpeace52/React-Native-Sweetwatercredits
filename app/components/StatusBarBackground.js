@@ -6,10 +6,9 @@ import React, { Component } from 'react'
 import { StyleSheet, View } from 'react-native'
 
 class StatusBarBackground extends Component {
-  render() {
+  render () {
     return (
-      <View style={[styles.StatusBarBackground, this.props.style || {} ]}>
-      </View>
+      <View style={[styles.StatusBarBackground, this.props.style || {}]} />
     )
   }
 }
@@ -17,7 +16,7 @@ class StatusBarBackground extends Component {
 const styles = StyleSheet.create({
   StatusBarBackground: {
     height: 20,
-    backgroundColor: 'lightsteelblue'
+    backgroundColor: 'peachpuff'
   }
 })
 

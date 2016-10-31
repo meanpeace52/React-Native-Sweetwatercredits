@@ -1,44 +1,30 @@
 'use strict'
 
 import React, { Component } from 'react'
-import { AppRegistry, Navigator } from 'react-native'
+import { AppRegistry } from 'react-native'
 
-import Root from './app/screens/Root'
-import SignIn from './app/screens/SignIn'
-import Register from './app/screens/Register'
-import Home from './app/screens/Home'
-import Project from './app/screens/Project.ios'
-import About from './app/screens/About.ios'
+// Import React Native Router Flux
+import { Router, Scene } from 'react-native-router-flux'
+
+// Import Redux Stuff
+// import { Provider } from 'react-redux'
+// import { createStore, applyMiddleware, combineReuces, compose } from 'redux'
+
+// Import Screens
+import Login from './app/screens/Login'
+import Projects from './app/screens/Projects'
+import NewProjects from './app/screens/NewProjects'
 
 class sweetwaterCredits extends Component {
-  renderScene (route, navigator) {
-    console.log(route)
-    if (route.name === 'root') {
-      return <Root navigator={navigator} />
-    }
-    if (route.name === 'signin') {
-      return <SignIn navigator={navigator} />
-    }
-    if (route.name === 'register') {
-      return <Register navigator={navigator} />
-    }
-    if (route.name === 'home') {
-      return <Home navigator={navigator} />
-    }
-    if (route.name === 'project') {
-      return <Project navigator={navigator} />
-    }
-    if (route.name === 'about') {
-      return <About navigator={navigator} />
-    }
-  }
-
   render () {
     return (
-      <Navigator
-       initialRoute={{ title: 'My Initial Scene', name: 'root' }}
-       renderScene={this.renderScene.bind(this)}
-      />
+      <Router>
+        <Scene key='root'>
+          <Scene key='login' component={Login} initial={true} hideNavBar={true} />
+          <Scene key='projects' component={Projects} title='Projects' hideNavBar={false} />
+          <Scene key='new' component={NewProjects} title='New Projects' hideNavBar={false} />
+        </Scene>
+      </Router>
     )
   }
 }
