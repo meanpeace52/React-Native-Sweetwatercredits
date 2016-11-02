@@ -14,7 +14,8 @@ import { Router, Scene } from 'react-native-router-flux'
 import Splash from './app/screens/Splash'
 import Login from './app/screens/Login'
 import Projects from './app/screens/Projects'
-import NewProjects from './app/screens/NewProjects'
+import Zones from './app/screens/Zones'
+import RuleViolations from './app/screens/RuleViolations'
 
 class sweetwaterCredits extends Component {
   render () {
@@ -24,7 +25,8 @@ class sweetwaterCredits extends Component {
           <Scene key='splash' component={Splash} initial={true} hideNavBar={true} />
           <Scene key ='login' component={Login} title='Login' hideNavBar={false} />
           <Scene key='projects' component={Projects} title='Projects' hideNavBar={false} />
-          <Scene key='new' component={NewProjects} title='New Projects' hideNavBar={false} />
+          <Scene key='zones' component={Zones} title='Zones' hideNavBar={false} />
+          <Scene key='ruleViolations' component={RuleViolations} title='Rule Violations' hideNavBar={false} />
         </Scene>
       </Router>
     )

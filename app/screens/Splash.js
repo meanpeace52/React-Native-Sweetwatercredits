@@ -14,10 +14,12 @@ class Login extends Component {
   render () {
     const navigateToProjects = () => Actions.projects()
     const navigateToLogin = () => Actions.login()
+    const navigateToZones = () => Actions.zones()
     return (
       <SplashContainer>
         <View style={styles.main}>
-          <Image source={require('../assets/images/logo-impression.png')}
+          <Image
+            source={require('../assets/images/logo-impression.png')}
             style={styles.logo} />
 
           <Text style={styles.underLogoText}>
@@ -25,24 +27,25 @@ class Login extends Component {
           </Text>
 
           <TouchableHighlight
-            style={styles.buttonBig}
-              onPress={navigateToProjects}>
-            <Text style={styles.buttonBigText}>
+            style={styles.buttonBlue}
+            onPress={navigateToProjects}>
+            <Text style={styles.buttonBlueText}>
               {_.upperCase('Start Calculating Credits')}
             </Text>
           </TouchableHighlight>
 
           <TouchableHighlight
-            style={styles.buttonSmall}
+            style={styles.buttonYellow}
             onPress={navigateToLogin}>
-            <Text style={styles.buttonSmallText}>
+            <Text style={styles.buttonYellowText}>
               {_.upperCase('Sign In Or Register')}
             </Text>
           </TouchableHighlight>
 
           <TouchableHighlight
-            style={styles.buttonSmall}>
-            <Text style={styles.buttonSmallText}>
+            style={styles.buttonYellow}
+            onPress={navigateToZones}>
+            <Text style={styles.buttonYellowText}>
               {_.upperCase('How This App Works')}
             </Text>
           </TouchableHighlight>
@@ -54,7 +57,7 @@ class Login extends Component {
 }
 
 const styles = StyleSheet.create({
-  buttonBig: {
+  buttonBlue: {
     alignItems: 'center',
     alignSelf: 'center',
     backgroundColor: '#3F51B5',
@@ -65,13 +68,13 @@ const styles = StyleSheet.create({
     marginTop: 10,
     width: 300
   },
-  buttonBigText: {
+  buttonBlueText: {
     color: 'white',
     fontFamily: 'Helvetica',
     fontSize: 16,
     fontWeight: '400'
   },
-  buttonSmall: {
+  buttonYellow: {
     alignItems: 'center',
     alignSelf: 'center',
     backgroundColor: '#FFC107',
@@ -82,7 +85,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     width: 220
   },
-  buttonSmallText: {
+  buttonYellowText: {
     color: 'black',
     fontFamily: 'Helvetica',
     fontSize: 16,
@@ -94,7 +97,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   main: {
-    flex: 1,
     marginLeft: 25,
     marginRight: 25,
     marginTop: 200

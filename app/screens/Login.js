@@ -24,11 +24,12 @@ class Login extends Component {
           {/* END <hr> *facepalm */}
 
           <Text style={styles.bottomText}>
-            Registration is required to save, edit, and share calculations. Use the button below to use with calculator without registering.
+            Registration is required to save, edit, and share calculations. Use the button below to use calculator without registering.
           </Text>
-          <TouchableHighlight style={styles.buttonBig}
+          <TouchableHighlight
+            style={styles.buttonBlue}
             onPress={navigateToProjects}>
-            <Text style={styles.buttonBigText}>
+            <Text style={styles.buttonBlueText}>
               {_.upperCase('Calculate Credits')}
             </Text>
           </TouchableHighlight>
@@ -44,7 +45,7 @@ const styles = StyleSheet.create({
     marginLeft: 25,
     marginRight: 25
   },
-  buttonBig: {
+  buttonBlue: {
     alignItems: 'center',
     alignSelf: 'center',
     backgroundColor: '#3F51B5',
@@ -55,7 +56,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     width: 200
   },
-  buttonBigText: {
+  buttonBlueText: {
     color: 'white',
     fontFamily: 'Helvetica',
     fontSize: 16,
