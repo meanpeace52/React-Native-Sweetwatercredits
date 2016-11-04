@@ -6,11 +6,12 @@ import { Image, Text, StyleSheet, TouchableHighlight, View } from 'react-native'
 // Vendor Packages
 import _ from 'lodash'
 import { Actions } from 'react-native-router-flux'
+import { connect } from 'react-redux'
 
 // Custom Components
 import SplashContainer from '../components/SplashContainer'
 
-class Login extends Component {
+class Splash extends Component {
   render () {
     const navigateToProjects = () => Actions.projects()
     const navigateToLogin = () => Actions.login()
@@ -120,4 +121,4 @@ const styles = StyleSheet.create({
   }
 })
 
-module.exports = Login
+export default connect(({routes}) => ({routes}))(Splash)

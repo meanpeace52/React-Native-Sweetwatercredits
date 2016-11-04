@@ -1,11 +1,12 @@
 'use strict'
 
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { StyleSheet, Text, TouchableHighlight, View } from 'react-native'
 
 // Vendor Components
 import _ from 'lodash'
 import { Actions } from 'react-native-router-flux'
+import { connect } from 'react-redux'
 
 // Custom Components
 import NavDrawer from '../components/NavDrawer'
@@ -13,6 +14,10 @@ import ViewContainer from '../components/ViewContainer'
 import ZoneForm from '../components/ZoneForm'
 
 class Zones extends Component {
+  static propTypes = {
+    routes: PropTypes.object
+  }
+
   render () {
     const navigateToRuleViolations = () => Actions.ruleViolations()
     return (
@@ -38,11 +43,16 @@ class Zones extends Component {
 
         <TouchableHighlight
           style={styles.buttonYellow}>
-          <Text style={styles.buttonYellowText}>
+          <Text
+            style={styles.buttonYellowText}
+            onPress={console.log(this.props)}>
             {_.upperCase('Manage Zones')}
           </Text>
         </TouchableHighlight>
         {/* End Button Group */}
+        <Text>
+          The current scene is titled { this.props.routes.scene.title}
+        </Text>
       </ViewContainer>
     )
   }
@@ -103,4 +113,4 @@ const styles = StyleSheet.create({
   }
 })
 
-module.exports = Zones
+export default connect(({routes}) => ({routes}))(Zones);

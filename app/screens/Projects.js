@@ -1,11 +1,12 @@
 'use strict'
 
 import React, { Component } from 'react'
-import { Image, ListView, StyleSheet, Text, TouchableHighlight, View } from 'react-native'
+import { ListView, StyleSheet, Text, TouchableHighlight, View } from 'react-native'
 
 // Vendor Components
 import { Actions } from 'react-native-router-flux'
 import _ from 'lodash'
+import { connect } from 'react-redux'
 
 // Custom Components
 import ViewContainer from '../components/ViewContainer'
@@ -144,4 +145,4 @@ const styles = StyleSheet.create({
   }
 })
 
-module.exports = Projects
+export default connect(({routes}) => ({routes}))(Projects)
