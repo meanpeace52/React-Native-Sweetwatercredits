@@ -1,44 +1,17 @@
 'use strict'
 
-// export function addZone (projectId, numAcres, rule, index) {
-//   return {
-//     type: 'ADD_ZONE',
-//     projectId,
-//     numAcres,
-//     rule,
-//     index
-//   }
-// }
-
-// export function removeZone (projectId, index) {
-//   return {
-//     type: 'REMOVE_ZONE',
-//     projectId,
-//     index
-//   }
-// }
-
-// Double check this store as well
-export function addProject (projectId, index) {
+export function addZone (acreage, zoneType) {
+  console.log('actionCreator: dispatching add zone!')
   return {
-    type: 'ADD_PROJECT',
-    projectId,
-    index
+    type: 'ADD_ZONE',
+    acreage,
+    zoneType
   }
 }
 
-// export function removeProject (projectId, index) {
-//   return {
-//     type: 'REMOVE_PROJECT',
-//     projectId,
-//     index
-//   }
-// }
-
-// // Double check this store as well
-// export function storeToken (token) {
-//   return {
-//     type: 'STORE_TOKEN',
-//     token
-//   }
-// }
+export function removeZone (i) {
+  return {
+    type: 'REMOVE_ZONE',
+    i
+  }
+}

@@ -17,9 +17,26 @@ class Zones extends Component {
   static propTypes = {
     routes: PropTypes.object
   }
+  handleButtonPress(e) {
+    e.preventDefault()
+    console.log('Submittting the Zone')
+    console.log(this.state)
+    const { zoneId } = this.props
+    // Pull the values from the form
+    // TODO: ref to textInputs
+    const acreage = this.state.acreage.value
+    const zoneType = this.state.zoneType.value
 
+    // Call to action.reducers to modify store
+    this.props.addZone(zoneId, acreage, zoneType)
+    // this.ref.zoneForm.reset()
+    // navigate to another screen
+    // Actions.ruleViolations()
+  }
   render () {
     const navigateToRuleViolations = () => Actions.ruleViolations()
+    const { scene } = this.props.routes
+
     return (
       <ViewContainer style={styles.main}>
         <NavDrawer/>
@@ -35,7 +52,8 @@ class Zones extends Component {
         {/* Button Group */}
         <TouchableHighlight
           style={styles.buttonBlue}
-          onPress={navigateToRuleViolations}>
+          onChangeText={(acreage) => this.setState({acreage})}
+          onPress={this.handleButtonPress}>
           <Text style={styles.buttonBlueText}>
             {_.upperCase('Next')}
           </Text>
@@ -44,14 +62,13 @@ class Zones extends Component {
         <TouchableHighlight
           style={styles.buttonYellow}>
           <Text
-            style={styles.buttonYellowText}
-            onPress={console.log(this.props)}>
+            style={styles.buttonYellowText}>
             {_.upperCase('Manage Zones')}
           </Text>
         </TouchableHighlight>
         {/* End Button Group */}
         <Text>
-          The current scene is titled { this.props.routes.scene.title}
+          The current scene is titled { scene.title }
         </Text>
       </ViewContainer>
     )
