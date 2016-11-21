@@ -6,13 +6,13 @@ const BlueButton = ({ onPress, children }) => {
 
 
   return (
-    <TouchableHighlight
+    <TouchableOpacity
       style={buttonStyle}
       onPress={onPress}>
       <Text style={textStyle}>
         {children}
       </Text>
-    </TouchableHighlight>
+    </TouchableOpacity>
   )
 
   // return (
@@ -40,8 +40,8 @@ const styles = {
     color: 'white',
     fontFamily: 'Helvetica',
     fontSize: 16,
-    fontWeight: '400'
+    fontWeight: "bold"
   }
 };
 
-export { Button };
+export { BlueButton };
