@@ -3,8 +3,7 @@ import { Text, TouchableOpacity } from 'react-native';
 
 const BlueButton = ({ onPress, children }) => {
   const { buttonStyle, textStyle } = styles;
-
-
+  
   return (
     <TouchableOpacity
       style={buttonStyle}
@@ -14,14 +13,6 @@ const BlueButton = ({ onPress, children }) => {
       </Text>
     </TouchableOpacity>
   )
-
-  // return (
-  //   <TouchableOpacity onPress={onPress} style={buttonStyle}>
-  //     <Text style={textStyle}>
-  //       {children}
-  //     </Text>
-  //   </TouchableOpacity>
-  // );
 };
 
 const styles = {

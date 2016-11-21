@@ -1,13 +1,14 @@
-import { ADD_ZONE } from '../actions/types'
+import { UPDATE_ZONE } from '../actions/types'
 
-const INITIAL_STATE = [ {acreage: 0, zoneType: "Core"} ]
+const INITIAL_STATE = {
+  acreage: '',
+  type: ''
+};
 
 export default (state = INITIAL_STATE, action) => {
-  console.log('/reducers: ZoneReducers');
-  console.log(state);
   switch(action.type) {
-    case ADD_ZONE :
-      return state;
+    case UPDATE_ZONE :
+      return { ...state, [action.payload.prop]: action.payload.value };
     default:
       return state;
   }

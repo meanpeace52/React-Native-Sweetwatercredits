@@ -1,7 +1,9 @@
 import React from 'react';
-import { Scene, Router } from 'react-native-router-flux';
+import { Actions, Router, Scene } from 'react-native-router-flux';
 import Splash from './components/Splash';
-import RecentProjects from './components/RecentProjects'
+import RecentProjects from './components/RecentProjects';
+import ProjectCreate from './components/ProjectCreate';
+import ZoneCreate from './components/ZoneCreate';
 
 const RouterComponent = () => {
   return (
@@ -11,7 +13,23 @@ const RouterComponent = () => {
       </Scene>
 
       <Scene key="projects">
-        <Scene key="recentProjects" component={RecentProjects} title="Recent Projects"/>
+        <Scene
+          key="recentProjects"
+          component={RecentProjects}
+          title="Recent Projects"
+          onRight={() => Actions.projectCreate()}
+          rightTitle="Add"
+          initial/>
+
+        <Scene
+          key="projectCreate"
+          component={ProjectCreate}
+          title="Create a Project"/>
+
+        <Scene
+            key="zoneCreate"
+            component={ZoneCreate}
+            title="Create Zones"/>
       </Scene>
     </Router>
   )
