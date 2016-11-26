@@ -4,9 +4,15 @@ import { Picker, Text, View } from 'react-native';
 import { BlueButton, Container, Input, LogoTopLeft, Title, YellowButton } from './common';
 import _ from 'lodash';
 import { connect } from 'react-redux';
-import { updateZone } from '../actions';
+import { updateZone, zoneCreate } from '../actions';
 
 class ZoneCreate extends Component {
+  onButtonPress() {
+    const { acreage, type } = this.props;
+
+    this.props.zoneCreate({ acreage, type: type || 'Core' })
+  }
+
   render() {
     const { label } = styles;
     return (
@@ -56,4 +62,4 @@ const mapStateToProps= (state) => {
   return { acreage, type };
 };
 
-export default connect(mapStateToProps, { updateZone })(ZoneCreate);
+export default connect(mapStateToProps, { updateZone, zoneCreate })(ZoneCreate);

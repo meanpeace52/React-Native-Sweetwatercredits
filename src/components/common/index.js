@@ -10,4 +10,6 @@ export * from './YellowButton';
 export * from './Input';
 export * from './LogoTopLeft';
 export * from './Title';
-export * from './Container'
+export * from './Container';
+export * from './LogoTopMiddle';
+export * from './Spinner';

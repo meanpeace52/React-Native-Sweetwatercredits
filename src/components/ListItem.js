@@ -6,6 +6,7 @@ class ListItem extends Component {
   render() {
    return (
      <Container>
+       {console.log(this.props)}
        <Text>{this.props.project.name}</Text>
      </Container>
    );

@@ -1,16 +1,12 @@
-import { UPDATE_PROJECT } from '../actions/types';
+import { PROJECTS_FETCH } from '../actions/types';
 
-export default ( state = [], action) => {
+const INITIAL_STATE = {};
+
+export default (state = INITIAL_STATE, action) => {
   switch(action.type) {
-    case UPDATE_PROJECT :
-      // action.payload === { prop: 'name', value: 'jane'}
-      // return { ...state, [action.payload.prop]: action.payload.value };
-      return [ ...state, {
-        [action.payload.prop]: action.payload.value
-      }
-    ]
+    case PROJECTS_FETCH :
+      console.log(action);
     default:
       return state;
   }
-  console.log(state);
 };

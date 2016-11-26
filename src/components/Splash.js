@@ -6,14 +6,15 @@ import { Actions } from 'react-native-router-flux';
 class Splash extends Component {
   render () {
     const navigateToProjects = () => Actions.projects();
+    const navigateToLoginForm = () => Actions.projects();
     return (
       <SplashImageContainer>
         <BlueButton onPress={navigateToProjects}>
           {_.toUpper('Start Calculating Credits')}
         </BlueButton>
 
-        <YellowButton>
-          {_.toUpper("Sign In - Coming Soon!")}
+        <YellowButton onPress={navigateToLoginForm}>
+          {_.toUpper("Sign In")}
         </YellowButton>
 
       </SplashImageContainer>
