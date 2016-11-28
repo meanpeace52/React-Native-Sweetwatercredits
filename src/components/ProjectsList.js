@@ -7,17 +7,17 @@ import { Container } from './common';
 
 
 class ProjectsList extends Component {
-  componentWillMount() {
-    this.props.projectsFetch();
-  }
+  // componentWillMount() {
+  //   this.props.projectsFetch();
+  // }
 
   render() {
     return (
-      <Container>
+      <Container style={{ paddingTop: 65 }}>
         <Text>HELLLOO</Text>
       </Container>
     );
   }
 }
 
-export default connect(null, { projectsFetch })(ProjectsList);
+export default ProjectsList;

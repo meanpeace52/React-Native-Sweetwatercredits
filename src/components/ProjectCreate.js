@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { Picker, Text, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import { BlueButton, Container, LogoTopLeft, Input } from './common';
-import _ from 'lodash';
 import { connect } from 'react-redux';
+import _ from 'lodash';
+import { BlueButton, Container, LogoTopLeft, Input } from './common';
 import { updateProject, projectCreate } from '../actions';
 
 class ProjectCreate extends Component {
@@ -14,18 +13,19 @@ class ProjectCreate extends Component {
   }
 
   render() {
-    const navigateToProjectsList = () => Actions.projectsList();
     return (
       <Container>
-        <LogoTopLeft/>
+        <LogoTopLeft />
+
         <Input
           placeholder="Project Name"
           value={this.props.name}
-          onChangeText={value => this.props.updateProject({prop: 'name', value })}
+          onChangeText={value => this.props.updateProject({ prop: 'name', value })}
         />
 
         <BlueButton
-          onPress={this.onButtonPress.bind(this)}>
+          onPress={this.onButtonPress.bind(this)}
+        >
           {_.toUpper('Create New Project')}
         </BlueButton>
       </Container>
@@ -33,8 +33,8 @@ class ProjectCreate extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  const { name } = state.projectsForm;
+const mapStateToProps = (projectsForm) => {
+  const { name } = projectsForm;
   return { name };
 };
 

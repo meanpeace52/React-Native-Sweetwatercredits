@@ -10,23 +10,24 @@ const RouterComponent = () => {
   return (
     <Router>
       <Scene key="root">
-        <Scene key="splash" component={Splash} hideNavBar={true} initial/>
-      </Scene>
-
-      <Scene key="projects">
+        <Scene key="splash" component={Splash} hideNavBar={true} initial />
+        
         <Scene
           key="loginForm"
           component={LoginForm}
           title="Login"
-          initial
+          hideNavBar={false}
         />
+      </Scene>
 
+      <Scene key="projects">
         <Scene
           key="projectsList"
           component={ProjectsList}
           title="Recent Projects"
           onRight={() => Actions.projectCreate()}
           rightTitle="Add"
+          initial
         />
 
         <Scene
