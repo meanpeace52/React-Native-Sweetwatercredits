@@ -4,7 +4,7 @@ import Splash from './components/Splash';
 import ProjectsList from './components/ProjectsList';
 import ProjectCreate from './components/ProjectCreate';
 import ZoneCreate from './components/ZoneCreate';
-import LoginForm from './components/LoginForm'
+import LoginForm from './components/LoginForm';
 
 const RouterComponent = () => {
   return (
@@ -18,27 +18,31 @@ const RouterComponent = () => {
           key="loginForm"
           component={LoginForm}
           title="Login"
-          initial/>
+          initial
+        />
 
         <Scene
           key="projectsList"
           component={ProjectsList}
           title="Recent Projects"
           onRight={() => Actions.projectCreate()}
-          rightTitle="Add"/>
+          rightTitle="Add"
+        />
 
         <Scene
           key="projectCreate"
           component={ProjectCreate}
-          title="Create a Project"/>
+          title="Create a Project"
+        />
 
         <Scene
             key="zoneCreate"
             component={ZoneCreate}
-            title="Create Zones"/>
+            title="Create Zones"
+        />
       </Scene>
     </Router>
-  )
+  );
 };
 
 export default RouterComponent;

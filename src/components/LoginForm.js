@@ -1,64 +1,66 @@
 import React, { Component } from 'react';
 import { Text, View } from 'react-native';
-import { Container, BlueButton, Input, LogoTopMiddle, Spinner, YellowButton } from './common';
 import _ from 'lodash';
-import firebase from 'firebase';
+import { connect } from 'react-redux';
+import { Container, BlueButton, Input, LogoTopMiddle, Spinner } from './common';
+import { emailChanged, passwordChanged, loginUser } from '../actions';
 
 class LoginForm extends Component {
-  state = { email: '', passsword: '', error: '', loading: false}
+  onEmailChange(text) {
+    // Redux way of saying dispatch actionCreate to do this.setState({ email })
+    this.props.emailChanged(text);
+  }
+
+  onPasswordChange(text) {
+    this.props.passwordChanged(text);
+  }
 
   onButtonPress() {
-    const { email, password } = this.state;
-    // clear state.error, and show loading = true
-    this.setState({ error: '', loading: true });
+    const { email, password } = this.props;
 
-    firebase.auth().signInWithEmailAndPassword(email, password).catch( () => {
-      firebase.auth().createUserWithEmailAndPassword(email, password).catch( () => {
-        // Show error because sign in and sign up failed
-        this.setState({ error: 'Authentication failed.' })
-      });
-    });
+    this.props.loginUser({ email, password });
   }
 
   renderButton() {
-    if (this.state.loading) {
-      return <Spinner />
+    if (this.props.loading) {
+      return <Spinner />;
     }
 
     return (
       <BlueButton
-        onPress={this.onButtonPress.bind(this)}>
-        {_.toUpper('SignIn')}
-      </BlueButton>
+      onPress={this.onButtonPress.bind(this)}
+      >
+      {_.toUpper('Sign In')}
+    </BlueButton>
     );
   }
 
   render() {
-    const { bottomTextContainer, errorTextStyle, centerText } = styles;
-
+    const { bottomTextContainer, centerText, errorTextStyle } = styles;
     return (
       <Container>
-        <LogoTopMiddle/>
+        <LogoTopMiddle />
         <Input
           placeholder="Email"
-          value={this.state.email}
-          onChangeText={email => this.setState({ email })}
+          onChangeText={this.onEmailChange.bind(this)}
+          value={this.props.email}
         />
+
         <Input
           placeholder="Password"
-          value={this.state.password}
-          onChangeText={password => this.setState({ password })}
-          secureTextEntry/>
+          onChangeText={this.onPasswordChange.bind(this)}
+          value={this.props.password}
+          secureTextEntry
+        />
 
-        <Text style={errorTextStyle}>
-          {this.state.error}
-        </Text>
+        <Text style={errorTextStyle}>{this.props.error}</Text>
 
         {this.renderButton()}
 
         <View style={bottomTextContainer}>
           <Text style={centerText}>
-            Registration is required to save, edit and share calculations. To use the calculator without registering, click here.
+            Registration is required to save, edit and share calculations. To us
+            e the calculator without registering, click here.
           </Text>
         </View>
       </Container>
@@ -79,6 +81,21 @@ const styles = {
     alignSelf: 'center',
     color: 'red'
   }
-}
+};
 
-export default LoginForm;
+const mapStateToProps = ({ auth }) => {
+  const { email, password, error, loading } = auth;
+
+  return {
+    email,
+    password,
+    error,
+    loading
+  };
+};
+
+export default connect(mapStateToProps, {
+  emailChanged,
+  passwordChanged,
+  loginUser
+})(LoginForm);

@@ -8,14 +8,14 @@ import Router from './Router';
 
 class App extends Component {
   componentWillMount() {
-    // Lifecycle method, automitcally invoked when component is rendered
+    // Lifecycle method, automatically invoked when component is rendered
     firebase.initializeApp({
       apiKey: 'AIzaSyCmfr5oHiGwYPjWOFYAQQRP9rUYeFcPnzI',
       authDomain: 'sweetwatercredits.firebaseapp.com',
       databaseURL: 'https://sweetwatercredits.firebaseio.com',
       storageBucket: 'sweetwatercredits.appspot.com',
       messagingSenderId: '133290481688'
-    })
+    });
   }
 
   render() {
@@ -26,6 +26,6 @@ class App extends Component {
       </Provider>
     );
   }
-};
+}
 
 export default App;

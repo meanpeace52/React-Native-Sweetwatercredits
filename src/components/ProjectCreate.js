@@ -33,7 +33,7 @@ class ProjectCreate extends Component {
   }
 }
 
-const mapStateToProps= (state) => {
+const mapStateToProps = (state) => {
   const { name } = state.projectsForm;
   return { name };
 };

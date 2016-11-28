@@ -53,3 +53,12 @@ If you need to access the value as it changes, IE an input, you can do something
 ```  
 
 #### Store: The Redux/Flux way of doing things
+
+##### GOLDEN RULE OF REDUX: nothing happens for free, we MUST implement it
+One of the main ideas of redux is to move the logic out of the components and into reducers. Called by an action creator, a reducer updates the state with each user interaction - button press, input received, etc.
+
+#####Redux-Thunk: A way to handle asynchronous and synchronous actions in redux
+Redux thunk allows us to:  
+
+* Bend the rules of action creators
+* Return a function instead of an action. we can call the function with 'dispatch'
