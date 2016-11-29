@@ -7,7 +7,6 @@ import { zoneCreate } from '../actions';
 
 class ZoneCreate extends Component {
   onButtonPress() {
-    console.log(this.props);
     const { acreage, zoneType, project_uid } = this.props;
     this.props.zoneCreate({ acreage, zoneType, uid: project_uid });
   }

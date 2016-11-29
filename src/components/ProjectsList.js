@@ -3,7 +3,7 @@ import { ListView, View } from 'react-native';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import { projectsFetch } from '../actions';
-import ListItem from './ListItem';
+import ProjectListItem from './ProjectListItem';
 import { LogoTopMiddle } from './common';
 
 class ProjectsList extends Component {
@@ -27,7 +27,7 @@ class ProjectsList extends Component {
   }
 
   renderRow(project) {
-    return <ListItem project={project} />;
+    return <ProjectListItem project={project} />;
   }
 
   render() {

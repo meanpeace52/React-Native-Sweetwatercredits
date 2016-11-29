@@ -46,7 +46,7 @@ export const projectSave = ({ name, uid }) => {
     firebase.database().ref(`/users/${currentUser.uid}/projects/${uid}`)
       .set({ name })
       .then(() => {
-          dispatch({ type: PROJECT_SAVE_SUCCESS })
+          dispatch({ type: PROJECT_SAVE_SUCCESS });
           Actions.projectsList({ type: 'reset' });
       });
   };

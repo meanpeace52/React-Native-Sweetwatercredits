@@ -3,7 +3,7 @@ import { Text, TouchableWithoutFeedback, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { CardSection } from './common';
 
-class ListItem extends Component {
+class ProjectListItem extends Component {
   onRowPress() {
     Actions.projectEdit({ project: this.props.project });
   }
@@ -31,4 +31,4 @@ const styles = {
   }
 };
 
-export default ListItem;
+export default ProjectListItem;
