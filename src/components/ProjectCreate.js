@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
-import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import { BlueButton, Container, LogoTopLeft, Input } from './common';
-import { updateProject, projectCreate } from '../actions';
+import { projectUpdate, projectCreate } from '../actions';
 
 class ProjectCreate extends Component {
   onButtonPress() {
     const { name } = this.props;
     this.props.projectCreate({ name });
-    // Action.pop();
   }
 
   render() {
@@ -19,8 +17,8 @@ class ProjectCreate extends Component {
 
         <Input
           placeholder="Project Name"
+          onChangeText={value => this.props.projectUpdate({ prop: 'name', value })}
           value={this.props.name}
-          onChangeText={value => this.props.updateProject({ prop: 'name', value })}
         />
 
         <BlueButton
@@ -33,9 +31,9 @@ class ProjectCreate extends Component {
   }
 }
 
-const mapStateToProps = (projectsForm) => {
-  const { name } = projectsForm;
+const mapStateToProps = ({ projectForm }) => {
+  const { name } = projectForm;
   return { name };
 };
 
-export default connect(mapStateToProps, { updateProject, projectCreate })(ProjectCreate);
+export default connect(mapStateToProps, { projectUpdate, projectCreate })(ProjectCreate);

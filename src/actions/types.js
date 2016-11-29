@@ -9,10 +9,10 @@ export const LOGIN_USER_FAIL = 'login_user_fail';
 export const LOGIN_USER = 'login_user';
 
 //  Projects
-export const PORJECT_NAME_CHANGED = 'project_name_changed';
 export const PROJECT_UPDATE = 'project_update';
 export const PROJECT_CREATE = 'project_create';
-export const PROJECTS_FETCH = 'projects_fetch';
+export const PROJECT_FETCH_SUCCESS = 'project_fetch_sucess';
+// export const PROJECTS_FETCH = 'projects_fetch';
 // export conse REMOVE_PROJECT = 'remove_project';
 // export const REMOVE_ZONE = 'remove_zone'
 

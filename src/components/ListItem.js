@@ -4,13 +4,22 @@ import { Container } from './common';
 
 class ListItem extends Component {
   render() {
-   return (
-     <Container>
-       {console.log(this.props)}
-       <Text>{this.props.project.name}</Text>
-     </Container>
-   );
- }
+    const { name } = this.props.project;
+    return (
+      <Container>
+       <Text style={styles.titleStyle}>
+        {name}
+       </Text>
+      </Container>
+    );
+  }
 }
+
+const styles = {
+  titleStyle: {
+    fontSize: 18,
+    paddingLeft: 15
+  }
+};
 
 export default ListItem;
