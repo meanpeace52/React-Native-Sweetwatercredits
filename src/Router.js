@@ -5,6 +5,8 @@ import LoginForm from './components/LoginForm';
 import ProjectsList from './components/ProjectsList';
 import ProjectCreate from './components/ProjectCreate';
 import ProjectEdit from './components/ProjectEdit';
+import ZonesList from './components/ZonesList';
+import ZoneCreate from './components/ZoneCreate';
 
 const RouterComponent = () => {
   return (
@@ -40,6 +42,18 @@ const RouterComponent = () => {
           key="projectEdit"
           component={ProjectEdit}
           title="Edit Project"
+        />
+
+        <Scene
+          key="zonesList"
+          component={ZonesList}
+          title="Project Zones"
+        />
+
+        <Scene
+          key="zoneCreate"
+          component={ZoneCreate}
+          title="Create a Zone"
         />
       </Scene>
     </Router>

@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
+import { Actions } from 'react-native-router-flux';
 import ProjectForm from './ProjectForm';
 import { projectUpdate, projectSave, projectDelete } from '../actions';
-import { Container, CardSection, BlueButton, Confirm } from './common';
+import { Container, CardSection, BlueButton, Confirm, YellowButton } from './common';
 
 class ProjectEdit extends Component {
   state = { showModal: false };
 
   componentWillMount() {
-    // feed all the project props into the project form reducer
+    // feed all the project props into the ProjectFormReducer
     _.each(this.props.project, (value, prop) => {
       this.props.projectUpdate({ prop, value });
     });
@@ -29,22 +30,33 @@ class ProjectEdit extends Component {
     this.setState({ showModal: false });
   }
 
+  navigateToZones() {
+    const { uid } = this.props.project;
+    Actions.zonesList({ project_uid: uid });
+  }
+
   render() {
     return (
       <Container>
         <ProjectForm />
         <CardSection>
           <BlueButton onPress={this.onButtonPress.bind(this)}>
-            {_.toUpper('save changes')}
+            Save Changes
           </BlueButton>
         </CardSection>
 
         <CardSection>
-          <BlueButton
+          <BlueButton onPress={this.navigateToZones.bind(this)}>
+            Zones
+          </BlueButton>
+        </CardSection>
+
+        <CardSection style={{ justifyContent: 'center' }}>
+          <YellowButton
             onPress={() => this.setState({ showModal: !this.state.showModal })}
           >
-            {_.toUpper('Delete Project')}
-          </BlueButton>
+            Delete Project
+          </YellowButton>
         </CardSection>
 
         <Confirm

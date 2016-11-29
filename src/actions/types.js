@@ -13,8 +13,7 @@ export const PROJECT_UPDATE = 'project_update';
 export const PROJECT_CREATE = 'project_create';
 export const PROJECT_FETCH_SUCCESS = 'project_fetch_sucess';
 export const PROJECT_SAVE_SUCCESS = 'project_save_success';
-// export const PROJECTS_FETCH = 'projects_fetch';
-// export conse REMOVE_PROJECT = 'remove_project';
-// export const REMOVE_ZONE = 'remove_zone'
 
 // Zones
+export const ZONE_UPDATE = 'zone_update';
+export const ZONE_CREATE = 'zone_create';
