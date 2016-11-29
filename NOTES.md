@@ -62,3 +62,8 @@ Redux thunk allows us to:
 
 * Bend the rules of action creators
 * Return a function instead of an action. we can call the function with 'dispatch'
+
+
+#### React Native Router Flux
+
+#### Passing extra props to a route.

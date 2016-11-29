@@ -4,6 +4,7 @@ import Splash from './components/Splash';
 import LoginForm from './components/LoginForm';
 import ProjectsList from './components/ProjectsList';
 import ProjectCreate from './components/ProjectCreate';
+import ProjectEdit from './components/ProjectEdit';
 
 const RouterComponent = () => {
   return (
@@ -35,6 +36,11 @@ const RouterComponent = () => {
           title="Create a Project"
         />
 
+        <Scene
+          key="projectEdit"
+          component={ProjectEdit}
+          title="Edit Project"
+        />
       </Scene>
     </Router>
   );

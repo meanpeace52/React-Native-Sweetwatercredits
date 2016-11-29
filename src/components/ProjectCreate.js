@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
-import { BlueButton, Container, LogoTopLeft, Input } from './common';
-import { projectUpdate, projectCreate } from '../actions';
+import { BlueButton, Container } from './common';
+import { projectCreate } from '../actions';
+import ProjectForm from './ProjectForm';
 
 class ProjectCreate extends Component {
   onButtonPress() {
@@ -13,14 +14,7 @@ class ProjectCreate extends Component {
   render() {
     return (
       <Container>
-        <LogoTopLeft />
-
-        <Input
-          placeholder="Project Name"
-          onChangeText={value => this.props.projectUpdate({ prop: 'name', value })}
-          value={this.props.name}
-        />
-
+        <ProjectForm {...this.props} />
         <BlueButton
           onPress={this.onButtonPress.bind(this)}
         >
@@ -36,4 +30,4 @@ const mapStateToProps = ({ projectForm }) => {
   return { name };
 };
 
-export default connect(mapStateToProps, { projectUpdate, projectCreate })(ProjectCreate);
+export default connect(mapStateToProps, { projectCreate })(ProjectCreate);

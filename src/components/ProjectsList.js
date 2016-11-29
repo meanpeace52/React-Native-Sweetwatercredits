@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 import { projectsFetch } from '../actions';
 import ListItem from './ListItem';
-
+import { LogoTopMiddle } from './common';
 
 class ProjectsList extends Component {
   componentWillMount() {
@@ -32,12 +32,14 @@ class ProjectsList extends Component {
 
   render() {
     return (
-      <View style={{ paddingTop: 65 }}>
+      <View>
+        <LogoTopMiddle />
         <ListView
           enableEmptySections
           dataSource={this.dataSource}
           renderRow={this.renderRow}
         />
+
       </View>
     );
   }
