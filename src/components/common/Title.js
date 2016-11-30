@@ -13,7 +13,7 @@ const Title = (props) => {
 
 const styles = {
   titleStyle: {
-    fontSize: 18,
+    fontSize: 24,
     fontWeight: "bold",
     marginTop: 20,
     marginBottom: 20

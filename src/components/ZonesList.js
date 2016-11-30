@@ -3,7 +3,7 @@ import { ListView, View } from 'react-native';
 import _ from 'lodash';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import { BlueButton, LogoTopMiddle } from './common';
+import { BlueButton, Container, LogoTopMiddle } from './common';
 import { zonesFetch } from '../actions';
 import ZoneListItem from './ZoneListItem';
 
@@ -50,11 +50,13 @@ class ZonesList extends Component {
           Add Zone
         </BlueButton>
 
-        <ListView
-          enableEmptySections
-          dataSource={this.dataSource}
-          renderRow={this.renderRow}
-        />
+          <Container>
+            <ListView
+              enableEmptySections
+              dataSource={this.dataSource}
+              renderRow={this.renderRow}
+            />
+          </Container>
       </View>
     );
   }

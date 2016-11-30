@@ -9,20 +9,20 @@ const LogoTopLeft = (props) => {
       <Image style={logo} source={require('../images/sweetwater-conservancy-logo.png')} />
       {props.children}
     </View>
-  )
-}
+  );
+};
 
 const styles = {
   logoNavContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 20,
-    paddingTop: 65
+    marginBottom: 40,
+    paddingTop: 95
   },
   logo: {
     height: 92,
     width: 161
   }
-}
+};
 
 export { LogoTopLeft };

@@ -19,7 +19,6 @@ class ZoneEdit extends Component {
   onButtonPress() {
     const { acreage, zoneType, projectUid } = this.props;
     const { uid } = this.props.zone; // zone uid
-    console.log(uid);
     this.props.zoneSave({ acreage, zoneType, projectUid, zoneUid: uid });
   }
 
@@ -32,7 +31,7 @@ class ZoneEdit extends Component {
   }
 
   navigateToRuleViolations() {
-    Actions.ruleViolationCreate();
+    Actions.ruleViolationList();
   }
 
   render() {

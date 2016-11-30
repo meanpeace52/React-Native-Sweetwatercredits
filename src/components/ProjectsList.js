@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { ListView, View } from 'react-native';
 import { connect } from 'react-redux';
 import _ from 'lodash';
-import { projectsFetch } from '../actions';
+import { Container, LogoTopMiddle, Title } from './common';
 import ProjectListItem from './ProjectListItem';
-import { LogoTopMiddle } from './common';
+import { projectsFetch } from '../actions';
 
 class ProjectsList extends Component {
   componentWillMount() {
@@ -34,12 +34,14 @@ class ProjectsList extends Component {
     return (
       <View>
         <LogoTopMiddle />
-        <ListView
-          enableEmptySections
-          dataSource={this.dataSource}
-          renderRow={this.renderRow}
-        />
 
+        <Container>
+          <ListView
+            enableEmptySections
+            dataSource={this.dataSource}
+            renderRow={this.renderRow}
+          />
+        </Container>
       </View>
     );
   }

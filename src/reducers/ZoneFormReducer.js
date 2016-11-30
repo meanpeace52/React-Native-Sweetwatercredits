@@ -1,4 +1,7 @@
-import { ZONE_UPDATE } from '../actions/types';
+import {
+  ZONE_UPDATE,
+  ZONE_CREATE,
+  ZONE_SAVE_SUCCESS } from '../actions/types';
 
 const INITIAL_STATE = {
   acreage: '',
@@ -10,9 +13,11 @@ export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case ZONE_UPDATE :
       return { ...state, [action.payload.prop]: action.payload.value };
-    // case PROJECT_CREATE :
-    //   // clears out the form
-    //   return INITIAL_STATE;
+    case ZONE_CREATE :
+      // clears out the form
+      return INITIAL_STATE;
+    case ZONE_SAVE_SUCCESS :
+      return INITIAL_STATE;
     default:
       return state;
   }

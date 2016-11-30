@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Text } from 'react-native';
 import { connect } from 'react-redux';
+import { BlueButton, Container, LogoTopLeft, Title } from './common';
 import ZoneForm from './ZoneForm';
-import { BlueButton, Container, LogoTopLeft } from './common';
 import { zoneCreate } from '../actions';
 
 class ZoneCreate extends Component {
@@ -12,13 +12,12 @@ class ZoneCreate extends Component {
   }
 
   render() {
-    const { titleTextStyle } = styles;
     return (
       <Container>
         <LogoTopLeft />
-        <Text style={titleTextStyle}>
+        <Title>
           Calculate Credits
-        </Text>
+        </Title>
 
         <Text>
           For simple calculations, enter the acreage, select a zone type and click next.
@@ -36,14 +35,6 @@ class ZoneCreate extends Component {
     );
   }
 }
-
-const styles = {
-  titleTextStyle: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    paddingBottom: 15
-  }
-};
 
 const mapStateToProps = ({ zoneForm }) => {
   const { acreage, zoneType } = zoneForm;

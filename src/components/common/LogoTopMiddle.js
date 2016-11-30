@@ -9,8 +9,8 @@ const LogoTopMiddle = (props) => {
       <Image style={logo} source={require('../images/sweetwater-conservancy-logo.png')} />
       {props.children}
     </View>
-  )
-}
+  );
+};
 
 const styles = {
   logoNavContainer: {
@@ -23,6 +23,6 @@ const styles = {
     height: 92,
     width: 161
   }
-}
+};
 
 export { LogoTopMiddle };
