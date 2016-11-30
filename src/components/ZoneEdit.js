@@ -17,8 +17,10 @@ class ZoneEdit extends Component {
   }
 
   onButtonPress() {
-    const { acreage, zoneType, project_uid, uid } = this.props;
-    // this.props.zoneSave({ acreage, zoneType, uid: project_uid, zone_uid: uid });
+    const { acreage, zoneType, projectUid } = this.props;
+    const { uid } = this.props.zone; // zone uid
+    console.log(uid);
+    this.props.zoneSave({ acreage, zoneType, projectUid, zoneUid: uid });
   }
 
   onAccept() {
@@ -34,6 +36,7 @@ class ZoneEdit extends Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <Container>
         <LogoTopLeft />
@@ -75,8 +78,8 @@ class ZoneEdit extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { acreage, zoneType, project_uid } = state.zoneForm;
-  return { acreage, zoneType, project_uid };
+  const { acreage, zoneType, projectUid } = state.zoneForm;
+  return { acreage, zoneType, projectUid };
 };
 
 export default connect(mapStateToProps, {

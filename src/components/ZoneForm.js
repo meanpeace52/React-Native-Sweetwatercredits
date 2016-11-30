@@ -31,7 +31,6 @@ class ZoneForm extends Component {
 
 const mapStateToProps = (state) => {
   const { acreage, zoneType } = state.zoneForm;
-  console.log(state.zoneForm);
   return { acreage, zoneType };
 };
 

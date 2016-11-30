@@ -39,15 +39,15 @@ export const zonesFetch = ({ projectUid }) => {
   };
 };
 
-export const zoneSave = ({ acreage, zoneType, uid, zone_uid }) => {
+export const zoneSave = ({ acreage, zoneType, projectUid, zoneUid }) => {
   const { currentUser } = firebase.auth();
 
   return (dispatch) => {
-    firebase.database().ref(`/users/${currentUser.uid}/projects/${uid}/zones/${zone_uid}`)
+    firebase.database().ref(`/users/${currentUser.uid}/projects/${projectUid}/zones/${zoneUid}`)
       .set({ acreage, zoneType })
       .then(() => {
           dispatch({ type: ZONE_SAVE_SUCCESS });
-          Actions.zonesList({ project_uid: uid, type: 'reset' });
+          Actions.zonesList({ projectUid, type: 'reset' });
       });
   };
 };
