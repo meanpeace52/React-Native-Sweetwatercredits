@@ -18,3 +18,4 @@ export const PROJECT_SAVE_SUCCESS = 'project_save_success';
 export const ZONE_UPDATE = 'zone_update';
 export const ZONE_CREATE = 'zone_create';
 export const ZONE_FETCH_SUCCESS = 'zone_fetch_success';
+export const ZONE_SAVE_SUCCESS = 'zone_save_success';

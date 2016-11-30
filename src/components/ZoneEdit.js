@@ -2,43 +2,44 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import { Actions } from 'react-native-router-flux';
-import ProjectForm from './ProjectForm';
-import { projectUpdate, projectSave, projectDelete } from '../actions';
-import { Container, CardSection, BlueButton, Confirm, YellowButton } from './common';
+import ZoneForm from './ZoneForm';
+import { zoneUpdate, zoneSave, zoneDelete } from '../actions';
+import { Container, CardSection, BlueButton, Confirm, YellowButton, LogoTopLeft } from './common';
 
-class ProjectEdit extends Component {
+class ZoneEdit extends Component {
   state = { showModal: false };
 
   componentWillMount() {
     // feed all the project props into the ProjectFormReducer
-    _.each(this.props.project, (value, prop) => {
-      this.props.projectUpdate({ prop, value });
+    _.each(this.props.zone, (value, prop) => {
+      this.props.zoneUpdate({ prop, value });
     });
   }
 
   onButtonPress() {
-    const { name } = this.props;
-    this.props.projectSave({ name, uid: this.props.project.uid });
+    const { acreage, zoneType, project_uid, uid } = this.props;
+    // this.props.zoneSave({ acreage, zoneType, uid: project_uid, zone_uid: uid });
   }
 
   onAccept() {
-    const { uid } = this.props.project;
-    this.props.projectDelete({ uid });
+    console.log('del');
   }
 
   onDecline() {
     this.setState({ showModal: false });
   }
 
-  navigateToZones() {
-    const { uid } = this.props.project;
-    Actions.zonesList({ projectUid: uid });
+  navigateToRuleViolations() {
+    Actions.ruleViolationCreate();
   }
 
   render() {
     return (
       <Container>
-        <ProjectForm />
+        <LogoTopLeft />
+
+        <ZoneForm />
+
         <CardSection>
           <BlueButton onPress={this.onButtonPress.bind(this)}>
             Save Changes
@@ -46,8 +47,10 @@ class ProjectEdit extends Component {
         </CardSection>
 
         <CardSection>
-          <BlueButton onPress={this.navigateToZones.bind(this)}>
-            Zones
+          <BlueButton
+            onPress={this.navigateToRuleViolations.bind(this)}
+          >
+            Rule Violations
           </BlueButton>
         </CardSection>
 
@@ -64,7 +67,7 @@ class ProjectEdit extends Component {
           onAccept={this.onAccept.bind(this)}
           onDecline={this.onDecline.bind(this)}
         >
-          Are you sure ou want to delete this?
+          Are you sure you want to delete this?
         </Confirm>
       </Container>
     );
@@ -72,11 +75,11 @@ class ProjectEdit extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { name } = state.projectForm;
-  return { name };
+  const { acreage, zoneType, project_uid } = state.zoneForm;
+  return { acreage, zoneType, project_uid };
 };
 
 export default connect(mapStateToProps, {
-  projectUpdate,
-  projectSave,
-  projectDelete })(ProjectEdit);
+  zoneUpdate,
+  zoneSave,
+  zoneDelete })(ZoneEdit);

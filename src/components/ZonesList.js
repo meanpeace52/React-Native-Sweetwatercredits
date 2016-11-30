@@ -9,9 +9,10 @@ import ZoneListItem from './ZoneListItem';
 
 
 class ZonesList extends Component {
+
   componentWillMount() {
-    const { project_uid } = this.props;
-    this.props.zonesFetch({ uid: project_uid });
+    const { projectUid } = this.props;
+    this.props.zonesFetch({ projectUid });
     this.createDataSource(this.props);
   }
 
@@ -19,12 +20,11 @@ class ZonesList extends Component {
     // nextProps are the next set of props that this component will be rendered with
     // this.props is still the old set of props
     this.createDataSource(nextProps);
-    console.log(nextProps);
   }
 
   onButtonPress() {
-    const { project_uid } = this.props;
-    Actions.zoneCreate({ project_uid });
+    const { projectUid } = this.props;
+    Actions.zoneCreate({ projectUid });
   }
 
   createDataSource({ zones }) {
@@ -40,6 +40,7 @@ class ZonesList extends Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <View>
         <LogoTopMiddle />

@@ -30,8 +30,9 @@ class ZoneForm extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { acreage, zoneType, uid } = state.zoneForm;
-  return { acreage, zoneType, uid };
+  const { acreage, zoneType } = state.zoneForm;
+  console.log(state.zoneForm);
+  return { acreage, zoneType };
 };
 
 export default connect(mapStateToProps, { zoneUpdate })(ZoneForm);

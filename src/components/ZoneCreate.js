@@ -7,11 +7,12 @@ import { zoneCreate } from '../actions';
 
 class ZoneCreate extends Component {
   onButtonPress() {
-    const { acreage, zoneType, project_uid } = this.props;
-    this.props.zoneCreate({ acreage, zoneType, uid: project_uid });
+    const { acreage, zoneType, projectUid } = this.props;
+    this.props.zoneCreate({ acreage, zoneType, projectUid });
   }
 
   render() {
+    console.log(this.props);
     const { titleTextStyle } = styles;
     return (
       <Container>

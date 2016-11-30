@@ -3,7 +3,7 @@ import { ZONE_UPDATE } from '../actions/types';
 const INITIAL_STATE = {
   acreage: '',
   zoneType: 'Core', // defaulting this here. but could honestly default this in the onButtonPress
-  project_uid: ''
+  projectUid: ''
 };
 
 export default (state = INITIAL_STATE, action) => {

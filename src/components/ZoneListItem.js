@@ -1,19 +1,27 @@
 import React, { Component } from 'react';
 import { Text, TouchableWithoutFeedback, View } from 'react-native';
-// import { Actions } from 'react-native-router-flux';
+import { Actions } from 'react-native-router-flux';
 import { CardSection } from './common';
 
 class ZoneListItem extends Component {
+  onRowPress() {
+    const { zone } = this.props;
+    Actions.zoneEdit({ zone });
+  }
 
   render() {
     const { acreage, zoneType } = this.props.zone;
     return (
-      <TouchableWithoutFeedback>
+      <TouchableWithoutFeedback
+        onPress={this.onRowPress.bind(this)}
+      >
         <View>
           <CardSection>
            <Text style={styles.titleStyle}>
             Acreage: {acreage}
-            ZoneType: {zoneType}
+           </Text>
+           <Text style={styles.titleStyle}>
+            Type: {zoneType}
            </Text>
           </CardSection>
         </View>
