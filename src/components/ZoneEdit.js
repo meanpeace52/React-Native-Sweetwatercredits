@@ -26,6 +26,8 @@ class ZoneEdit extends Component {
 
   onAccept() {
     console.log('del');
+    const { projectUid, uid } = this.props.zone;
+    this.props.zoneDelete({ projectUid, zoneUid: uid });
   }
 
   onDecline() {

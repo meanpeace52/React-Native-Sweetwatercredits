@@ -51,3 +51,15 @@ export const zoneSave = ({ acreage, zoneType, projectUid, zoneUid }) => {
       });
   };
 };
+
+export const zoneDelete = ({ projectUid, zoneUid }) => {
+  const { currentUser } = firebase.auth();
+
+  return () => {
+    firebase.database().ref(`/users/${currentUser.uid}/projects/${projectUid}/zones/${zoneUid}`)
+      .remove()
+      .then(() => {
+        Actions.zonesList({ projectUid, type: 'reset' });
+      });
+  };
+};
