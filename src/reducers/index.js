@@ -4,11 +4,13 @@ import ProjectFormReducer from './ProjectFormReducer';
 import ProjectReducer from './ProjectReducer';
 import ZoneFormReducer from './ZoneFormReducer';
 import ZoneReducer from './ZoneReducer';
+import RuleViolationFormReducer from './RuleViolationFormReducer';
 
 export default combineReducers({
   auth: AuthReducer,
   projectForm: ProjectFormReducer,
   projects: ProjectReducer,
   zoneForm: ZoneFormReducer,
-  zones: ZoneReducer
+  zones: ZoneReducer,
+  ruleViolationForm: RuleViolationFormReducer
 });

@@ -6,7 +6,8 @@ import { BlueButton, Card, Container, LogoTopMiddle } from './common';
 
 class RuleViolationList extends Component {
   navigateToRuleViolationCreate() {
-    Actions.ruleViolationCreate();
+    const { zone } = this.props;
+    Actions.ruleViolationCreate({ zone });
   }
 
   render() {

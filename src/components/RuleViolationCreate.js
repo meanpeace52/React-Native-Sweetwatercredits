@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-// import { Picker } from 'react-native';
+import { View } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { BlueButton, Container, LogoTopLeft } from './common';
-
+import { BlueButton } from './common';
+import RuleViolationForm from './RuleViolationForm';
 
 class RuleViolationCreate extends Component {
   onButtonPress() {
@@ -11,10 +11,9 @@ class RuleViolationCreate extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
-      <Container>
-        <LogoTopLeft />
+      <View style={{ paddingTop: 80 }}>
+        <RuleViolationForm {...this.props} />
 
         <BlueButton
           onPress={this.onButtonPress.bind(this)}
@@ -23,7 +22,7 @@ class RuleViolationCreate extends Component {
           Create Rule Violation
         </BlueButton>
 
-      </Container>
+      </View>
     );
   }
 }
