@@ -1,5 +1,6 @@
 import React from 'react';
-import { TextInput, View, Text, TouchableHighlight } from 'react-native';
+import { TextInput, View, TouchableHighlight } from 'react-native';
+import { Card } from './Card';
 
 const Input = ({ value, onChangeText, placeholder, secureTextEntry }) => {
   const { inputStyle, containerStyle } = styles;

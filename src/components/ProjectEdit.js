@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Actions } from 'react-native-router-flux';
 import ProjectForm from './ProjectForm';
 import { projectUpdate, projectSave, projectDelete } from '../actions';
-import { Container, CardSection, BlueButton, Confirm, YellowButton } from './common';
+import { Container, BlueButton, Confirm, LogoTopLeft, YellowButton } from './common';
 
 class ProjectEdit extends Component {
   state = { showModal: false };
@@ -39,29 +39,26 @@ class ProjectEdit extends Component {
   render() {
     return (
       <Container>
+        <LogoTopLeft />
+
         <ProjectForm />
-        <CardSection>
-          <BlueButton onPress={this.onButtonPress.bind(this)}>
-            <Icon name='done' size={14} />
-            Save Changes
-          </BlueButton>
-        </CardSection>
 
-        <CardSection>
-          <BlueButton onPress={this.navigateToZones.bind(this)}>
-            <Icon name='landscape' size={14} />
-            Zones
-          </BlueButton>
-        </CardSection>
+        <BlueButton onPress={this.onButtonPress.bind(this)}>
+          <Icon name='done' size={14} />
+          Save Changes
+        </BlueButton>
 
-        <CardSection style={{ justifyContent: 'center' }}>
-          <YellowButton
-            onPress={() => this.setState({ showModal: !this.state.showModal })}
-          >
-            <Icon name='delete' size={14} />
-            Delete Project
-          </YellowButton>
-        </CardSection>
+        <BlueButton onPress={this.navigateToZones.bind(this)}>
+          <Icon name='landscape' size={14} />
+          Zones
+        </BlueButton>
+
+        <YellowButton
+          onPress={() => this.setState({ showModal: !this.state.showModal })}
+        >
+          <Icon name='delete' size={14} />
+          Delete Project
+        </YellowButton>
 
         <Confirm
           visible={this.state.showModal}

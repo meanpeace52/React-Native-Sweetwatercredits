@@ -48,7 +48,7 @@ class ZonesList extends Component {
         <BlueButton
           onPress={this.onButtonPress.bind(this)}
         >
-          <Icon name="landscape" size={14} />
+          <Icon name='add' size={14} />
           Add Zone
         </BlueButton>
 

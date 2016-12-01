@@ -67,7 +67,7 @@ class ZoneEdit extends Component {
               onPress={() => this.setState({ showModal: !this.state.showModal })}
             >
               <Icon name='delete' size={14} />
-              Delete Project
+              Delete Zone
             </YellowButton>
           </CardSection>
 
