@@ -1,12 +1,30 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Picker, View, Text } from 'react-native';
-import { Card } from './common';
-import { ruleViolationUpdate } from '../actions';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import { Picker, View } from 'react-native';
+import { BlueButton, Card } from './common';
+import { ruleViolationUpdate, ruleViolationCreate } from '../actions';
 
 class NonCoreForm extends Component {
+  onButtonPress() {
+    // Calculate the penalty amount then create the rule violation
+    const { rule, violation } = this.props;
+    const { acreage, projectUid, uid } = this.props.zone;
+    let penaltyAmount = 0;
 
-  renderViolation() {
+    if (rule === 'impact') {
+      if (violation === 'non-vulnerable') {
+        penaltyAmount = 12 * parseInt(acreage, 12);
+      } else {
+        penaltyAmount = 16 * parseInt(acreage, 10);
+      }
+    } else {
+      penaltyAmount = 10;
+    }
+    this.props.ruleViolationCreate({ rule, violation, penalty: penaltyAmount, projectUid, zoneUid: uid });
+  }
+
+  renderViolationPicker() {
       const { rule } = this.props;
       if (rule === 'impact') {
         return (
@@ -14,15 +32,13 @@ class NonCoreForm extends Component {
             <Picker
               style={{ flex: 1 }}
               onValueChange={value => this.props.ruleViolationUpdate({ prop: 'violation', value })}
-              selectedValue={this.props.rule}
+              selectedValue={this.props.violation}
             >
               <Picker.Item label="Located in a vulnerable landscape?" value="vulnerable" />
               <Picker.Item label="Not Located in a vulneable landscape?" value="non-vulnerable" />
             </Picker>
           </Card>
         );
-      } else if (rule === 'timing') {
-          return <Text> Should be timing </Text>;
       }
   }
 
@@ -39,8 +55,14 @@ class NonCoreForm extends Component {
             <Picker.Item label="One year of timing stipulations?" value="timing" />
           </Picker>
         </Card>
+        {this.renderViolationPicker()}
 
-        {this.renderViolation()}
+        <BlueButton
+          onPress={this.onButtonPress.bind(this)}
+        >
+          <Icon name='add' size={14} />
+          Create Rule Violation
+        </BlueButton>
       </View>
 
     );
@@ -52,4 +74,4 @@ const mapStateToProps = (state) => {
   return { rule, violation, penalty };
 };
 
-export default connect(mapStateToProps, { ruleViolationUpdate })(NonCoreForm);
+export default connect(mapStateToProps, { ruleViolationUpdate, ruleViolationCreate })(NonCoreForm);

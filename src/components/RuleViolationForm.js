@@ -7,10 +7,10 @@ class RuleViolationForm extends Component {
   formContent() {
     const { zoneType } = this.props.zone;
     if (zoneType === 'Core') {
-      return <CoreForm />;
+      return <CoreForm {...this.props} />;
     }
 
-    return <NonCoreForm />;
+    return <NonCoreForm {...this.props} />;
   }
 
   render() {

@@ -1,16 +1,19 @@
-import { RULE_VIOLATION_UPDATE } from '../actions/types';
+import {
+  RULE_VIOLATION_UPDATE,
+  RULE_VIOLATION_CREATE } from '../actions/types';
 
 const INITIAL_STATE = {
-  rule: '',
-  violation: '',
+  rule: 'impact',
+  violation: 'vulnerable',
   penalty: ''
 };
 
 export default (state = INITIAL_STATE, action) => {
-  console.log(action);
   switch (action.type) {
     case RULE_VIOLATION_UPDATE :
       return { ...state, [action.payload.prop]: action.payload.value };
+    case RULE_VIOLATION_CREATE :
+      return INITIAL_STATE;
     default:
       return state;
   }

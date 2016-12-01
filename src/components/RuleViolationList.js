@@ -11,7 +11,6 @@ class RuleViolationList extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <Container>
         <LogoTopMiddle />
