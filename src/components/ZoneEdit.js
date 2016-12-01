@@ -35,7 +35,7 @@ class ZoneEdit extends Component {
 
   navigateToRuleViolations() {
     const { zone } = this.props;
-    Actions.ruleViolationList({ zone });
+    Actions.ruleViolationsList({ zone });
   }
 
   render() {

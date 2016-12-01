@@ -5,6 +5,7 @@ import ProjectReducer from './ProjectReducer';
 import ZoneFormReducer from './ZoneFormReducer';
 import ZoneReducer from './ZoneReducer';
 import RuleViolationFormReducer from './RuleViolationFormReducer';
+import RuleViolationReducer from './RuleViolationReducer';
 
 export default combineReducers({
   auth: AuthReducer,
@@ -12,5 +13,6 @@ export default combineReducers({
   projects: ProjectReducer,
   zoneForm: ZoneFormReducer,
   zones: ZoneReducer,
-  ruleViolationForm: RuleViolationFormReducer
+  ruleViolationForm: RuleViolationFormReducer,
+  ruleViolations: RuleViolationReducer
 });

@@ -23,3 +23,4 @@ export const ZONE_SAVE_SUCCESS = 'zone_save_success';
 // Rule Violations
 export const RULE_VIOLATION_UPDATE = 'rule_violation_update';
 export const RULE_VIOLATION_CREATE = 'rule_violation_create';
+export const RULE_VIOLATION_FETCH_SUCCESS = 'rule_violation_fetch_success';

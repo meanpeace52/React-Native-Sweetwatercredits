@@ -8,7 +8,7 @@ import ProjectEdit from './components/ProjectEdit';
 import ZonesList from './components/ZonesList';
 import ZoneCreate from './components/ZoneCreate';
 import ZoneEdit from './components/ZoneEdit';
-import RuleViolationList from './components/RuleViolationList';
+import RuleViolationsList from './components/RuleViolationsList';
 import RuleViolationCreate from './components/RuleViolationCreate';
 
 const RouterComponent = () => {
@@ -66,8 +66,8 @@ const RouterComponent = () => {
         />
 
         <Scene
-          key="ruleViolationList"
-          component={RuleViolationList}
+          key="ruleViolationsList"
+          component={RuleViolationsList}
           title="Rule Violations"
         />
 

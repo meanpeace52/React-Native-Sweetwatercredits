@@ -8,7 +8,6 @@ class RuleViolationCreate extends Component {
     return (
       <View style={{ paddingTop: 80 }}>
         <RuleViolationForm {...this.props} />
-
       </View>
     );
   }

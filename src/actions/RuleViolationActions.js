@@ -3,7 +3,8 @@ import { Actions } from 'react-native-router-flux';
 
 import {
   RULE_VIOLATION_UPDATE,
-  RULE_VIOLATION_CREATE } from './types';
+  RULE_VIOLATION_CREATE,
+  RULE_VIOLATION_FETCH_SUCCESS } from './types';
 
 export const ruleViolationUpdate = ({ prop, value }) => {
   return {
@@ -14,21 +15,25 @@ export const ruleViolationUpdate = ({ prop, value }) => {
 
 export const ruleViolationCreate = ({ rule, violation, penalty, projectUid, zoneUid }) => {
   const { currentUser } = firebase.auth();
-  // users/uidash34123872187/projects/dasjk2189312k/zones
-  console.log(rule);
-  console.log(violation);
-  console.log(penalty);
-  console.log(projectUid);
-  console.log(zoneUid);
 
   return (dispatch) => {
-    firebase.database().ref(`users/${currentUser.uid}/projects/${projectUid}/zones/${zoneUid}`)
+    firebase.database().ref(`users/${currentUser.uid}/projects/${projectUid}/zones/${zoneUid}/ruleViolations`)
       .push({ rule, violation, penalty, projectUid, zoneUid })
       .then(() => {
         dispatch({ type: RULE_VIOLATION_CREATE });
         Actions.pop();
-        // Actions.zonesList({ projectUid, zoneUid, type: 'reset' });
       }
     );
+  };
+};
+
+export const ruleViolationsFetch = ({ projectUid, zoneUid }) => {
+  const { currentUser } = firebase.auth();
+
+  return (dispatch) => {
+    firebase.database().ref(`users/${currentUser.uid}/projects/${projectUid}/zones/${zoneUid}/ruleViolations`)
+      .on('value', snapshot => {
+        dispatch({ type: RULE_VIOLATION_FETCH_SUCCESS, payload: snapshot.val() });
+      });
   };
 };
