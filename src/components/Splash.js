@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Actions } from 'react-native-router-flux';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import _ from 'lodash';
 import { BlueButton, SplashImageContainer, YellowButton } from './common';
 
@@ -15,6 +16,7 @@ class Splash extends Component {
         </BlueButton>
 
         <YellowButton onPress={navigateToLoginForm}>
+          <Icon name='person' size={14} />
           {_.toUpper('Sign In')}
         </YellowButton>
       </SplashImageContainer>

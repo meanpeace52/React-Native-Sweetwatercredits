@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import { BlueButton, Container } from './common';
 import { projectCreate } from '../actions';
 import ProjectForm from './ProjectForm';
@@ -18,6 +19,7 @@ class ProjectCreate extends Component {
         <BlueButton
           onPress={this.onButtonPress.bind(this)}
         >
+          <Icon name='domain' size={14} />
           {_.toUpper('Create New Project')}
         </BlueButton>
       </Container>

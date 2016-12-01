@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Text, TouchableWithoutFeedback, View } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Actions } from 'react-native-router-flux';
 import { CardSection } from './common';
+
 
 class ProjectListItem extends Component {
   onRowPress() {
@@ -10,13 +12,13 @@ class ProjectListItem extends Component {
 
   render() {
     const { name } = this.props.project;
+    const { titleStyle } = styles;
     return (
       <TouchableWithoutFeedback onPress={this.onRowPress.bind(this)}>
         <View>
           <CardSection>
-           <Text style={styles.titleStyle}>
-            {name}
-           </Text>
+            <Icon name='domain' size={18} />
+            <Text style={titleStyle}> {name} </Text>
           </CardSection>
         </View>
       </TouchableWithoutFeedback>

@@ -13,5 +13,6 @@ export * from './Title';
 export * from './Container';
 export * from './LogoTopMiddle';
 export * from './Spinner';
+export * from './Card';
 export * from './CardSection';
 export * from './Confirm';

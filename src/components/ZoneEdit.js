@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 import _ from 'lodash';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Actions } from 'react-native-router-flux';
 import ZoneForm from './ZoneForm';
 import { zoneUpdate, zoneSave, zoneDelete } from '../actions';
@@ -40,37 +42,43 @@ class ZoneEdit extends Component {
       <Container>
         <LogoTopLeft />
 
-        <ZoneForm />
+        <ScrollView>
 
-        <CardSection>
-          <BlueButton onPress={this.onButtonPress.bind(this)}>
-            Save Changes
-          </BlueButton>
-        </CardSection>
+          <ZoneForm />
 
-        <CardSection>
-          <BlueButton
-            onPress={this.navigateToRuleViolations.bind(this)}
+          <CardSection>
+            <BlueButton onPress={this.onButtonPress.bind(this)}>
+              <Icon name='done' size={14} />
+              Save Changes
+            </BlueButton>
+          </CardSection>
+
+          <CardSection>
+            <BlueButton
+              onPress={this.navigateToRuleViolations.bind(this)}
+            >
+              <Icon name='report-problem' size={14} />
+              Rule Violations
+            </BlueButton>
+          </CardSection>
+
+          <CardSection style={{ justifyContent: 'center' }}>
+            <YellowButton
+              onPress={() => this.setState({ showModal: !this.state.showModal })}
+            >
+              <Icon name='delete' size={14} />
+              Delete Project
+            </YellowButton>
+          </CardSection>
+
+          <Confirm
+            visible={this.state.showModal}
+            onAccept={this.onAccept.bind(this)}
+            onDecline={this.onDecline.bind(this)}
           >
-            Rule Violations
-          </BlueButton>
-        </CardSection>
-
-        <CardSection style={{ justifyContent: 'center' }}>
-          <YellowButton
-            onPress={() => this.setState({ showModal: !this.state.showModal })}
-          >
-            Delete Project
-          </YellowButton>
-        </CardSection>
-
-        <Confirm
-          visible={this.state.showModal}
-          onAccept={this.onAccept.bind(this)}
-          onDecline={this.onDecline.bind(this)}
-        >
-          Are you sure you want to delete this?
-        </Confirm>
+            Are you sure you want to delete this?
+          </Confirm>
+        </ScrollView>
       </Container>
     );
   }

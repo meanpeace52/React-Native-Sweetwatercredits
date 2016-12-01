@@ -30,8 +30,8 @@ const RouterComponent = () => {
           key="projectsList"
           component={ProjectsList}
           title="Recent Projects"
-          onRight={() => Actions.projectCreate()}
-          rightTitle="Add"
+          // onRight={() => Actions.projectCreate()}
+          // rightTitle="Add"
           initial
         />
 
@@ -68,7 +68,7 @@ const RouterComponent = () => {
         <Scene
           key="ruleViolationList"
           component={RuleViolationList}
-          title="Rule Violations by Zone"
+          title="Rule Violations"
         />
 
         <Scene

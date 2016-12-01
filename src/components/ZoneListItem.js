@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Text, TouchableWithoutFeedback, View } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Actions } from 'react-native-router-flux';
 import { CardSection } from './common';
 
@@ -17,11 +18,9 @@ class ZoneListItem extends Component {
       >
         <View>
           <CardSection>
+            <Icon name='landscape' size={14} />
            <Text style={styles.titleStyle}>
-            Acreage: {acreage}
-           </Text>
-           <Text style={styles.titleStyle}>
-            Type: {zoneType}
+            {acreage} Acres | {zoneType}
            </Text>
           </CardSection>
         </View>
@@ -32,7 +31,7 @@ class ZoneListItem extends Component {
 
 const styles = {
   titleStyle: {
-    fontSize: 18,
+    fontSize: 16,
     paddingLeft: 15
   }
 };

@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { ListView, View } from 'react-native';
 import { connect } from 'react-redux';
+import { Actions } from 'react-native-router-flux';
 import _ from 'lodash';
-import { Container, LogoTopMiddle, Title } from './common';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import { BlueButton, Card, Container, LogoTopMiddle } from './common';
 import ProjectListItem from './ProjectListItem';
 import { projectsFetch } from '../actions';
 
@@ -26,6 +28,10 @@ class ProjectsList extends Component {
     this.dataSource = ds.cloneWithRows(projects);
   }
 
+  navigateToProjectCreate() {
+    Actions.projectCreate();
+  }
+
   renderRow(project) {
     return <ProjectListItem project={project} />;
   }
@@ -36,11 +42,20 @@ class ProjectsList extends Component {
         <LogoTopMiddle />
 
         <Container>
-          <ListView
-            enableEmptySections
-            dataSource={this.dataSource}
-            renderRow={this.renderRow}
-          />
+          <BlueButton
+            onPress={this.navigateToProjectCreate.bind(this)}
+          >
+            <Icon name='domain' size={14} />
+            Add Project
+          </BlueButton>
+
+          <Card>
+            <ListView
+              enableEmptySections
+              dataSource={this.dataSource}
+              renderRow={this.renderRow}
+            />
+          </Card>
         </Container>
       </View>
     );

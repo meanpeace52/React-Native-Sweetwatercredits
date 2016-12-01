@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Actions } from 'react-native-router-flux';
 import ProjectForm from './ProjectForm';
 import { projectUpdate, projectSave, projectDelete } from '../actions';
@@ -41,12 +42,14 @@ class ProjectEdit extends Component {
         <ProjectForm />
         <CardSection>
           <BlueButton onPress={this.onButtonPress.bind(this)}>
+            <Icon name='done' size={14} />
             Save Changes
           </BlueButton>
         </CardSection>
 
         <CardSection>
           <BlueButton onPress={this.navigateToZones.bind(this)}>
+            <Icon name='landscape' size={14} />
             Zones
           </BlueButton>
         </CardSection>
@@ -55,6 +58,7 @@ class ProjectEdit extends Component {
           <YellowButton
             onPress={() => this.setState({ showModal: !this.state.showModal })}
           >
+            <Icon name='delete' size={14} />
             Delete Project
           </YellowButton>
         </CardSection>

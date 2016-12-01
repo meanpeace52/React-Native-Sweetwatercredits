@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Text } from 'react-native';
 import { connect } from 'react-redux';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import { BlueButton, Container, LogoTopLeft, Title } from './common';
 import ZoneForm from './ZoneForm';
 import { zoneCreate } from '../actions';
@@ -29,6 +30,7 @@ class ZoneCreate extends Component {
         <BlueButton
           onPress={this.onButtonPress.bind(this)}
         >
+          <Icon name='landscape' size={14} />
           Create Zone
         </BlueButton>
       </Container>

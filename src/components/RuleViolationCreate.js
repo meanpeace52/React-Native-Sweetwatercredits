@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
-import { BlueButton, CardSection, Container, LogoTopLeft, Title } from './common';
+import { Picker } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import { BlueButton, Card, Container, LogoTopLeft } from './common';
 
 
 class RuleViolationCreate extends Component {
@@ -13,28 +14,25 @@ class RuleViolationCreate extends Component {
     return (
       <Container>
         <LogoTopLeft />
-        <Title>
-          Rule Violations
-        </Title>
 
-        <CardSection>
-          <Text>
-            Main Rule Here
-          </Text>
-        </CardSection>
-
-
-        <CardSection>
-          <Text>
-            Sub Rule Here
-          </Text>
-        </CardSection>
+        <Card>
+          <Picker
+            style={{ flex: 1 }}
+            // onChangeValue={}
+            // value={}
+          >
+            <Picker.Item label='Core' value='Core' />
+            <Picker.Item label='Non-Core' value='Non-Core' />
+          </Picker>
+        </Card>
 
         <BlueButton
           onPress={this.onButtonPress.bind(this)}
         >
+          <Icon name='report-problem' size={14} />
           Create Rule Violation
         </BlueButton>
+
       </Container>
     );
   }

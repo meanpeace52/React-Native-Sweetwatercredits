@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { ListView, View } from 'react-native';
 import _ from 'lodash';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import { BlueButton, Container, LogoTopMiddle } from './common';
+import { BlueButton, Card, Container, LogoTopMiddle } from './common';
 import { zonesFetch } from '../actions';
 import ZoneListItem from './ZoneListItem';
 
@@ -47,15 +48,18 @@ class ZonesList extends Component {
         <BlueButton
           onPress={this.onButtonPress.bind(this)}
         >
+          <Icon name="landscape" size={14} />
           Add Zone
         </BlueButton>
 
           <Container>
-            <ListView
-              enableEmptySections
-              dataSource={this.dataSource}
-              renderRow={this.renderRow}
-            />
+            <Card>
+              <ListView
+                enableEmptySections
+                dataSource={this.dataSource}
+                renderRow={this.renderRow}
+              />
+            </Card>
           </Container>
       </View>
     );

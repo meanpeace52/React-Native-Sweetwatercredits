@@ -7,12 +7,13 @@ const YellowButton = ({ onPress, children }) => {
   return (
     <TouchableOpacity
       style={buttonStyle}
-      onPress={onPress}>
+      onPress={onPress}
+    >
       <Text style={textStyle}>
         {children}
       </Text>
     </TouchableOpacity>
-  )
+  );
 };
 
 const styles = {

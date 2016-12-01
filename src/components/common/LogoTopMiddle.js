@@ -16,7 +16,7 @@ const styles = {
   logoNavContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
-    marginBottom: 40,
+    marginBottom: 30,
     paddingTop: 95
   },
   logo: {

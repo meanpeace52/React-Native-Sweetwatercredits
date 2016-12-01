@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View } from 'react-native';
 import _ from 'lodash';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import { connect } from 'react-redux';
 import { Container, BlueButton, Input, LogoTopMiddle, Spinner } from './common';
 import { emailChanged, passwordChanged, loginUser } from '../actions';
@@ -30,6 +31,7 @@ class LoginForm extends Component {
       <BlueButton
       onPress={this.onButtonPress.bind(this)}
       >
+      <Icon name='person' size={14} />
       {_.toUpper('Sign In')}
     </BlueButton>
     );

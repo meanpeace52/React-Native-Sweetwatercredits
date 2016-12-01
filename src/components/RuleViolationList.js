@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Actions } from 'react-native-router-flux';
-import { BlueButton, Container, LogoTopMiddle } from './common';
+import { BlueButton, Card, Container, LogoTopMiddle } from './common';
 
 
 class RuleViolationList extends Component {
@@ -15,8 +16,11 @@ class RuleViolationList extends Component {
         <BlueButton
           onPress={this.navigateToRuleViolationCreate.bind(this)}
         >
+          <Icon name='report-problem' size={14} />
           Add Rule Violation
         </BlueButton>
+
+        <Card />
       </Container>
     );
   }
