@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { Text, TouchableWithoutFeedback, View } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Actions } from 'react-native-router-flux';
+import _ from 'lodash';
 import { CardSection } from './common';
 
 
 class RuleViolationListItem extends Component {
   onRowPress() {
-    // Actions.projectEdit({ project: this.props.project });
+    // Actions.ruleViolationEdit({ project: this.props.project });
   }
 
   render() {
@@ -18,7 +19,7 @@ class RuleViolationListItem extends Component {
         <View>
           <CardSection>
             <Icon name='report-problem' size={18} />
-            <Text style={titleStyle}> {rule} | {penalty.toString()}</Text>
+            <Text style={titleStyle}> {_.capitalize(rule)} | {penalty.toString()}</Text>
           </CardSection>
         </View>
       </TouchableWithoutFeedback>

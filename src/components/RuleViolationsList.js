@@ -41,6 +41,7 @@ class RuleViolationsList extends Component {
   }
 
   render() {
+    const { zoneType } = this.props.zone;
     return (
       <View>
         <LogoTopMiddle />
@@ -49,7 +50,7 @@ class RuleViolationsList extends Component {
           onPress={this.onButtonPress.bind(this)}
         >
           <Icon name='add' size={14} />
-          Add Rule Violation
+          Add {zoneType} Rule Violation
         </BlueButton>
 
           <Container>
