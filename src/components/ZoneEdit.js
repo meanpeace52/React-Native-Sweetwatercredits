@@ -25,7 +25,6 @@ class ZoneEdit extends Component {
   }
 
   onAccept() {
-    console.log('del');
     const { projectUid, uid } = this.props.zone;
     this.props.zoneDelete({ projectUid, zoneUid: uid });
   }
@@ -35,11 +34,11 @@ class ZoneEdit extends Component {
   }
 
   navigateToRuleViolations() {
-    Actions.ruleViolationList();
+    const { zone } = this.props;
+    Actions.ruleViolationList({ zone });
   }
 
   render() {
-    console.log(this.props);
     return (
       <Container>
         <LogoTopLeft />

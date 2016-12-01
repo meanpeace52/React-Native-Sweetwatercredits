@@ -6,8 +6,8 @@ import { CardSection } from './common';
 
 class ZoneListItem extends Component {
   onRowPress() {
-    const { zone } = this.props;
-    Actions.zoneEdit({ zone });
+    const { zone, projectUid } = this.props;
+    Actions.zoneEdit({ zone, projectUid });
   }
 
   render() {

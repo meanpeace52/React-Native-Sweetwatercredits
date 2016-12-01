@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { BlueButton, Container } from './common';
+import { BlueButton, Container, LogoTopLeft } from './common';
 import { projectCreate } from '../actions';
 import ProjectForm from './ProjectForm';
 
@@ -15,6 +15,8 @@ class ProjectCreate extends Component {
   render() {
     return (
       <Container>
+        <LogoTopLeft />
+        
         <ProjectForm {...this.props} />
         <BlueButton
           onPress={this.onButtonPress.bind(this)}

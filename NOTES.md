@@ -76,6 +76,9 @@ Rule Violation Rendering
 * Render the main rule checking if the zone prop passed to the rule violation create form is core or non core.
 * Then either render the main rule picker for core or the main rule picker for non core
 * Repeat this process for any rules containing a sub-rule penalty
-
-
 * Add shadows to buttons
+* Form styles
+
+### Future update
+
+* Add Project to zone as a prop instead of just adding the uid. then we can access all of the project data for each zone.. do same thing with rule violation( project & zone)

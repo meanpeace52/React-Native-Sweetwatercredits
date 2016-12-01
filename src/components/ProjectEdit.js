@@ -19,7 +19,8 @@ class ProjectEdit extends Component {
 
   onButtonPress() {
     const { name } = this.props;
-    this.props.projectSave({ name, uid: this.props.project.uid });
+    const { uid, zones } = this.props.project;
+    this.props.projectSave({ name, uid, zones });
   }
 
   onAccept() {
@@ -37,6 +38,7 @@ class ProjectEdit extends Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <Container>
         <LogoTopLeft />
@@ -65,7 +67,7 @@ class ProjectEdit extends Component {
           onAccept={this.onAccept.bind(this)}
           onDecline={this.onDecline.bind(this)}
         >
-          Are you sure ou want to delete this?
+          Are you sure you want to delete this?
         </Confirm>
       </Container>
     );
