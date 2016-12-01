@@ -67,3 +67,15 @@ Redux thunk allows us to:
 #### React Native Router Flux
 
 #### Passing extra props to a route.
+
+
+### Rule Violations
+
+Rule Violation Rendering
+
+* Render the main rule checking if the zone prop passed to the rule violation create form is core or non core.
+* Then either render the main rule picker for core or the main rule picker for non core
+* Repeat this process for any rules containing a sub-rule penalty
+
+
+* Add shadows to buttons
