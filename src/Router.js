@@ -10,6 +10,7 @@ import ZoneCreate from './components/ZoneCreate';
 import ZoneEdit from './components/ZoneEdit';
 import RuleViolationsList from './components/RuleViolationsList';
 import RuleViolationCreate from './components/RuleViolationCreate';
+import RuleViolationEdit from './components/RuleViolationEdit';
 
 const RouterComponent = () => {
   return (
@@ -76,6 +77,13 @@ const RouterComponent = () => {
           component={RuleViolationCreate}
           title="Add Rule Violation"
         />
+
+        <Scene
+          key="ruleViolationEdit"
+          component={RuleViolationEdit}
+          title="Edit Rule Violation"
+        />
+
       </Scene>
     </Router>
   );

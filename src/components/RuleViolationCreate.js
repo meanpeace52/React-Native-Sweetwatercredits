@@ -4,7 +4,6 @@ import RuleViolationForm from './RuleViolationForm';
 
 class RuleViolationCreate extends Component {
   render() {
-    console.log(this.props);
     return (
       <View style={{ paddingTop: 80 }}>
         <RuleViolationForm {...this.props} />

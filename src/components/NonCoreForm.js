@@ -9,7 +9,7 @@ class NonCoreForm extends Component {
   onButtonPress() {
     // Calculate the penalty amount then create the rule violation
     const { rule, violation } = this.props;
-    const { acreage, projectUid, uid } = this.props.zone;
+    const { acreage, projectUid, uid, zoneType } = this.props.zone;
     let penaltyAmount = 0;
 
     if (rule === 'impact') {
@@ -21,7 +21,15 @@ class NonCoreForm extends Component {
     } else {
       penaltyAmount = 10;
     }
-    this.props.ruleViolationCreate({ rule, violation, penalty: penaltyAmount, projectUid, zoneUid: uid });
+
+    this.props.ruleViolationCreate({
+      rule,
+      violation,
+      zoneType,
+      penalty: penaltyAmount,
+      projectUid,
+      zoneUid: uid
+    });
   }
 
   renderViolationPicker() {
@@ -70,8 +78,8 @@ class NonCoreForm extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { rule, violation, penalty } = state.ruleViolationForm;
-  return { rule, violation, penalty };
+  const { rule, violation, penalty, zoneType } = state.ruleViolationForm;
+  return { rule, violation, penalty, zoneType };
 };
 
 export default connect(mapStateToProps, { ruleViolationUpdate, ruleViolationCreate })(NonCoreForm);

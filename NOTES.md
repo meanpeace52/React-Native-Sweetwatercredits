@@ -73,9 +73,10 @@ Redux thunk allows us to:
 
 Rule Violation Rendering
 
-* Render the main rule checking if the zone prop passed to the rule violation create form is core or non core.
-* Then either render the main rule picker for core or the main rule picker for non core
-* Repeat this process for any rules containing a sub-rule penalty
+* Edit / Show action
+* Delete Action
+* Sum credits by zone
+* Sum credits by project
 * Add shadows to buttons
 * Form styles
 

@@ -11,21 +11,18 @@ import RuleViolationListItem from './RuleViolationListItem';
 
 class RuleViolationsList extends Component {
   componentWillMount() {
-    console.log(this.props);
     const { projectUid, uid } = this.props.zone;
     this.props.ruleViolationsFetch({ projectUid, zoneUid: uid });
     this.createDataSource(this.props);
   }
 
   componentWillReceiveProps(nextProps) {
-    // nextProps are the next set of props that this component will be rendered with
-    // this.props is still the old set of props
     this.createDataSource(nextProps);
   }
 
   onButtonPress() {
-    const { projectUid, uid } = this.props.zone;
-    Actions.ruleViolationCreate({ projectUid, zoneUid: uid });
+    const { zone } = this.props;
+    Actions.ruleViolationCreate({ zone });
   }
 
   createDataSource({ ruleViolations }) {

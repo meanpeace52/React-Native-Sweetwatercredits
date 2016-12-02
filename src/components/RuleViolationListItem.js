@@ -8,8 +8,16 @@ import { CardSection } from './common';
 
 class RuleViolationListItem extends Component {
   onRowPress() {
-    // Actions.ruleViolationEdit({ project: this.props.project });
+    const { ruleViolation } = this.props;
+    Actions.ruleViolationEdit({ ruleViolation });
   }
+
+  // sumViolations() {
+  //   const { ruleViolations } = this.props.zone;
+  //   for (let creditVal of Object.values(ruleViolations)) {
+  //     console.log(creditVal);
+  //   }
+  // }
 
   render() {
     const { rule, penalty } = this.props.ruleViolation;
