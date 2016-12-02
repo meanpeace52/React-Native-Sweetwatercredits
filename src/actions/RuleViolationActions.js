@@ -50,9 +50,7 @@ export const ruleViolationsFetch = ({ projectUid, zoneUid }) => {
 export const ruleViolationDelete = ({ ruleViolation }) => {
   const { currentUser } = firebase.auth();
   const { projectUid, zoneUid, uid } = ruleViolation;
-  console.log(projectUid);
-  console.log(zoneUid);
-  console.log(uid);
+
   return () => {
     firebase.database()
       .ref(`/users/${currentUser.uid}/projects/${projectUid}/zones/${zoneUid}/ruleViolations/${uid}`)

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { ListView, View } from 'react-native';
+import { ListView, View, Text } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import _ from 'lodash';
@@ -33,11 +33,26 @@ class RuleViolationsList extends Component {
     this.dataSource = ds.cloneWithRows(ruleViolations);
   }
 
+  sumViolations() {
+    let sumPenaltys = 0;
+    const { ruleViolations } = this.props;
+    const violationCount = Object.keys(ruleViolations).length;
+    if (violationCount > 0) {
+      for (let violation of Object.values(ruleViolations)) {
+        let { penalty } = violation;
+        sumPenaltys += parseInt(penalty, 10);
+      }
+    }
+    return sumPenaltys;
+  }
+
   renderRow(ruleViolation) {
     return <RuleViolationListItem ruleViolation={ruleViolation} />;
   }
 
   render() {
+    const { creditTotal } = styles;
+    console.log(this.props);
     const { zoneType } = this.props.zone;
     return (
       <View>
@@ -58,11 +73,21 @@ class RuleViolationsList extends Component {
                 renderRow={this.renderRow}
               />
             </Card>
+            <Text style={creditTotal}>Credit Total: {this.sumViolations()}</Text>
           </Container>
       </View>
     );
   }
 }
+
+const styles = {
+  creditTotal: {
+    textAlign: 'center',
+    fontSize: 18,
+    paddingTop: 15,
+    paddingBottom: 15
+  }
+};
 
 const mapStateToProps = state => {
   const ruleViolations = _.map(state.ruleViolations, (val, uid) => {

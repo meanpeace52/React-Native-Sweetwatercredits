@@ -13,15 +13,7 @@ class RuleViolationListItem extends Component {
     this.props.ruleViolationDelete({ ruleViolation });
   }
 
-  // sumViolations() {
-  //   const { ruleViolations } = this.props.zone;
-  //   for (let creditVal of Object.values(ruleViolations)) {
-  //     console.log(creditVal);
-  //   }
-  // }
-
   render() {
-    console.log(this.props);
     const { rule, penalty } = this.props.ruleViolation;
     const { titleStyle, rowView } = styles;
     return (

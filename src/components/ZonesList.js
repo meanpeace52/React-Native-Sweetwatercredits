@@ -10,7 +10,6 @@ import ZoneListItem from './ZoneListItem';
 
 
 class ZonesList extends Component {
-
   componentWillMount() {
     const { projectUid } = this.props;
     this.props.zonesFetch({ projectUid });
@@ -40,7 +39,7 @@ class ZonesList extends Component {
     return <ZoneListItem zone={zone} />;
   }
 
-  render() {
+    render() {
     return (
       <View>
         <LogoTopMiddle />
@@ -75,6 +74,5 @@ const mapStateToProps = state => {
 
   return { zones };
 };
-
 
 export default connect(mapStateToProps, { zonesFetch })(ZonesList);

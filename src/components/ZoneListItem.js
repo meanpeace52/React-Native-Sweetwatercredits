@@ -10,6 +10,22 @@ class ZoneListItem extends Component {
     Actions.zoneEdit({ zone, projectUid });
   }
 
+  sumZoneViolations() {
+    let sumPenaltys = 0;
+    const { ruleViolations } = this.props.zone;
+    if (typeof ruleViolations !== 'undefined') {
+      const violationCount = Object.keys(ruleViolations).length;
+      if (violationCount > 0) {
+        for (let violation of Object.values(ruleViolations)) {
+          let { penalty } = violation;
+          sumPenaltys += parseInt(penalty, 10);
+        }
+      }
+    }
+
+    return sumPenaltys;
+  }
+
   render() {
     const { acreage, zoneType } = this.props.zone;
     return (
@@ -20,7 +36,7 @@ class ZoneListItem extends Component {
           <CardSection>
             <Icon name='landscape' size={14} />
            <Text style={styles.titleStyle}>
-            {acreage} Acres | {zoneType}
+            {acreage} Acres | {zoneType} | Credits: {this.sumZoneViolations()}
            </Text>
           </CardSection>
         </View>
