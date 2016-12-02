@@ -66,9 +66,10 @@ Redux thunk allows us to:
 
 ### TODO:
 
-* Explore test library options with JEST
+* Sentry Raven (HIGH)
 * Sign Up form, make it confirmable
 * Add shadows to buttons
+* Explore test library options with JEST
 * Form styles
 * Refactor Actions
 * Remove Edit Action from zones
