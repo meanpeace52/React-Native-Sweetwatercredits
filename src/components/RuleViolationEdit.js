@@ -18,12 +18,6 @@ class RuleViolationEdit extends Component {
     });
   }
 
-  onButtonPress() {
-    const { acreage, zoneType, projectUid } = this.props;
-    const { uid } = this.props.zone; // zone uid
-    this.props.ruleViolationSave({ acreage, zoneType, projectUid, zoneUid: uid });
-  }
-
   onAccept() {
     // const { projectUid, uid } = this.props.zone;
     // this.props.zoneDelete({ projectUid, zoneUid: uid });
@@ -44,13 +38,6 @@ class RuleViolationEdit extends Component {
         <ScrollView>
 
           <RuleViolationForm {...this.props} />
-
-          <CardSection>
-            <BlueButton onPress={this.onButtonPress.bind(this)}>
-              <Icon name='done' size={14} />
-              Save Changes
-            </BlueButton>
-          </CardSection>
 
           <CardSection style={{ justifyContent: 'center' }}>
             <YellowButton

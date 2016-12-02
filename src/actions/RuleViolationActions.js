@@ -4,8 +4,7 @@ import { Actions } from 'react-native-router-flux';
 import {
   RULE_VIOLATION_UPDATE,
   RULE_VIOLATION_CREATE,
-  RULE_VIOLATION_FETCH_SUCCESS,
-  RULE_VIOLATION_SAVE_SUCCESS } from './types';
+  RULE_VIOLATION_FETCH_SUCCESS } from './types';
 
 export const ruleViolationUpdate = ({ prop, value }) => {
   return {
@@ -48,16 +47,15 @@ export const ruleViolationsFetch = ({ projectUid, zoneUid }) => {
   };
 };
 
-export const ruleViolationSave = ({ rule, violation, zoneType, penalty, projectUid, zoneUid, uid }) => {
+export const ruleViolationDelete = ({ ruleViolation }) => {
   const { currentUser } = firebase.auth();
-
-  return (dispatch) => {
+  const { projectUid, zoneUid, uid } = ruleViolation;
+  console.log(projectUid);
+  console.log(zoneUid);
+  console.log(uid);
+  return () => {
     firebase.database()
       .ref(`/users/${currentUser.uid}/projects/${projectUid}/zones/${zoneUid}/ruleViolations/${uid}`)
-      .set({ rule, violation, zoneType, penalty })
-      .then(() => {
-          dispatch({ type: RULE_VIOLATION_SAVE_SUCCESS });
-          Actions.pop();
-      });
+      .remove();
   };
 };

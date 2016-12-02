@@ -38,19 +38,6 @@ class CoreForm extends Component {
     });
   }
 
-  buttonTextContext() {
-    const { name } = this.props;
-    console.log(name);
-    if (name.includes('Edit') !== -1) {
-      return (
-        <Text><Icon name='check' size={14} /> Save Rule Violation</Text>
-      );
-    }
-    return (
-      <Text><Icon name='add' size={14} /> Create Rule Violation</Text>
-    );
-  }
-
   renderViolationPicker() {
       const { rule } = this.props;
       if (rule !== 'impact') {
@@ -102,10 +89,11 @@ class CoreForm extends Component {
         </Card>
         {this.renderViolationPicker()}
 
+
         <BlueButton
           onPress={this.onButtonPress.bind(this)}
         >
-          {this.buttonTextContext()}
+          <Text><Icon name='add' size={14} /> Create Rule Violation</Text>
         </BlueButton>
       </View>
 

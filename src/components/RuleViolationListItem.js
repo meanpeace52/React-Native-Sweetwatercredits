@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import { Text, TouchableWithoutFeedback, View } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { Actions } from 'react-native-router-flux';
+import { connect } from 'react-redux';
 import _ from 'lodash';
 import { CardSection } from './common';
-
+import { ruleViolationDelete } from '../actions';
 
 class RuleViolationListItem extends Component {
   onRowPress() {
     const { ruleViolation } = this.props;
-    Actions.ruleViolationEdit({ ruleViolation });
+    // delete
+    this.props.ruleViolationDelete({ ruleViolation });
   }
 
   // sumViolations() {
@@ -20,17 +21,24 @@ class RuleViolationListItem extends Component {
   // }
 
   render() {
+    console.log(this.props);
     const { rule, penalty } = this.props.ruleViolation;
-    const { titleStyle } = styles;
+    const { titleStyle, rowView } = styles;
     return (
-      <TouchableWithoutFeedback onPress={this.onRowPress.bind(this)}>
-        <View>
-          <CardSection>
-            <Icon name='report-problem' size={18} />
-            <Text style={titleStyle}> {_.capitalize(rule)} | {penalty.toString()}</Text>
-          </CardSection>
-        </View>
-      </TouchableWithoutFeedback>
+
+      <View>
+        <CardSection>
+          <View style={rowView}>
+            <Text style={titleStyle}>
+              <Icon name='report-problem' size={18} />
+              {_.capitalize(rule)} | Credits: {penalty.toString()}
+            </Text>
+            <TouchableWithoutFeedback onPress={this.onRowPress.bind(this)}>
+              <Icon name='clear' size={18} style={{ paddingRight: 10 }} />
+            </TouchableWithoutFeedback>
+          </View>
+        </CardSection>
+      </View>
     );
   }
 }
@@ -39,7 +47,12 @@ const styles = {
   titleStyle: {
     fontSize: 18,
     paddingLeft: 15
+  },
+  rowView: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between'
   }
 };
 
-export default RuleViolationListItem;
+export default connect(null, { ruleViolationDelete })(RuleViolationListItem);
