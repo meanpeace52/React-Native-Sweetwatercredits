@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { Picker, View } from 'react-native';
+import { Picker, View, Text } from 'react-native';
 import { BlueButton, Card } from './common';
 import { ruleViolationUpdate, ruleViolationCreate } from '../actions';
 
@@ -36,6 +36,19 @@ class CoreForm extends Component {
       projectUid,
       zoneUid: uid
     });
+  }
+
+  buttonTextContext() {
+    const { name } = this.props;
+    console.log(name);
+    if (name.includes('Edit') !== -1) {
+      return (
+        <Text><Icon name='check' size={14} /> Save Rule Violation</Text>
+      );
+    }
+    return (
+      <Text><Icon name='add' size={14} /> Create Rule Violation</Text>
+    );
   }
 
   renderViolationPicker() {
@@ -92,8 +105,7 @@ class CoreForm extends Component {
         <BlueButton
           onPress={this.onButtonPress.bind(this)}
         >
-          <Icon name='add' size={14} />
-          Create Rule Violation
+          {this.buttonTextContext()}
         </BlueButton>
       </View>
 
