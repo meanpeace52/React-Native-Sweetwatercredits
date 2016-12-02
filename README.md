@@ -1,48 +1,59 @@
-![swrc](docs/swrc-blue.gif)
+# SweetwaterCredits  
 
-# SweetwaterCredits
 #### Mobile app source code for the Sweetwater River Conservancy. App users can calculate the amount of credits they have on a plot of land by filling out the forms in the app.
-
-**Build Status**
-
-* Staging- > here
-* Production- > here
 
 **Project Stack**
 
-* **ReactNative** (Typescript/ES6)
+* **ReactNative**
+* **Icons**: react-native-vector-icons
+* **Store**: react-redux & redux-thunk & redux & firebase
+* **Navigation**: react-native-router-flux
+* **Convenience**: lodash
 
-**How To Get Started**
+**Getting Started with ReactNative**
 
 * Assuming you're doing this on OSX and trying to run iOS  
 * Install Node and watchman
 
-```
-$ brew install node
+```bash
+brew install node
 ```
 
-```
-$ brew install watchman  
+```bash
+brew install watchman  
 ```
 
 * Install ReactNative Command Line Tools
 
-```
-$ npm install -g react-native-cli  
-```
-
-* Run the App
-
-```
-$ cd sweetwaterCredits  
+```bash
+npm install -g react-native-cli  
 ```
 
+**Running the App**
+
+```bash
+cd sweetwaterCredits  
 ```
-$ react-native run-ios   
+
+```bash
+npm install
 ```
 
+```bash
+react-native run-ios   
+```
+
+### TODO:
+
+* Sentry Raven (HIGH)
+* Sign Up form, make it confirmable
+* Add shadows to buttons
+* Explore test library options with JEST
+* Form styles
+* Refactor Actions
+* Remove Edit Action from zone
 
 
-**Andrew Vogel 2016**
+**Andrew Vogel - 2016**
 
-![elvamarketing](docs/elva-logo.png)
+###### Disclaimer: First time doing a javascript app so take it easy on me. :)
