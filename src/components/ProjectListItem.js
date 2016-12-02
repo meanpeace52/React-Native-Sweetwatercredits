@@ -14,17 +14,16 @@ class ProjectListItem extends Component {
     let sumPenaltys = 0;
     const { zones } = this.props.project;
     if (typeof zones !== 'undefined') {
-      let zoneCount = Object.keys(zones).length;
-      let zoneKeys = Object.keys(zones);
-      for (let i = 0; i < zoneKeys.length; i++) {
-        let zone = zones[zoneKeys[i]];
-        console.log(zone);
-        let { ruleViolations } = zone;
-        if (typeof ruleViolations !== 'undefined') {
-          let violationsCount = Object.keys(ruleViolations).length;
-          let violationKeys = Object.keys(ruleViolations);
-          for (var j in ruleViolations) {
-            sumPenaltys += parseInt(ruleViolations[j]["penalty"], 10);
+      for (const i in zones) {
+        if ({}.hasOwnProperty.call(zones, i)) {
+          const zone = zones[i];
+          const { ruleViolations } = zone;
+          if (typeof ruleViolations !== 'undefined') {
+            for (const j in ruleViolations) {
+              if ({}.hasOwnProperty.call(ruleViolations, j)) {
+                sumPenaltys += parseInt(ruleViolations[j].penalty, 10);
+              }
+            }
           }
         }
       }
