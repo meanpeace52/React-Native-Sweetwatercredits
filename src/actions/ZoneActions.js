@@ -21,7 +21,7 @@ export const zoneCreate = ({ acreage, zoneType, projectUid }) => {
       .push({ acreage, zoneType, projectUid })
       .then(() => {
         dispatch({ type: ZONE_CREATE });
-        Actions.zonesList({ projectUid, type: 'reset' });
+        Actions.pop();
       }
     );
   };
@@ -47,7 +47,7 @@ export const zoneSave = ({ acreage, zoneType, projectUid, zoneUid }) => {
       .set({ acreage, zoneType })
       .then(() => {
           dispatch({ type: ZONE_SAVE_SUCCESS });
-          Actions.zonesList({ projectUid, type: 'reset' });
+          Actions.pop();
       });
   };
 };
@@ -59,7 +59,7 @@ export const zoneDelete = ({ projectUid, zoneUid }) => {
     firebase.database().ref(`/users/${currentUser.uid}/projects/${projectUid}/zones/${zoneUid}`)
       .remove()
       .then(() => {
-        Actions.zonesList({ projectUid, type: 'reset' });
+        Actions.pop();
       });
   };
 };

@@ -4,7 +4,6 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Actions } from 'react-native-router-flux';
 import { CardSection } from './common';
 
-
 class ProjectListItem extends Component {
   onRowPress() {
     Actions.projectEdit({ project: this.props.project });
