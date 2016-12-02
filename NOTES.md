@@ -1,6 +1,6 @@
 #Notes on ReactNative
 
-##### Notes taken on react native while doing the Udemy React-Native/Redux Course on Udemy
+##### Notes taken on react native while doing the React-Native/Redux Course on Udemy
 
 ##Lifecycle Methods
 
@@ -62,14 +62,3 @@ Redux thunk allows us to:
 
 * Bend the rules of action creators
 * Return a function instead of an action. we can call the function with 'dispatch'
-
-
-### TODO:
-
-* Sentry Raven (HIGH)
-* Sign Up form, make it confirmable
-* Add shadows to buttons
-* Explore test library options with JEST
-* Form styles
-* Refactor Actions
-* Remove Edit Action from zones

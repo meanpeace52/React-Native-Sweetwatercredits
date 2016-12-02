@@ -1,4 +1,4 @@
-# SweetwaterCredits
+# SweetwaterCredits  
 
 #### Mobile app source code for the Sweetwater River Conservancy. App users can calculate the amount of credits they have on a plot of land by filling out the forms in the app.
 
@@ -6,8 +6,9 @@
 
 * **ReactNative**
 * **Icons**: react-native-vector-icons
-* **State**: redux
+* **Store**: react-redux & redux-thunk & redux & firebase
 * **Navigation**: react-native-router-flux
+* **Convenience**: lodash
 
 **Getting Started with ReactNative**
 
@@ -42,6 +43,17 @@ npm install
 react-native run-ios   
 ```
 
-**Andrew Vogel 2016**
+### TODO:
 
-###### Disclaimer: First time doing an a React Native (javascript) app so take it easy on me. ;)
+* Sentry Raven (HIGH)
+* Sign Up form, make it confirmable
+* Add shadows to buttons
+* Explore test library options with JEST
+* Form styles
+* Refactor Actions
+* Remove Edit Action from zone
+
+
+**Andrew Vogel - 2016**
+
+###### Disclaimer: First time doing a javascript app so take it easy on me. :)
