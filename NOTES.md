@@ -64,22 +64,11 @@ Redux thunk allows us to:
 * Return a function instead of an action. we can call the function with 'dispatch'
 
 
-#### React Native Router Flux
+### TODO:
 
-#### Passing extra props to a route.
-
-
-### Rule Violations
-
-Rule Violation Rendering
-
-* Edit / Show action
-* Delete Action
-* Sum credits by zone
-* Sum credits by project
+* Explore test library options with JEST
+* Sign Up form, make it confirmable
 * Add shadows to buttons
 * Form styles
-
-### Future update
-
-* Add Project to zone as a prop instead of just adding the uid. then we can access all of the project data for each zone.. do same thing with rule violation( project & zone)
+* Refactor Actions
+* Remove Edit Action from zones

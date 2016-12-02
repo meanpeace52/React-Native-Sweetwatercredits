@@ -43,3 +43,5 @@ react-native run-ios
 ```
 
 **Andrew Vogel 2016**
+
+###### Disclaimer: First time doing an a React Native (javascript) app so take it easy on me. ;)
