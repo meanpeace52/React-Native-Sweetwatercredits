@@ -28,7 +28,7 @@ class ZoneListItem extends Component {
 
   render() {
     const { acreage, zoneType } = this.props.zone;
-    const { titleStyle } = styles;
+    const { titleStyle, creditTitleStyle } = styles;
     return (
       <TouchableWithoutFeedback
         onPress={this.onRowPress.bind(this)}
@@ -36,10 +36,10 @@ class ZoneListItem extends Component {
         <View>
           <CardSection style={{ justifyContent: 'space-between' }}>
             <View style={{ flexDirection: 'row', justifyContent: 'flex-start' }}>
-              <Icon name='landscape' size={40} />
+              <Icon name='landscape' size={50} />
               <View>
                 <Text style={titleStyle}> {acreage} Acres | {zoneType} </Text>
-                <Text style={titleStyle}> Credits: {this.sumZoneViolations()} </Text>
+                <Text style={creditTitleStyle}> Credits: {this.sumZoneViolations()} </Text>
               </View>
               {
                 //<Icon name='clear' size={40} />
@@ -54,6 +54,11 @@ class ZoneListItem extends Component {
 
 const styles = {
   titleStyle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    paddingLeft: 15
+  },
+  creditTitleStyle: {
     fontSize: 20,
     paddingLeft: 15
   }

@@ -45,7 +45,7 @@ class ProjectsList extends Component {
           <BlueButton
             onPress={this.navigateToProjectCreate.bind(this)}
           >
-            <Icon name='add' size={14} />
+            <Icon name='add' size={18} />
             Add Project
           </BlueButton>
 

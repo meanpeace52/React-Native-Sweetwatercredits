@@ -12,12 +12,11 @@ class Splash extends Component {
     return (
       <SplashImageContainer>
         <BlueButton onPress={navigateToLoginForm}>
-          {_.toUpper('Start Calculating Credits')}
+          <Icon name='keyboard' size={18} /> {_.toUpper('Calculate Credits')}
         </BlueButton>
 
         <YellowButton onPress={navigateToLoginForm}>
-          <Icon name='person' size={14} />
-          {_.toUpper('Sign In')}
+          <Icon name='person' size={18} /> {_.toUpper('Sign In')}
         </YellowButton>
       </SplashImageContainer>
     );

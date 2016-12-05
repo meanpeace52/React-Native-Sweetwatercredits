@@ -21,18 +21,23 @@ const styles = {
     alignItems: 'center',
     alignSelf: 'center',
     backgroundColor: '#FFC107',
-    borderRadius: 2,
-    height: 36,
+    borderRadius: 5,
+    height: 44,
     justifyContent: 'center',
-    marginTop: 10,
     marginBottom: 10,
-    width: 220
+    marginTop: 10,
+    width: 300,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
+    elevation: 1
   },
   textStyle: {
     color: 'black',
     fontFamily: 'Helvetica',
-    fontSize: 16,
-    textAlign: 'center'
+    fontSize: 20,
+    fontWeight: 'bold'
   }
 };
 

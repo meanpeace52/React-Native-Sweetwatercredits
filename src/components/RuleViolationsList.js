@@ -52,8 +52,6 @@ class RuleViolationsList extends Component {
 
   render() {
     const { creditTotal } = styles;
-    console.log(this.props);
-    const { zoneType } = this.props.zone;
     return (
       <View>
         <LogoTopMiddle />
@@ -61,8 +59,7 @@ class RuleViolationsList extends Component {
         <BlueButton
           onPress={this.onButtonPress.bind(this)}
         >
-          <Icon name='add' size={14} />
-          Add {zoneType} Rule Violation
+          <Icon name='add' size={18} /> Add Rule Violation
         </BlueButton>
 
           <Container>

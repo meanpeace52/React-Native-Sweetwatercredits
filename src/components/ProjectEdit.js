@@ -45,20 +45,17 @@ class ProjectEdit extends Component {
         <ProjectForm />
 
         <BlueButton onPress={this.onButtonPress.bind(this)}>
-          <Icon name='done' size={14} />
-          Save Changes
+          <Icon name='done' size={18} /> Save Changes
         </BlueButton>
 
         <BlueButton onPress={this.navigateToZones.bind(this)}>
-          <Icon name='landscape' size={14} />
-          Zones
+          <Icon name='landscape' size={18} /> Zones
         </BlueButton>
 
         <YellowButton
           onPress={() => this.setState({ showModal: !this.state.showModal })}
         >
-          <Icon name='delete' size={14} />
-          Delete Project
+          <Icon name='delete' size={18} /> Delete Project
         </YellowButton>
 
         <Confirm

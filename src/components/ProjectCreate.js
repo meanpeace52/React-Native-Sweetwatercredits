@@ -16,12 +16,12 @@ class ProjectCreate extends Component {
     return (
       <Container>
         <LogoTopLeft />
-        
+
         <ProjectForm {...this.props} />
         <BlueButton
           onPress={this.onButtonPress.bind(this)}
         >
-          <Icon name='domain' size={14} />
+          <Icon name='domain' size={18} />
           {_.toUpper('Create New Project')}
         </BlueButton>
       </Container>

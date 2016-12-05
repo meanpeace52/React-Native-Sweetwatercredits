@@ -1,12 +1,12 @@
 import React from 'react';
-import { TextInput, View, TouchableHighlight } from 'react-native';
-import { Card } from './Card';
+import { TextInput, View, TouchableHighlight, Text } from 'react-native';
 
-const Input = ({ value, onChangeText, placeholder, secureTextEntry }) => {
-  const { inputStyle, containerStyle } = styles;
+const Input = ({ label, value, onChangeText, placeholder, secureTextEntry }) => {
+  const { inputStyle, containerStyle, labelStyle } = styles;
 
   return (
     <View style={containerStyle}>
+      <Text style={labelStyle}>{label}</Text>
       <TouchableHighlight>
         <TextInput
           secureTextEntry={secureTextEntry}
@@ -23,8 +23,14 @@ const Input = ({ value, onChangeText, placeholder, secureTextEntry }) => {
 
 const styles = {
   inputStyle: {
-    height: 30,
-    width: 300
+    height: 45,
+    width: 300,
+    fontSize: 20
+  },
+  labelStyle: {
+    fontSize: 18,
+    paddingLeft: 20,
+    flex: 1
   },
   containerStyle: {
     borderBottomColor: 'lightgray',

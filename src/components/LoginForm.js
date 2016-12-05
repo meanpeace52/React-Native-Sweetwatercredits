@@ -29,11 +29,10 @@ class LoginForm extends Component {
 
     return (
       <BlueButton
-      onPress={this.onButtonPress.bind(this)}
+        onPress={this.onButtonPress.bind(this)}
       >
-      <Icon name='person' size={14} />
-      {_.toUpper('Sign In')}
-    </BlueButton>
+        <Icon name='person' size={18} /> {_.toUpper('Sign In')}
+      </BlueButton>
     );
   }
 

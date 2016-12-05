@@ -20,8 +20,8 @@ const Confirm = ({ children, visible, onAccept, onDecline }) => {
         </CardSection>
 
         <CardSection style={cardSectionStyle}>
-        <Button onPress={onAccept}>{_.toUpper('yes')}</Button>
-        <Button onPress={onDecline}>{_.toUpper('no')}</Button>
+          <Button onPress={onAccept}>{_.toUpper('yes')}</Button>
+          <Button onPress={onDecline}>{_.toUpper('no')}</Button>
         </CardSection>
       </View>
     </Modal>

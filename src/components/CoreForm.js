@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Picker, View, Text } from 'react-native';
-import { BlueButton, Card } from './common';
+import { BlueButton, Card, CardSection, Container } from './common';
 import { ruleViolationUpdate, ruleViolationCreate } from '../actions';
 
 class CoreForm extends Component {
@@ -42,50 +42,66 @@ class CoreForm extends Component {
       const { rule } = this.props;
       if (rule !== 'impact') {
         return (
-          <Card>
-            <Picker
-              style={{ flex: 1 }}
-              onValueChange={value => this.props.ruleViolationUpdate({ prop: 'violation', value })}
-              selectedValue={this.props.violation}
-            >
-              <Picker.Item label="Located in a vulnerable landscape?" value="vulnerable" />
-              <Picker.Item label="Not Located in a vulneable landscape?" value="non-vulnerable" />
-            </Picker>
-          </Card>
+          <View>
+            <Text style={styles.titleStyle}> Land Location </Text>
+            <Card>
+              <CardSection>
+                <Picker
+                  style={{ flex: 1 }}
+                  onValueChange={
+                    value => this.props.ruleViolationUpdate({ prop: 'violation', value })
+                  }
+                  selectedValue={this.props.violation}
+                >
+
+                  <Picker.Item
+                    label="Located in a vulnerable landscape?" value="vulnerable"
+                  />
+                  <Picker.Item
+                    label="Not Located in a vulneable landscape?" value="non-vulnerable"
+                  />
+                </Picker>
+              </CardSection>
+            </Card>
+          </View>
         );
       }
   }
 
   render() {
+    const { titleStyle } = styles;
     return (
-      <View>
+      <Container>
+        <Text style={titleStyle}> Rule Violation </Text>
         <Card>
-          <Picker
-            style={{ flex: 1 }}
-            onValueChange={value => this.props.ruleViolationUpdate({ prop: 'rule', value })}
-            selectedValue={this.props.rule}
-          >
-            <Picker.Item
-              label="Sitting withing < 0.6 of a lek?"
-              value="sitting"
-            />
-            <Picker.Item
-              label="Roads within 1.9 miles of a lek?"
-              value="roads"
-            />
-            <Picker.Item
-              label="Greater than 1 activity per 640 acres on average?"
-              value="activity"
-            />
-            <Picker.Item
-              label="Surface disturbance > 5%?"
-              value="disturbance"
-            />
-            <Picker.Item
-              label="Short Term Impacts?"
-              value="impact"
-            />
-          </Picker>
+          <CardSection>
+            <Picker
+              style={{ flex: 1 }}
+              onValueChange={value => this.props.ruleViolationUpdate({ prop: 'rule', value })}
+              selectedValue={this.props.rule}
+            >
+              <Picker.Item
+                label="Sitting withing < 0.6 of a lek?"
+                value="sitting"
+              />
+              <Picker.Item
+                label="Roads within 1.9 miles of a lek?"
+                value="roads"
+              />
+              <Picker.Item
+                label="Greater than 1 activity per 640 acres on average?"
+                value="activity"
+              />
+              <Picker.Item
+                label="Surface disturbance > 5%?"
+                value="disturbance"
+              />
+              <Picker.Item
+                label="Short Term Impacts?"
+                value="impact"
+              />
+            </Picker>
+          </CardSection>
         </Card>
         {this.renderViolationPicker()}
 
@@ -93,13 +109,21 @@ class CoreForm extends Component {
         <BlueButton
           onPress={this.onButtonPress.bind(this)}
         >
-          <Text><Icon name='add' size={14} /> Create Rule Violation</Text>
+          <Text><Icon name='add' size={18} /> Create Rule Violation</Text>
         </BlueButton>
-      </View>
+      </Container>
 
     );
   }
 }
+
+const styles = {
+  titleStyle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    paddingLeft: 5
+  }
+};
 
 const mapStateToProps = (state) => {
   const { rule, violation, penalty, zoneType } = state.ruleViolationForm;

@@ -1,28 +1,20 @@
 import React, { Component } from 'react';
-import { ScrollView } from 'react-native';
 import { connect } from 'react-redux';
-import _ from 'lodash';
+import { Text, View } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Actions } from 'react-native-router-flux';
-import ZoneForm from './ZoneForm';
-import { zoneUpdate, zoneSave, zoneDelete } from '../actions';
-import { Container, CardSection, BlueButton, Confirm, YellowButton, LogoTopLeft } from './common';
+import { zoneDelete } from '../actions';
+import {
+          Container,
+          Card,
+          CardSection,
+          BlueButton,
+          Confirm,
+          YellowButton,
+          LogoTopLeft } from './common';
 
 class ZoneEdit extends Component {
   state = { showModal: false };
-
-  componentWillMount() {
-    // feed all the project props into the ProjectFormReducer
-    _.each(this.props.zone, (value, prop) => {
-      this.props.zoneUpdate({ prop, value });
-    });
-  }
-
-  onButtonPress() {
-    const { acreage, zoneType, projectUid } = this.props;
-    const { uid } = this.props.zone; // zone uid
-    this.props.zoneSave({ acreage, zoneType, projectUid, zoneUid: uid });
-  }
 
   onAccept() {
     const { projectUid, uid } = this.props.zone;
@@ -39,58 +31,65 @@ class ZoneEdit extends Component {
   }
 
   render() {
+    console.log(this.props);
+    const { acreage, zoneType } = this.props.zone;
+    const { creditTitleStyle, titleStyle } = styles;
     return (
       <Container>
         <LogoTopLeft />
 
-        <ScrollView>
-
-          <ZoneForm />
-
+        <Card>
           <CardSection>
-            <BlueButton onPress={this.onButtonPress.bind(this)}>
-              <Icon name='done' size={14} />
-              Save Changes
-            </BlueButton>
+            <Icon name='landscape' size={50} />
+            <View>
+              <Text style={titleStyle}> Acreage: {acreage} </Text>
+              <Text style={creditTitleStyle}> ZoneType: {zoneType} </Text>
+            </View>
           </CardSection>
+        </Card>
 
-          <CardSection>
-            <BlueButton
-              onPress={this.navigateToRuleViolations.bind(this)}
-            >
-              <Icon name='report-problem' size={14} />
-              Rule Violations
-            </BlueButton>
-          </CardSection>
-
-          <CardSection style={{ justifyContent: 'center' }}>
-            <YellowButton
-              onPress={() => this.setState({ showModal: !this.state.showModal })}
-            >
-              <Icon name='delete' size={14} />
-              Delete Zone
-            </YellowButton>
-          </CardSection>
-
-          <Confirm
-            visible={this.state.showModal}
-            onAccept={this.onAccept.bind(this)}
-            onDecline={this.onDecline.bind(this)}
+        <View style={{ paddingTop: 15 }}>
+          <BlueButton
+            onPress={this.navigateToRuleViolations.bind(this)}
           >
-            Are you sure you want to delete this?
-          </Confirm>
-        </ScrollView>
+            <Icon name='report-problem' size={18} /> Rule Violations
+          </BlueButton>
+
+          <YellowButton
+            onPress={() => this.setState({ showModal: !this.state.showModal })}
+          >
+            <Icon name='delete' size={18} /> Delete Zone
+          </YellowButton>
+        </View>
+
+        <Confirm
+          visible={this.state.showModal}
+          onAccept={this.onAccept.bind(this)}
+          onDecline={this.onDecline.bind(this)}
+        >
+          Are you sure you want to delete this?
+        </Confirm>
+
       </Container>
     );
   }
 }
+
+const styles = {
+  titleStyle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    paddingLeft: 15
+  },
+  creditTitleStyle: {
+    fontSize: 20,
+    paddingLeft: 15
+  }
+};
 
 const mapStateToProps = (state) => {
   const { acreage, zoneType, projectUid } = state.zoneForm;
   return { acreage, zoneType, projectUid };
 };
 
-export default connect(mapStateToProps, {
-  zoneUpdate,
-  zoneSave,
-  zoneDelete })(ZoneEdit);
+export default connect(mapStateToProps, { zoneDelete })(ZoneEdit);

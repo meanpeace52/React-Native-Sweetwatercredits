@@ -32,28 +32,18 @@ class ProjectListItem extends Component {
     return sumPenaltys;
   }
 
-  // <CardSection style={{ justifyContent: 'space-between' }}>
-  //   <View style={{ flexDirection: 'row', justifyContent: 'flex-start' }}>
-  //     <Icon name='domain' size={40} />
-  //     <View style={{ flexDirection: 'column' }}>
-  //       <Text style={titleStyle}> {name}</Text>
-  //       <Text style={titleStyle}> Credits: {this.sumProjectZoneViolations()}</Text>
-  //     </View>
-  //   </View>
-  // </CardSection>
-
   render() {
     const { name } = this.props.project;
-    const { titleStyle } = styles;
+    const { titleStyle, creditTitleStyle } = styles;
     return (
       <TouchableWithoutFeedback onPress={this.onRowPress.bind(this)}>
         <View>
           <CardSection style={{ justifyContent: 'space-between' }}>
             <View style={{ flexDirection: 'row', justifyContent: 'flex-start' }}>
-              <Icon name='domain' size={40} />
+              <Icon name='domain' size={50} />
               <View>
                 <Text style={titleStyle}> {name} </Text>
-                <Text style={titleStyle}> Credits: {this.sumProjectZoneViolations()}</Text>
+                <Text style={creditTitleStyle}> Credits: {this.sumProjectZoneViolations()}</Text>
               </View>
               {
                 //<Icon name='clear' size={40} />
@@ -68,6 +58,11 @@ class ProjectListItem extends Component {
 
 const styles = {
   titleStyle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    paddingLeft: 15
+  },
+  creditTitleStyle: {
     fontSize: 20,
     paddingLeft: 15
   }
