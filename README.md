@@ -45,8 +45,12 @@ react-native run-ios
 
 ### TODO:
 
-* Sentry Raven (HIGH)
+* Anon users
 * Sign Up form, make it confirmable
+* App Icon
+* Launch Image
+* Sentry Raven (HIGH)
+* Store User credentials.
 * Add shadows to buttons
 * Explore test library options with JEST
 * Form styles

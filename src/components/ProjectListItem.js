@@ -36,12 +36,17 @@ class ProjectListItem extends Component {
     const { titleStyle } = styles;
     return (
       <TouchableWithoutFeedback onPress={this.onRowPress.bind(this)}>
-        <View>
-          <CardSection>
-            <Icon name='domain' size={18} />
-            <Text style={titleStyle}> {name} | Credits: {this.sumProjectZoneViolations()}</Text>
-          </CardSection>
-        </View>
+        <CardSection style={{ justifyContent: 'space-between' }}>
+          <View style={{ flexDirection: 'row', justifyContent: 'flex-start' }}>
+            <Icon name='domain' size={40} />
+            <View style={{ flexDirection: 'column' }}>
+              <Text style={titleStyle}> {name}</Text>
+              <Text style={titleStyle}> Credits: {this.sumProjectZoneViolations()}</Text>
+            </View>
+          </View>
+
+          <Icon name='clear' size={40} />
+        </CardSection>
       </TouchableWithoutFeedback>
     );
   }
@@ -49,7 +54,7 @@ class ProjectListItem extends Component {
 
 const styles = {
   titleStyle: {
-    fontSize: 18,
+    fontSize: 20,
     paddingLeft: 15
   }
 };
