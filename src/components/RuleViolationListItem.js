@@ -15,20 +15,22 @@ class RuleViolationListItem extends Component {
 
   render() {
     const { rule, penalty } = this.props.ruleViolation;
-    const { titleStyle, rowView } = styles;
+    const { titleStyle } = styles;
     return (
 
       <View>
-        <CardSection>
-          <View style={rowView}>
-            <Text style={titleStyle}>
-              <Icon name='report-problem' size={18} />
-              {_.capitalize(rule)} | Credits: {penalty.toString()}
-            </Text>
-            <TouchableWithoutFeedback onPress={this.onRowPress.bind(this)}>
-              <Icon name='clear' size={18} style={{ paddingRight: 10 }} />
-            </TouchableWithoutFeedback>
+        <CardSection style={{ justifyContent: 'space-between' }}>
+          <View style={{ flexDirection: 'row', justifyContent: 'flex-start' }}>
+            <Icon name='report-problem' size={40} />
+            <View>
+              <Text style={titleStyle}> {_.capitalize(rule)} </Text>
+              <Text style={titleStyle}> Credits: {penalty.toString()} </Text>
+            </View>
           </View>
+
+          <TouchableWithoutFeedback onPress={this.onRowPress.bind(this)}>
+            <Icon name='clear' size={40} style={{ paddingRight: 10 }} />
+          </TouchableWithoutFeedback>
         </CardSection>
       </View>
     );
@@ -37,13 +39,8 @@ class RuleViolationListItem extends Component {
 
 const styles = {
   titleStyle: {
-    fontSize: 18,
+    fontSize: 20,
     paddingLeft: 15
-  },
-  rowView: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between'
   }
 };
 

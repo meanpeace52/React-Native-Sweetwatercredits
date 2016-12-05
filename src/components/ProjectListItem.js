@@ -6,6 +6,7 @@ import { CardSection } from './common';
 
 class ProjectListItem extends Component {
   onRowPress() {
+    console.log(this.props.project);
     Actions.projectEdit({ project: this.props.project });
   }
 
@@ -31,22 +32,35 @@ class ProjectListItem extends Component {
     return sumPenaltys;
   }
 
+  // <CardSection style={{ justifyContent: 'space-between' }}>
+  //   <View style={{ flexDirection: 'row', justifyContent: 'flex-start' }}>
+  //     <Icon name='domain' size={40} />
+  //     <View style={{ flexDirection: 'column' }}>
+  //       <Text style={titleStyle}> {name}</Text>
+  //       <Text style={titleStyle}> Credits: {this.sumProjectZoneViolations()}</Text>
+  //     </View>
+  //   </View>
+  // </CardSection>
+
   render() {
     const { name } = this.props.project;
     const { titleStyle } = styles;
     return (
       <TouchableWithoutFeedback onPress={this.onRowPress.bind(this)}>
-        <CardSection style={{ justifyContent: 'space-between' }}>
-          <View style={{ flexDirection: 'row', justifyContent: 'flex-start' }}>
-            <Icon name='domain' size={40} />
-            <View style={{ flexDirection: 'column' }}>
-              <Text style={titleStyle}> {name}</Text>
-              <Text style={titleStyle}> Credits: {this.sumProjectZoneViolations()}</Text>
+        <View>
+          <CardSection style={{ justifyContent: 'space-between' }}>
+            <View style={{ flexDirection: 'row', justifyContent: 'flex-start' }}>
+              <Icon name='domain' size={40} />
+              <View>
+                <Text style={titleStyle}> {name} </Text>
+                <Text style={titleStyle}> Credits: {this.sumProjectZoneViolations()}</Text>
+              </View>
+              {
+                //<Icon name='clear' size={40} />
+              }
             </View>
-          </View>
-
-          <Icon name='clear' size={40} />
-        </CardSection>
+          </CardSection>
+        </View>
       </TouchableWithoutFeedback>
     );
   }
