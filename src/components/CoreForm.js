@@ -14,13 +14,13 @@ class CoreForm extends Component {
 
     if (rule === 'sitting' || rule === 'roads' || rule === 'activity') {
       if (violation === 'non-vulnerable') {
-        penaltyAmount = 12 * parseInt(acreage, 12);
+        penaltyAmount = 12 * parseInt(acreage, 10);
       } else {
         penaltyAmount = 16 * parseInt(acreage, 10);
       }
     } else if (rule === 'disturbance') {
       if (violation === 'non-vulnerable') {
-        penaltyAmount = 6 * parseInt(acreage, 12);
+        penaltyAmount = 6 * parseInt(acreage, 10);
       } else {
         penaltyAmount = 8 * parseInt(acreage, 10);
       }

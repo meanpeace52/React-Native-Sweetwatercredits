@@ -82,7 +82,7 @@ class ZonesList extends Component {
               />
             </Card>
           </Container>
-          <Text style={creditTotal}>Zone Credit Total: {this.sumZoneViolations()}</Text>
+          <Text style={creditTotal}>Credit Total: {this.sumZoneViolations()}</Text>
       </View>
     );
   }

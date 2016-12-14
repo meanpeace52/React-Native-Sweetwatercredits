@@ -62,7 +62,7 @@ const RouterComponent = () => {
         <Scene
           key="zoneEdit"
           component={ZoneEdit}
-          title="Edit Zone"
+          title="Zone"
         />
 
         <Scene

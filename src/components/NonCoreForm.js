@@ -14,7 +14,7 @@ class NonCoreForm extends Component {
 
     if (rule === 'impact') {
       if (violation === 'non-vulnerable') {
-        penaltyAmount = 12 * parseInt(acreage, 12);
+        penaltyAmount = 12 * parseInt(acreage, 10);
       } else {
         penaltyAmount = 16 * parseInt(acreage, 10);
       }
@@ -50,7 +50,7 @@ class NonCoreForm extends Component {
                   <Picker.Item
                     label="Located in a vulnerable landscape?" value="vulnerable"
                   />
-                  
+
                   <Picker.Item
                     label="Not Located in a vulneable landscape?" value="non-vulnerable"
                   />

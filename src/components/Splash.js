@@ -15,9 +15,11 @@ class Splash extends Component {
           <Icon name='keyboard' size={18} /> {_.toUpper('Calculate Credits')}
         </BlueButton>
 
-        <YellowButton onPress={navigateToLoginForm}>
-          <Icon name='person' size={18} /> {_.toUpper('Sign In')}
-        </YellowButton>
+        {
+          //<YellowButton onPress={navigateToLoginForm}>
+            //<Icon name='person' size={18} /> {_.toUpper('Sign In')}
+          //</YellowButton>
+        }
       </SplashImageContainer>
     );
   }

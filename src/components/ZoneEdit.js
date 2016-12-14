@@ -11,7 +11,7 @@ import {
           BlueButton,
           Confirm,
           YellowButton,
-          LogoTopLeft } from './common';
+          LogoTopMiddle } from './common';
 
 class ZoneEdit extends Component {
   state = { showModal: false };
@@ -31,15 +31,14 @@ class ZoneEdit extends Component {
   }
 
   render() {
-    console.log(this.props);
     const { acreage, zoneType } = this.props.zone;
-    const { creditTitleStyle, titleStyle } = styles;
+    const { creditTitleStyle, titleStyle, sectionStyle } = styles;
     return (
       <Container>
-        <LogoTopLeft />
+        <LogoTopMiddle />
 
         <Card>
-          <CardSection>
+          <CardSection style={sectionStyle}>
             <Icon name='landscape' size={50} />
             <View>
               <Text style={titleStyle}> Acreage: {acreage} </Text>
@@ -52,7 +51,7 @@ class ZoneEdit extends Component {
           <BlueButton
             onPress={this.navigateToRuleViolations.bind(this)}
           >
-            <Icon name='report-problem' size={18} /> Rule Violations
+            <Icon name='report-problem' size={18} /> View/Edit Rule Violations
           </BlueButton>
 
           <YellowButton
@@ -84,6 +83,9 @@ const styles = {
   creditTitleStyle: {
     fontSize: 20,
     paddingLeft: 15
+  },
+  sectionStyle: {
+    marginTop: 5
   }
 };
 

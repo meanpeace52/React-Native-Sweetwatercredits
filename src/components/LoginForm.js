@@ -60,8 +60,7 @@ class LoginForm extends Component {
 
         <View style={bottomTextContainer}>
           <Text style={centerText}>
-            Registration is required to save, edit and share calculations. To us
-            e the calculator without registering, click here.
+            Registration is required to save and edit calculations.
           </Text>
         </View>
       </Container>

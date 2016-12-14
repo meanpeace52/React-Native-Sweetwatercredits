@@ -15,11 +15,11 @@ class RuleViolationListItem extends Component {
 
   render() {
     const { rule, penalty } = this.props.ruleViolation;
-    const { titleStyle, creditTitleStyle } = styles;
+    const { titleStyle, creditTitleStyle, sectionStyle } = styles;
     return (
 
       <View>
-        <CardSection style={{ justifyContent: 'space-between' }}>
+        <CardSection style={sectionStyle}>
           <View style={{ flexDirection: 'row', justifyContent: 'flex-start' }}>
             <Icon name='report-problem' size={50} />
             <View>
@@ -44,8 +44,12 @@ const styles = {
     paddingLeft: 15
   },
   creditTitleStyle: {
-    fontSize: 20,
+    fontSize: 16,
     paddingLeft: 15
+  },
+  sectionStyle: {
+    justifyContent: 'space-between',
+    marginTop: 5
   }
 };
 

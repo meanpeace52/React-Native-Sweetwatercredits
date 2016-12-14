@@ -9,12 +9,17 @@ class ZoneForm extends Component {
     return (
       <View>
         <Card>
+          <CardSection>
+          
           <Input
-            placeholder="Acreage"
+            placeholder="Enter Acreage"
             onChangeText={value => this.props.zoneUpdate({ prop: 'acreage', value })}
             value={this.props.acreage}
           />
+          </CardSection>
+        </Card>
 
+        <Card>
           <CardSection>
             <Picker
               style={{ flex: 1 }}

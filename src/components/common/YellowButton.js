@@ -22,7 +22,7 @@ const styles = {
     alignSelf: 'center',
     backgroundColor: '#FFC107',
     borderRadius: 5,
-    height: 44,
+    height: 45,
     justifyContent: 'center',
     marginBottom: 10,
     marginTop: 10,

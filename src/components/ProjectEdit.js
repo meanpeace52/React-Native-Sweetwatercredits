@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Actions } from 'react-native-router-flux';
 import ProjectForm from './ProjectForm';
 import { projectUpdate, projectSave, projectDelete } from '../actions';
-import { Container, BlueButton, Confirm, LogoTopLeft, YellowButton } from './common';
+import { Container, BlueButton, Confirm, LogoTopMiddle, YellowButton } from './common';
 
 class ProjectEdit extends Component {
   state = { showModal: false };
@@ -40,16 +40,16 @@ class ProjectEdit extends Component {
   render() {
     return (
       <Container>
-        <LogoTopLeft />
+        <LogoTopMiddle />
 
         <ProjectForm />
 
         <BlueButton onPress={this.onButtonPress.bind(this)}>
-          <Icon name='done' size={18} /> Save Changes
+          <Icon name='done' size={18} /> Update Project Name
         </BlueButton>
 
         <BlueButton onPress={this.navigateToZones.bind(this)}>
-          <Icon name='landscape' size={18} /> Zones
+          <Icon name='landscape' size={18} /> View/Edit Zones
         </BlueButton>
 
         <YellowButton

@@ -17,13 +17,18 @@ export const projectCreate = ({ name }) => {
   const { currentUser } = firebase.auth();
   // users/uidash34123872187/projects
   return (dispatch) => {
-    firebase.database().ref(`users/${currentUser.uid}/projects`)
-      .push({ name })
-      .then(() => {
-        dispatch({ type: PROJECT_CREATE });
-        Actions.projectsList({ type: 'reset' });
-      }
-    );
+        firebase.database().ref(`users/${currentUser.uid}/projects`)
+        .push({ name })
+        //      .on('value', snapshot => {
+        //        dispatch({ type: PROJECT_CREATE, payload: snapshot.val() });
+        //        Actions.projectEdit();
+        //      });
+       .then(() => {
+         dispatch({ type: PROJECT_CREATE });
+         // console.log(snapshot.key);
+         Actions.projectsList({ type: 'reset' });
+       }
+     );
   };
 };
 
@@ -43,12 +48,21 @@ export const projectSave = ({ name, uid, zones }) => {
   const { currentUser } = firebase.auth();
 
   return (dispatch) => {
-    firebase.database().ref(`/users/${currentUser.uid}/projects/${uid}`)
-      .set({ name, zones })
-      .then(() => {
-          dispatch({ type: PROJECT_SAVE_SUCCESS });
-          Actions.projectsList({ type: 'reset' });
-      });
+    if (typeof zones === 'undefined') {
+      firebase.database().ref(`/users/${currentUser.uid}/projects/${uid}`)
+        .set({ name })
+        .then(() => {
+            dispatch({ type: PROJECT_SAVE_SUCCESS });
+            Actions.projectsList({ type: 'reset' });
+        });
+    } else {
+      firebase.database().ref(`/users/${currentUser.uid}/projects/${uid}`)
+        .set({ name, zones })
+        .then(() => {
+            dispatch({ type: PROJECT_SAVE_SUCCESS });
+            Actions.projectsList({ type: 'reset' });
+        });
+    }
   };
 };
 
