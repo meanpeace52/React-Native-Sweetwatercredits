@@ -4,7 +4,7 @@ import _ from 'lodash';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { connect } from 'react-redux';
 import { Container, BlueButton, Input, LogoTopMiddle, Spinner } from './common';
-import { loginUpdate, loginUser } from '../actions';
+import { loginFieldUpdate, loginUser } from '../actions';
 
 class LoginForm extends Component {
   onButtonPress() {
@@ -34,13 +34,13 @@ class LoginForm extends Component {
         <LogoTopMiddle />
         <Input
           placeholder="Email"
-          onChangeText={value => this.props.loginUpdate({ prop: 'email', value })}
+          onChangeText={value => this.props.loginFieldUpdate({ prop: 'email', value })}
           value={this.props.email}
         />
 
         <Input
           placeholder="Password"
-          onChangeText={value => this.props.loginUpdate({ prop: 'password', value })}
+          onChangeText={value => this.props.loginFieldUpdate({ prop: 'password', value })}
           value={this.props.password}
           secureTextEntry
         />
@@ -86,6 +86,6 @@ const mapStateToProps = ({ auth }) => {
 };
 
 export default connect(mapStateToProps, {
-  loginUpdate,
+  loginFieldUpdate,
   loginUser
 })(LoginForm);

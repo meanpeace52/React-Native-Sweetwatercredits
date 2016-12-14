@@ -1,14 +1,14 @@
 import firebase from 'firebase';
 import { Actions } from 'react-native-router-flux';
 import {
-  LOGIN_UPDATE,
+  LOGIN_FIELD_UPDATE,
   LOGIN_USER_SUCCESS,
   LOGIN_USER_FAIL,
   LOGIN_USER } from './types';
 
-export const loginUpdate = ({ prop, value }) => {
+export const loginFieldUpdate = ({ prop, value }) => {
   return {
-    type: LOGIN_UPDATE,
+    type: LOGIN_FIELD_UPDATE,
     payload: { prop, value }
   };
 };

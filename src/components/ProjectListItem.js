@@ -20,9 +20,8 @@ class ProjectListItem extends Component {
               <Icon name='domain' size={50} />
               <View>
                 <Text style={titleStyle}> {name} </Text>
-                <Text style={creditTitleStyle}> Credits: none</Text>
+                <Text style={creditTitleStyle}> Credits: øøø</Text>
               </View>
-              <Icon name='clear' size={40} />
             </View>
           </CardSection>
         </View>

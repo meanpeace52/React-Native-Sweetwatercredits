@@ -1,5 +1,5 @@
 import {
-  LOGIN_UPDATE,
+  LOGIN_FIELD_UPDATE,
   LOGIN_USER_SUCCESS,
   LOGIN_USER_FAIL,
   LOGIN_USER } from '../actions/types';
@@ -14,7 +14,7 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case LOGIN_UPDATE:
+    case LOGIN_FIELD_UPDATE:
       return { ...state, [action.payload.prop]: action.payload.value };
     case LOGIN_USER:
       return { ...state, loading: true, error: '' };
