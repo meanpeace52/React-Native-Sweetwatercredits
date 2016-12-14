@@ -7,19 +7,19 @@ import { BlueButton, SplashImageContainer, YellowButton } from './common';
 
 class Splash extends Component {
   render() {
-    // const navigateToProjects = () => Actions.projects();
     const navigateToLoginForm = () => Actions.loginForm();
+    
     return (
       <SplashImageContainer>
         <BlueButton onPress={navigateToLoginForm}>
           <Icon name='keyboard' size={18} /> {_.toUpper('Calculate Credits')}
         </BlueButton>
 
-        {
-          //<YellowButton onPress={navigateToLoginForm}>
-            //<Icon name='person' size={18} /> {_.toUpper('Sign In')}
-          //</YellowButton>
-        }
+
+        <YellowButton onPress={navigateToLoginForm}>
+          <Icon name='person' size={18} /> {_.toUpper('Sign In')}
+        </YellowButton>
+
       </SplashImageContainer>
     );
   }

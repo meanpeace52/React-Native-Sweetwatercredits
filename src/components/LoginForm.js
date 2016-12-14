@@ -4,18 +4,9 @@ import _ from 'lodash';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { connect } from 'react-redux';
 import { Container, BlueButton, Input, LogoTopMiddle, Spinner } from './common';
-import { emailChanged, passwordChanged, loginUser } from '../actions';
+import { loginUpdate, loginUser } from '../actions';
 
 class LoginForm extends Component {
-  onEmailChange(text) {
-    // Redux way of saying dispatch actionCreate to do this.setState({ email })
-    this.props.emailChanged(text);
-  }
-
-  onPasswordChange(text) {
-    this.props.passwordChanged(text);
-  }
-
   onButtonPress() {
     const { email, password } = this.props;
 
@@ -43,13 +34,13 @@ class LoginForm extends Component {
         <LogoTopMiddle />
         <Input
           placeholder="Email"
-          onChangeText={this.onEmailChange.bind(this)}
+          onChangeText={value => this.props.loginUpdate({ prop: 'email', value })}
           value={this.props.email}
         />
 
         <Input
           placeholder="Password"
-          onChangeText={this.onPasswordChange.bind(this)}
+          onChangeText={value => this.props.loginUpdate({ prop: 'password', value })}
           value={this.props.password}
           secureTextEntry
         />
@@ -95,7 +86,6 @@ const mapStateToProps = ({ auth }) => {
 };
 
 export default connect(mapStateToProps, {
-  emailChanged,
-  passwordChanged,
+  loginUpdate,
   loginUser
 })(LoginForm);
