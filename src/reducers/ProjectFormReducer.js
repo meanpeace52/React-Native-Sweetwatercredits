@@ -5,7 +5,6 @@ import {
 
 const INITIAL_STATE = {
   name: '',
-  zones: {}
 };
 
 export default (state = INITIAL_STATE, action) => {

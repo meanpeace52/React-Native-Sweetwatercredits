@@ -9,28 +9,6 @@ class ProjectListItem extends Component {
     Actions.projectEdit({ project: this.props.project });
   }
 
-  sumProjectZoneViolations() {
-    let sumPenaltys = 0;
-    const { zones } = this.props.project;
-    if (typeof zones !== 'undefined') {
-      for (const i in zones) {
-        if ({}.hasOwnProperty.call(zones, i)) {
-          const zone = zones[i];
-          const { ruleViolations } = zone;
-          if (typeof ruleViolations !== 'undefined') {
-            for (const j in ruleViolations) {
-              if ({}.hasOwnProperty.call(ruleViolations, j)) {
-                sumPenaltys += parseInt(ruleViolations[j].penalty, 10);
-              }
-            }
-          }
-        }
-      }
-    }
-
-    return sumPenaltys;
-  }
-
   render() {
     const { name } = this.props.project;
     const { titleStyle, creditTitleStyle, sectionStyle } = styles;
@@ -42,11 +20,9 @@ class ProjectListItem extends Component {
               <Icon name='domain' size={50} />
               <View>
                 <Text style={titleStyle}> {name} </Text>
-                <Text style={creditTitleStyle}> Credits: {this.sumProjectZoneViolations()}</Text>
+                <Text style={creditTitleStyle}> Credits: none</Text>
               </View>
-              {
-                //<Icon name='clear' size={40} />
-              }
+              <Icon name='clear' size={40} />
             </View>
           </CardSection>
         </View>

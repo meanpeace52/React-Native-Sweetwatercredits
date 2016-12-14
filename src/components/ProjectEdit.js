@@ -19,8 +19,8 @@ class ProjectEdit extends Component {
 
   onButtonPress() {
     const { name } = this.props;
-    const { uid, zones } = this.props.project;
-    this.props.projectSave({ name, uid, zones });
+    const { uid } = this.props.project;
+    this.props.projectSave({ name, uid });
   }
 
   onAccept() {
@@ -30,11 +30,6 @@ class ProjectEdit extends Component {
 
   onDecline() {
     this.setState({ showModal: false });
-  }
-
-  navigateToZones() {
-    const { uid } = this.props.project;
-    Actions.zonesList({ projectUid: uid });
   }
 
   render() {
@@ -48,7 +43,7 @@ class ProjectEdit extends Component {
           <Icon name='done' size={18} /> Update Project Name
         </BlueButton>
 
-        <BlueButton onPress={this.navigateToZones.bind(this)}>
+        <BlueButton>
           <Icon name='landscape' size={18} /> View/Edit Zones
         </BlueButton>
 

@@ -5,11 +5,6 @@ import LoginForm from './components/LoginForm';
 import ProjectsList from './components/ProjectsList';
 import ProjectCreate from './components/ProjectCreate';
 import ProjectEdit from './components/ProjectEdit';
-import ZonesList from './components/ZonesList';
-import ZoneCreate from './components/ZoneCreate';
-import ZoneEdit from './components/ZoneEdit';
-import RuleViolationsList from './components/RuleViolationsList';
-import RuleViolationCreate from './components/RuleViolationCreate';
 
 const RouterComponent = () => {
   return (
@@ -30,8 +25,8 @@ const RouterComponent = () => {
           key="projectsList"
           component={ProjectsList}
           title="Recent Projects"
-          // onRight={() => Actions.projectCreate()}
-          // rightTitle="Add"
+          onRight={() => Actions.projectCreate()}
+          rightTitle="Add"
           initial
         />
 
@@ -45,36 +40,6 @@ const RouterComponent = () => {
           key="projectEdit"
           component={ProjectEdit}
           title="Edit Project"
-        />
-
-        <Scene
-          key="zonesList"
-          component={ZonesList}
-          title="Project Zones"
-        />
-
-        <Scene
-          key="zoneCreate"
-          component={ZoneCreate}
-          title="Create a Zone"
-        />
-
-        <Scene
-          key="zoneEdit"
-          component={ZoneEdit}
-          title="Zone"
-        />
-
-        <Scene
-          key="ruleViolationsList"
-          component={RuleViolationsList}
-          title="Rule Violations"
-        />
-
-        <Scene
-          key="ruleViolationCreate"
-          component={RuleViolationCreate}
-          title="Add Rule Violation"
         />
 
       </Scene>

@@ -55,7 +55,6 @@ react-native run-ios
 * Explore test library options with JEST
 * Form styles
 * Refactor Actions
-* Remove Edit Action from zone
 
 
 **Andrew Vogel - 2016**
