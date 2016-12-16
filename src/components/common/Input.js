@@ -1,22 +1,25 @@
 import React from 'react';
 import { TextInput, View, TouchableHighlight, Text } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
-const Input = ({ label, value, onChangeText, placeholder, secureTextEntry }) => {
-  const { inputStyle, containerStyle, labelStyle } = styles;
+const Input = ({ icon, value, onChangeText, placeholder, secureTextEntry }) => {
+  const { inputStyle, containerStyle } = styles;
 
   return (
-    <View style={containerStyle}>
-      <Text style={labelStyle}>{label}</Text>
-      <TouchableHighlight>
-        <TextInput
-          secureTextEntry={secureTextEntry}
-          placeholder={placeholder}
-          autoCorrect={false}
-          style={inputStyle}
-          value={value}
-          onChangeText={onChangeText}
-        />
-      </TouchableHighlight>
+    <View>
+      <View style={containerStyle}>
+        <Icon name={icon} size={36} color="lightgray" />
+        <TouchableHighlight>
+          <TextInput
+            secureTextEntry={secureTextEntry}
+            placeholder={placeholder}
+            autoCorrect={false}
+            style={inputStyle}
+            value={value}
+            onChangeText={onChangeText}
+          />
+        </TouchableHighlight>
+      </View>
     </View>
   );
 };
@@ -25,18 +28,15 @@ const styles = {
   inputStyle: {
     height: 45,
     width: 300,
-    fontSize: 20
-  },
-  labelStyle: {
-    fontSize: 18,
-    paddingLeft: 20,
-    flex: 1
+    fontSize: 20,
+    paddingLeft: 25
   },
   containerStyle: {
     borderBottomColor: 'lightgray',
     borderBottomWidth: 1,
     marginBottom: 10,
-    marginTop: 10
+    marginTop: 10,
+    flexDirection: 'row'
   }
 };
 

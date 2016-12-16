@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Text, View } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import _ from 'lodash';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { connect } from 'react-redux';
-import { Container, BlueButton, Input, LogoTopMiddle, Spinner } from './common';
+import { Container, BlueButton, Button, Input, LogoTopMiddle, Spinner } from './common';
 import { loginFieldUpdate, loginUser } from '../actions';
 
 class LoginForm extends Component {
@@ -11,6 +12,10 @@ class LoginForm extends Component {
     const { email, password } = this.props;
 
     this.props.loginUser({ email, password });
+  }
+
+  navigateToRegister() {
+    Actions.registerForm();
   }
 
   renderButton() {
@@ -22,7 +27,7 @@ class LoginForm extends Component {
       <BlueButton
         onPress={this.onButtonPress.bind(this)}
       >
-        <Icon name='person' size={18} /> {_.toUpper('Sign In')}
+        <Icon name="input" size={16} /> {_.toUpper('Sign In')}
       </BlueButton>
     );
   }
@@ -36,18 +41,26 @@ class LoginForm extends Component {
           placeholder="Email"
           onChangeText={value => this.props.loginFieldUpdate({ prop: 'email', value })}
           value={this.props.email}
+          icon="person-outline"
         />
 
         <Input
           placeholder="Password"
           onChangeText={value => this.props.loginFieldUpdate({ prop: 'password', value })}
           value={this.props.password}
+          icon="lock-outline"
           secureTextEntry
         />
 
         <Text style={errorTextStyle}>{this.props.error}</Text>
 
         {this.renderButton()}
+
+        <Button
+          onPress={this.navigateToRegister.bind(this)}
+        >
+          <Icon name="person-add" size={16} /> {_.toUpper('Register')}
+        </Button>
 
         <View style={bottomTextContainer}>
           <Text style={centerText}>

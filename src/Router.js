@@ -5,6 +5,7 @@ import LoginForm from './components/LoginForm';
 import ProjectsList from './components/ProjectsList';
 import ProjectCreate from './components/ProjectCreate';
 import ProjectEdit from './components/ProjectEdit';
+import RegisterForm from './components/RegisterForm';
 
 const RouterComponent = () => {
   return (
@@ -18,6 +19,14 @@ const RouterComponent = () => {
           title="Login"
           hideNavBar={false}
         />
+
+        <Scene
+          key="registerForm"
+          component={RegisterForm}
+          title="Register"
+          hideNavBar={false}
+        />
+
       </Scene>
 
       <Scene key="projects">

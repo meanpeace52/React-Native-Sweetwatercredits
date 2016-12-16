@@ -40,11 +40,11 @@ class ProjectEdit extends Component {
         <ProjectForm />
 
         <BlueButton onPress={this.onButtonPress.bind(this)}>
-          <Icon name='done' size={18} /> Update Project Name
+          <Icon name='check-circle' size={18} /> Update Project Name
         </BlueButton>
 
         <BlueButton>
-          <Icon name='landscape' size={18} /> View/Edit Zones
+          <Icon name='nature-people' size={18} /> Disturbances
         </BlueButton>
 
         <YellowButton

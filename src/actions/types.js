@@ -9,6 +9,12 @@ export const LOGIN_USER_FAIL = 'login_user_fail';
 export const LOGIN_USER = 'login_user';
 export const LOGIN_FIELD_UPDATE = 'login_field_update';
 
+// Register
+export const REGISTER_FIELD_UPDATE = 'register_field_update';
+export const REGISTER_USER = 'register_user';
+export const REGISTER_USER_SUCCESS = 'register_user_success';
+export const REGISTER_USER_FAIL = 'register_user_fail';
+
 //  Projects
 export const PROJECT_UPDATE = 'project_update';
 export const PROJECT_CREATE = 'project_create';

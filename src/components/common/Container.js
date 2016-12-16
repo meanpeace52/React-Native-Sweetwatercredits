@@ -12,7 +12,6 @@ const Container = (props) => {
 
 const styles = {
   containerStyles: {
-    flex: 1,
     marginLeft: 25,
     marginRight: 25
   }

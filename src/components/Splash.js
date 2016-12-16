@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import _ from 'lodash';
-import { BlueButton, SplashImageContainer, YellowButton } from './common';
+import { BlueButton, Container, SplashImageContainer, YellowButton, Input } from './common';
 
 
 class Splash extends Component {
@@ -11,10 +11,19 @@ class Splash extends Component {
     const navigateToLoginForm = () => Actions.loginForm();
 
     return (
-      <View>
-        <Text> Splash </Text>
+      <SplashImageContainer>
+        <BlueButton
+          onPress={navigateToLoginForm}
+        >
+          {_.toUpper('Calculate Credits')}
+        </BlueButton>
 
-      </View>
+        <YellowButton
+          onPress={navigateToLoginForm}
+        >
+          {_.toUpper('Sign In')}
+        </YellowButton>
+      </SplashImageContainer>
     );
   }
 }

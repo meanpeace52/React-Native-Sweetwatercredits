@@ -17,7 +17,7 @@ class ProjectListItem extends Component {
         <View>
           <CardSection style={sectionStyle}>
             <View style={{ flexDirection: 'row', justifyContent: 'flex-start' }}>
-              <Icon name='domain' size={50} />
+              <Icon name='landscape' size={50} />
               <View>
                 <Text style={titleStyle}> {name} </Text>
                 <Text style={creditTitleStyle}> Credits: øøø</Text>
