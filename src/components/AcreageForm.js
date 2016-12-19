@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { View, Picker } from 'react-native';
-import { Card, CardSection, Input } from './common';
+import { connect } from 'react-redux';
+import { Card, Input } from './common';
+import { disturbanceUpdate } from '../actions';
 
 class AcreageForm extends Component {
   render() {
@@ -9,14 +11,14 @@ class AcreageForm extends Component {
         <Input
           icon="nature"
           placeholder="Acreage"
-          // onChangeText={}
+          onChangeText={value => this.props.disturbanceUpdate({ prop: 'acreage', value })}
           value={this.props.acreage}
         />
 
         <Card>
           <Picker
             selectedValue={this.props.zoneType}
-            // onValueChange={(lang) => this.setState({language: lang})}
+            onValueChange={value => this.props.disturbanceUpdate({ prop: 'zoneType', value })}
           >
             <Picker.Item label="Core" value="core" />
             <Picker.Item label="Non-Core" value="non-core" />
@@ -27,4 +29,16 @@ class AcreageForm extends Component {
   }
 }
 
-export default AcreageForm;
+const mapStateToProps = (state) => {
+  const {
+    project,
+    acreage,
+    zoneType,
+    primaryRuleViolation,
+    secondaryRuleViolation,
+    penalty } = state.disturbanceForm;
+
+    return { project, acreage, zoneType, primaryRuleViolation, secondaryRuleViolation, penalty };
+};
+
+export default connect(mapStateToProps, { disturbanceUpdate })(AcreageForm);
