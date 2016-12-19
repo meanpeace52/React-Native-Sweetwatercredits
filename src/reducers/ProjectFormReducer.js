@@ -5,6 +5,7 @@ import {
 
 const INITIAL_STATE = {
   name: '',
+  distrubances: {}
 };
 
 export default (state = INITIAL_STATE, action) => {

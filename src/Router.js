@@ -6,6 +6,8 @@ import ProjectsList from './components/ProjectsList';
 import ProjectCreate from './components/ProjectCreate';
 import ProjectEdit from './components/ProjectEdit';
 import RegisterForm from './components/RegisterForm';
+import DisturbancesList from './components/DisturbancesList';
+import DisturbanceCreate from './components/DisturbanceCreate';
 
 const RouterComponent = () => {
   return (
@@ -51,6 +53,17 @@ const RouterComponent = () => {
           title="Edit Project"
         />
 
+        <Scene
+          key="disturbancesList"
+          component={DisturbancesList}
+          title="Disturbances"
+        />
+
+        <Scene
+          key="disturbanceCreate"
+          component={DisturbanceCreate}
+          title="Add a Disturbance"
+        />
       </Scene>
     </Router>
   );

@@ -28,7 +28,6 @@ class RegisterForm extends Component {
   }
 
   render() {
-    console.log(this.props.error);
     const { errorTextStyle } = styles;
     return (
       <Container>

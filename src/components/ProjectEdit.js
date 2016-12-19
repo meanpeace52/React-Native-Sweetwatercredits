@@ -33,6 +33,7 @@ class ProjectEdit extends Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <Container>
         <LogoTopMiddle />
@@ -43,7 +44,9 @@ class ProjectEdit extends Component {
           <Icon name='check-circle' size={18} /> Update Project Name
         </BlueButton>
 
-        <BlueButton>
+        <BlueButton
+          onPress={() => Actions.disturbancesList({ project: this.props.project })}
+        >
           <Icon name='nature-people' size={18} /> Disturbances
         </BlueButton>
 
