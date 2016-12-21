@@ -6,7 +6,6 @@ import { Card } from './common';
 
 class DisturbanceLocationForm extends Component {
   render() {
-    console.log(this.props);
     const { switchTitle, flexEndMarginFive } = styles;
     return (
       <View>

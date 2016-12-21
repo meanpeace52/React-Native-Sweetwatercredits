@@ -24,3 +24,4 @@ export const PROJECT_SAVE_SUCCESS = 'project_save_success';
 // Disturbances
 export const DISTURBANCE_UPDATE = 'disturbance_update';
 export const DISTURBANCE_CREATE = 'disturbance_create';
+export const DISTURBANCE_FETCH_SUCCESS = 'disturbance_fetch_success';

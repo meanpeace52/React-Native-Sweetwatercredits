@@ -9,6 +9,7 @@ import RegisterForm from './components/RegisterForm';
 import DisturbancesList from './components/DisturbancesList';
 import DisturbanceCreate from './components/DisturbanceCreate';
 import DisturbanceZoneForm from './components/DisturbanceZoneForm';
+import DisturbanceShow from './components/DisturbanceShow';
 
 const RouterComponent = () => {
   return (
@@ -70,6 +71,12 @@ const RouterComponent = () => {
           key="disturbanceZoneForm"
           component={DisturbanceZoneForm}
           title="Add Disturbance"
+        />
+
+        <Scene
+          key="disturbanceShow"
+          component={DisturbanceShow}
+          title="Show Disturbance"
         />
       </Scene>
 
