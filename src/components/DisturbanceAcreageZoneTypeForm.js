@@ -6,6 +6,7 @@ import { disturbanceUpdate } from '../actions';
 
 class DisturbanceAcreageZoneTypeForm extends Component {
   render() {
+    const { label } = styles;
     return (
       <View>
         <Input
@@ -16,7 +17,7 @@ class DisturbanceAcreageZoneTypeForm extends Component {
         />
 
         <Text
-          style={{ fontWeight: 'bold', paddingLeft: 7, paddingTop: 15, fontSize: 18 }}
+          style={label}
         >
           Zone Type
         </Text>
@@ -33,6 +34,15 @@ class DisturbanceAcreageZoneTypeForm extends Component {
     );
   }
 }
+
+const styles = {
+  label: {
+    fontWeight: 'bold',
+    paddingLeft: 7,
+    paddingTop: 15,
+    fontSize: 18
+  }
+};
 
 const mapStateToProps = (state) => {
   const {

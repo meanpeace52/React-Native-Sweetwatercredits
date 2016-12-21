@@ -6,6 +6,16 @@ import { Card } from './common';
 import DisturbanceLocationForm from './DisturbanceLocationForm';
 
 class DisturbanceCore extends Component {
+  renderVunerableLocationForm() {
+    const { ruleViolation } = this.props;
+
+    if (ruleViolation !== 'impact') {
+      return (
+        <DisturbanceLocationForm {...this.props} />
+      );
+    }
+  }
+
   render() {
     console.log(this.props);
     return (
@@ -37,7 +47,7 @@ class DisturbanceCore extends Component {
             />
           </Picker>
         </Card>
-        <DisturbanceLocationForm {...this.props} />
+        {this.renderVunerableLocationForm()}
       </View>
     );
   }

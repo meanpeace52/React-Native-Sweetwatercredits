@@ -5,37 +5,28 @@ import { disturbanceUpdate } from '../actions';
 import { Card } from './common';
 
 class DisturbanceLocationForm extends Component {
-  renderVunerableLocationForm() {
-    const { ruleViolation, zoneType } = this.props;
-    const { switchTitle, flexEndMarginFive } = styles;
-    if ((ruleViolation !== 'timing' && zoneType === 'non-core') || (ruleViolation !== 'impact' && zoneType === 'core')) {
-      return (
-        <Card>
-          <Text style={switchTitle}> Located in a Vulnerable Landscape? </Text>
-          <View style={{ flexDirection: 'row', alignSelf: 'flex-end' }}>
-            <Text
-              style={switchTitle}
-            >
-              {this.props.vulnerableLocation ? 'Yes' : 'No'}
-            </Text>
-            <Switch
-              onValueChange={
-                value => this.props.disturbanceUpdate({ prop: 'vulnerableLocation', value })
-              }
-              value={this.props.vulnerableLocation}
-              style={flexEndMarginFive}
-            />
-          </View>
-        </Card>
-      );
-    }
-  }
-
   render() {
     console.log(this.props);
+    const { switchTitle, flexEndMarginFive } = styles;
     return (
       <View>
-        {this.renderVunerableLocationForm()}
+      <Card>
+        <Text style={switchTitle}> Located in a Vulnerable Landscape? </Text>
+        <View style={{ flexDirection: 'row', alignSelf: 'flex-end' }}>
+          <Text
+            style={switchTitle}
+          >
+            {this.props.vulnerableLocation ? 'Yes' : 'No'}
+          </Text>
+          <Switch
+            onValueChange={
+              value => this.props.disturbanceUpdate({ prop: 'vulnerableLocation', value })
+            }
+            value={this.props.vulnerableLocation}
+            style={flexEndMarginFive}
+          />
+        </View>
+      </Card>
       </View>
     );
   }
@@ -50,7 +41,6 @@ class DisturbanceLocationForm extends Component {
      alignSelf: 'flex-end',
      margin: 5
    }
-
  };
 
  const mapStateToProps = (state) => {

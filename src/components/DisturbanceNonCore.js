@@ -6,6 +6,16 @@ import { Card } from './common';
 import DisturbanceLocationForm from './DisturbanceLocationForm';
 
 class DisturbanceNonCore extends Component {
+  renderVunerableLocationForm() {
+    const { ruleViolation } = this.props;
+
+    if (ruleViolation !== 'timing') {
+      return (
+        <DisturbanceLocationForm {...this.props} />
+      );
+    }
+  }
+
   render() {
     return (
       <View>
@@ -18,7 +28,7 @@ class DisturbanceNonCore extends Component {
           <Picker.Item label="One year of timing stipulations?" value="timing" />
         </Picker>
         </Card>
-        <DisturbanceLocationForm {...this.props} />
+        {this.renderVunerableLocationForm()}
       </View>
     );
   }
