@@ -1,26 +1,50 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { disturbanceCreate } from '../actions';
-import DisturbanceForm from './DisturbanceForm';
+import { Actions } from 'react-native-router-flux';
+import { disturbanceUpdate } from '../actions';
+import { Container, LogoTopMiddle, BlueButton } from './common';
+import DisturbanceAcreageZoneTypeForm from './DisturbanceAcreageZoneTypeForm';
 
 class DisturbanceCreate extends Component {
+  onButtonPress() {
+    const { project, zoneType, acreage } = this.props;
+    Actions.disturbanceZoneForm({ project, zoneType, acreage });
+  }
+
+  renderButton() {
+    const { acreage } = this.props;
+    if (acreage) {
+      return (
+        <BlueButton
+          onPress={this.onButtonPress.bind(this)}
+        >
+          Next
+        </BlueButton>
+      );
+    }
+  }
+
   render() {
     return (
-      <DisturbanceForm />
+      <Container>
+        <LogoTopMiddle />
+        <DisturbanceAcreageZoneTypeForm {...this.props} />
+        {this.renderButton()}
+      </Container>
     );
   }
 }
 
 const mapStateToProps = ({ disturbanceForm }) => {
   const {
-    project,
+    projectUid,
     acreage,
     zoneType,
-    primaryRuleViolation,
-    secondaryRuleViolation,
-    penalty } = disturbanceForm;
+    ruleViolation,
+    vulnerableLocation,
+    penaltyAmount } = disturbanceForm;
 
-    return { project, acreage, zoneType, primaryRuleViolation, secondaryRuleViolation, penalty };
+    return { projectUid, acreage, zoneType, ruleViolation, vulnerableLocation, penaltyAmount };
 };
 
-export default connect(mapStateToProps, { disturbanceCreate })(DisturbanceCreate);
+export default connect(mapStateToProps, { disturbanceUpdate })(DisturbanceCreate);

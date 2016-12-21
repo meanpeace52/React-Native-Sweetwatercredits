@@ -5,19 +5,24 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import { BlueButton, Container, LogoTopMiddle } from './common';
 
 class DisturbancesList extends Component {
+  onButtonPress() {
+    const { project } = this.props;
+    Actions.disturbanceCreate({ project });
+  }
+
   render() {
     console.log(this.props);
     return (
       <Container>
         <LogoTopMiddle />
         <BlueButton
-          onPress={() => Actions.disturbanceCreate()}
+          onPress={this.onButtonPress.bind(this)}
         >
           <Icon name="add" size={18} /> Add Disturbance
         </BlueButton>
 
       </Container>
-    )
+    );
   }
  }
 

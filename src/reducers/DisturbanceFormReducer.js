@@ -1,11 +1,11 @@
 import { DISTURBANCE_CREATE, DISTURBANCE_UPDATE } from '../actions/types';
 
 const INITIAL_STATE = {
-  // project: '',
+  projectUid: '',
   acreage: '',
   zoneType: 'Core',
-  primaryRuleViolation: '',
-  secondaryRuleViolation: '',
+  ruleViolation: 'impact',
+  vulnerableLocation: false,
   penaltyAmount: '0'
 };
 

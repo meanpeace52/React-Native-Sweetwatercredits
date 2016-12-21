@@ -8,6 +8,7 @@ import ProjectEdit from './components/ProjectEdit';
 import RegisterForm from './components/RegisterForm';
 import DisturbancesList from './components/DisturbancesList';
 import DisturbanceCreate from './components/DisturbanceCreate';
+import DisturbanceZoneForm from './components/DisturbanceZoneForm';
 
 const RouterComponent = () => {
   return (
@@ -64,7 +65,14 @@ const RouterComponent = () => {
           component={DisturbanceCreate}
           title="Add a Disturbance"
         />
+
+        <Scene
+          key="disturbanceZoneForm"
+          component={DisturbanceZoneForm}
+          title="Add Disturbance"
+        />
       </Scene>
+
     </Router>
   );
 };

@@ -1,4 +1,5 @@
 import firebase from 'firebase';
+import { Actions } from 'react-native-router-flux';
 import { DISTURBANCE_CREATE, DISTURBANCE_UPDATE } from './types';
 
 export const disturbanceUpdate = ({ prop, value }) => {
@@ -9,26 +10,28 @@ export const disturbanceUpdate = ({ prop, value }) => {
 };
 
 export const disturbanceCreate = ({
-  project,
+  projectUid,
   acreage,
   zoneType,
-  primaryRuleViolation,
-  secondaryRuleViolation,
+  ruleViolation,
+  vulnerableLocation,
   penaltyAmount }) => {
     const { currentUser } = firebase.auth();
 
     return (dispatch) => {
           firebase.database().ref(`users/${currentUser.uid}/disturbances`)
-          .push({ project,
-          acreage,
-          zoneType,
-          primaryRuleViolation,
-          secondaryRuleViolation,
-          penaltyAmount })
+          .push({
+            projectUid,
+            acreage,
+            zoneType,
+            ruleViolation,
+            vulnerableLocation,
+            penaltyAmount
+          })
          .then(() => {
            dispatch({ type: DISTURBANCE_CREATE });
           //  go to the disturbance
-          //  Actions.projectsList({ type: 'reset' });
+          Actions.disturbancesList({ type: 'reset' });
          }
        );
     };
