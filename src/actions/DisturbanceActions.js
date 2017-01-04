@@ -16,12 +16,6 @@ export const disturbanceCreate = ({
   ruleViolation,
   vulnerableLocation,
   penaltyAmount }) => {
-    console.log(projectUid);
-    console.log(acreage);
-    console.log(zoneType);
-    console.log(ruleViolation);
-    console.log(vulnerableLocation);
-    console.log(penaltyAmount);
     const { currentUser } = firebase.auth();
 
     return (dispatch) => {
@@ -38,8 +32,8 @@ export const disturbanceCreate = ({
           //  TODO: go to the disturbance
 
           // TODO: Not this lol
-          Actions.pop();
-          Actions.pop();
+          Actions.pop({ popNum: 2 });
+          //Actions.disturbanceShow({ disturbance });
          }
        );
     };
@@ -52,7 +46,6 @@ export const disturbancesFetch = ({ projectUid }) => {
   return (dispatch) => {
     firebase.database().ref(`users/${currentUser.uid}/projects/${projectUid}/disturbances/`)
       .on('value', snapshot => {
-        console.log(snapshot.val());
         dispatch({ type: DISTURBANCE_FETCH_SUCCESS, payload: snapshot.val() });
       });
   };

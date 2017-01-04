@@ -1,5 +1,8 @@
 import React from 'react';
-import { Actions, Router, Scene } from 'react-native-router-flux';
+import {
+  // Actions, 
+  Router,
+  Scene } from 'react-native-router-flux';
 import Splash from './components/Splash';
 import LoginForm from './components/LoginForm';
 import ProjectsList from './components/ProjectsList';
@@ -15,7 +18,11 @@ const RouterComponent = () => {
   return (
     <Router>
       <Scene key="root">
-        <Scene key="splash" component={Splash} hideNavBar={true} initial />
+        <Scene key="splash"
+          component={Splash}
+          hideNavBar={true}
+          initial
+        />
 
         <Scene
           key="loginForm"
@@ -38,8 +45,8 @@ const RouterComponent = () => {
           key="projectsList"
           component={ProjectsList}
           title="Recent Projects"
-          onRight={() => Actions.projectCreate()}
-          rightTitle="Add"
+          //onRight={() => Actions.projectCreate()}
+          //rightTitle="Add"
           initial
         />
 

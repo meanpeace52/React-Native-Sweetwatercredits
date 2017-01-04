@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Text, TouchableWithoutFeedback, View } from 'react-native';
+import _ from 'lodash';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Actions } from 'react-native-router-flux';
 import { CardSection } from './common';
@@ -8,6 +9,17 @@ class ProjectListItem extends Component {
   onRowPress() {
     Actions.projectEdit({ project: this.props.project });
   }
+
+  sumPenaltys() {
+    const disturbances = _.map(this.props.project.disturbances, (val, uid) => {
+        return { ...val, uid };
+    });
+
+    const disturbancesPenaltyTotal =
+      disturbances.reduce((acc, disturbance) => acc + parseInt(disturbance.penaltyAmount, 10), 0);
+    return disturbancesPenaltyTotal;
+  }
+
 
   render() {
     const { name } = this.props.project;
@@ -20,7 +32,7 @@ class ProjectListItem extends Component {
               <Icon name='landscape' size={50} />
               <View>
                 <Text style={titleStyle}> {name} </Text>
-                <Text style={creditTitleStyle}> Credits: øøø</Text>
+                <Text style={creditTitleStyle}> Credits: {this.sumPenaltys()}</Text>
               </View>
             </View>
           </CardSection>

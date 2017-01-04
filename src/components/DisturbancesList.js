@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ListView } from 'react-native';
+import { ListView, Text } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import _ from 'lodash';
 import { connect } from 'react-redux';
@@ -33,8 +33,11 @@ class DisturbancesList extends Component {
     this.dataSource = ds.cloneWithRows(disturbances);
   }
 
-  navigateToProjectCreate() {
-    Actions.projectCreate();
+  sumPenaltys() {
+    const { disturbances } = this.props;
+    const disturbancesPenaltyTotal =
+      disturbances.reduce((acc, disturbance) => acc + parseInt(disturbance.penaltyAmount, 10), 0);
+    return disturbancesPenaltyTotal;
   }
 
   renderRow(disturbance) {
@@ -42,7 +45,7 @@ class DisturbancesList extends Component {
   }
 
   render() {
-    console.log(this.props);
+    const { penaltyText } = styles;
     return (
       <Container>
         <LogoTopMiddle />
@@ -60,10 +63,19 @@ class DisturbancesList extends Component {
           />
         </Card>
 
+        <Text style={penaltyText}> Total Credit Amount: {this.sumPenaltys()}</Text>
       </Container>
     );
   }
  }
+
+const styles = {
+  penaltyText: {
+    textAlign: 'center',
+    fontSize: 18,
+    paddingTop: 15
+  }
+};
 
 const mapStateToProps = state => {
   const disturbances = _.map(state.disturbances, (val, uid) => {
@@ -72,6 +84,5 @@ const mapStateToProps = state => {
 
   return { disturbances };
 };
-
 
 export default connect(mapStateToProps, { disturbancesFetch })(DisturbancesList);

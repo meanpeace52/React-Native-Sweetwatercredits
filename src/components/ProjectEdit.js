@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Text } from 'react-native';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -32,7 +33,18 @@ class ProjectEdit extends Component {
     this.setState({ showModal: false });
   }
 
+  sumPenaltys() {
+    const disturbances = _.map(this.props.project.disturbances, (val, uid) => {
+        return { ...val, uid };
+    });
+
+    const disturbancesPenaltyTotal =
+      disturbances.reduce((acc, disturbance) => acc + parseInt(disturbance.penaltyAmount, 10), 0);
+    return disturbancesPenaltyTotal;
+  }
+
   render() {
+    const { penaltyText } = styles;
     return (
       <Container>
         <LogoTopMiddle />
@@ -55,6 +67,8 @@ class ProjectEdit extends Component {
           <Icon name='delete' size={18} /> Delete Project
         </YellowButton>
 
+        <Text style={penaltyText}> Total Credit Amount: {this.sumPenaltys()}</Text>
+
         <Confirm
           visible={this.state.showModal}
           onAccept={this.onAccept.bind(this)}
@@ -66,6 +80,14 @@ class ProjectEdit extends Component {
     );
   }
 }
+
+const styles = {
+  penaltyText: {
+    textAlign: 'center',
+    fontSize: 18,
+    paddingTop: 15
+  }
+};
 
 const mapStateToProps = (state) => {
   const { name } = state.projectForm;

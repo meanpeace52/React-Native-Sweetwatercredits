@@ -12,15 +12,48 @@ class DisturbanceZoneForm extends Component {
       ruleViolation,
       vulnerableLocation,
       zoneType,
-      acreage,
-      penaltyAmount } = this.props;
+      acreage
+    } = this.props;
+
+    let penalty = 0;
+    if (zoneType === 'core') {
+      if (ruleViolation === 'sitting'
+          || ruleViolation === 'roads'
+          || ruleViolation === 'activity') {
+        if (vulnerableLocation === 'non-vulnerable') {
+          penalty = 12 * parseInt(acreage, 12);
+        } else {
+          penalty = 16 * parseInt(acreage, 10);
+        }
+      } else if (ruleViolation === 'disturbance') {
+        if (vulnerableLocation === 'non-vulnerable') {
+          penalty = 6 * parseInt(acreage, 12);
+        } else {
+          penalty = 8 * parseInt(acreage, 10);
+        }
+      } else {
+        penalty = 10;
+      }
+    } else {
+      // non-core
+      if (ruleViolation === 'impact') {
+        if (vulnerableLocation === 'non-vulnerable') {
+          penalty = 12 * parseInt(acreage, 12);
+        } else {
+          penalty = 16 * parseInt(acreage, 10);
+        }
+      } else {
+        penalty = 10;
+      }
+    }
+
     this.props.disturbanceCreate({
       projectUid: project.uid,
       ruleViolation,
       vulnerableLocation,
       zoneType,
       acreage,
-      penaltyAmount
+      penaltyAmount: penalty
     });
   }
 

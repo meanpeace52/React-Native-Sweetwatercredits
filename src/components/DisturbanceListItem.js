@@ -11,7 +11,6 @@ class DisturbanceListItem extends Component {
   }
 
   render() {
-    console.log(this.props);
     const {
       acreage,
       zoneType,
