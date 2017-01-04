@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import { Text } from 'react-native';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Actions } from 'react-native-router-flux';
 import ProjectForm from './ProjectForm';
 import { projectUpdate, projectSave, projectDelete } from '../actions';
-import { Container, BlueButton, Confirm, LogoTopLeft, YellowButton } from './common';
+import { Container, BlueButton, Confirm, LogoTopMiddle, YellowButton } from './common';
 
 class ProjectEdit extends Component {
   state = { showModal: false };
@@ -19,8 +20,8 @@ class ProjectEdit extends Component {
 
   onButtonPress() {
     const { name } = this.props;
-    const { uid, zones } = this.props.project;
-    this.props.projectSave({ name, uid, zones });
+    const { uid } = this.props.project;
+    this.props.projectSave({ name, uid });
   }
 
   onAccept() {
@@ -32,34 +33,41 @@ class ProjectEdit extends Component {
     this.setState({ showModal: false });
   }
 
-  navigateToZones() {
-    const { uid } = this.props.project;
-    Actions.zonesList({ projectUid: uid });
+  sumPenaltys() {
+    const disturbances = _.map(this.props.project.disturbances, (val, uid) => {
+        return { ...val, uid };
+    });
+
+    const disturbancesPenaltyTotal =
+      disturbances.reduce((acc, disturbance) => acc + parseInt(disturbance.penaltyAmount, 10), 0);
+    return disturbancesPenaltyTotal;
   }
 
   render() {
+    const { penaltyText } = styles;
     return (
       <Container>
-        <LogoTopLeft />
+        <LogoTopMiddle />
 
         <ProjectForm />
 
         <BlueButton onPress={this.onButtonPress.bind(this)}>
-          <Icon name='done' size={14} />
-          Save Changes
+          <Icon name='check-circle' size={18} /> Update Project Name
         </BlueButton>
 
-        <BlueButton onPress={this.navigateToZones.bind(this)}>
-          <Icon name='landscape' size={14} />
-          Zones
+        <BlueButton
+          onPress={() => Actions.disturbancesList({ project: this.props.project })}
+        >
+          <Icon name='nature-people' size={18} /> Disturbances
         </BlueButton>
 
         <YellowButton
           onPress={() => this.setState({ showModal: !this.state.showModal })}
         >
-          <Icon name='delete' size={14} />
-          Delete Project
+          <Icon name='delete' size={18} /> Delete Project
         </YellowButton>
+
+        <Text style={penaltyText}> Total Credit Amount: {this.sumPenaltys()}</Text>
 
         <Confirm
           visible={this.state.showModal}
@@ -72,6 +80,14 @@ class ProjectEdit extends Component {
     );
   }
 }
+
+const styles = {
+  penaltyText: {
+    textAlign: 'center',
+    fontSize: 18,
+    paddingTop: 15
+  }
+};
 
 const mapStateToProps = (state) => {
   const { name } = state.projectForm;

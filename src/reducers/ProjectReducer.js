@@ -10,5 +10,3 @@ export default (state = INITIAL_STATE, action) => {
       return state;
   }
 };
-// update an indivudual record with the follwoing
-// retrun { ...state, [id]: action.payload }

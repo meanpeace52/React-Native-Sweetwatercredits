@@ -1,38 +1,35 @@
 import React, { Component } from 'react';
 import { Text, TouchableWithoutFeedback, View } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import _ from 'lodash';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { Actions } from 'react-native-router-flux';
 import { CardSection } from './common';
 
-class ProjectListItem extends Component {
+class DisturbanceListItem extends Component {
   onRowPress() {
-    Actions.projectEdit({ project: this.props.project });
+    Actions.disturbanceShow({ disturbance: this.props.disturbance });
   }
-
-  sumPenaltys() {
-    const disturbances = _.map(this.props.project.disturbances, (val, uid) => {
-        return { ...val, uid };
-    });
-
-    const disturbancesPenaltyTotal =
-      disturbances.reduce((acc, disturbance) => acc + parseInt(disturbance.penaltyAmount, 10), 0);
-    return disturbancesPenaltyTotal;
-  }
-
 
   render() {
-    const { name } = this.props.project;
+    const {
+      acreage,
+      zoneType,
+      ruleViolation,
+      penaltyAmount } = this.props.disturbance;
+
     const { titleStyle, creditTitleStyle, sectionStyle } = styles;
     return (
-      <TouchableWithoutFeedback onPress={this.onRowPress.bind(this)}>
+      <TouchableWithoutFeedback
+        onPress={this.onRowPress.bind(this)}
+      >
         <View>
           <CardSection style={sectionStyle}>
             <View style={{ flexDirection: 'row', justifyContent: 'flex-start' }}>
-              <Icon name='landscape' size={50} />
+              <Icon name='nature-people' size={50} />
               <View>
-                <Text style={titleStyle}> {name} </Text>
-                <Text style={creditTitleStyle}> Credits: {this.sumPenaltys()}</Text>
+                <Text style={titleStyle}> {_.capitalize(ruleViolation)} Disturbance </Text>
+                <Text style={creditTitleStyle}> {acreage} Acres</Text>
+                <Text style={creditTitleStyle}> {zoneType} Credits: {penaltyAmount}</Text>
               </View>
             </View>
           </CardSection>
@@ -58,4 +55,4 @@ const styles = {
   }
 };
 
-export default ProjectListItem;
+export default DisturbanceListItem;

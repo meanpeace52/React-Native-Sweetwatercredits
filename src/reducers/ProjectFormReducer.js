@@ -5,7 +5,7 @@ import {
 
 const INITIAL_STATE = {
   name: '',
-  zones: {}
+  distrubances: {}
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -13,7 +13,6 @@ export default (state = INITIAL_STATE, action) => {
     case PROJECT_UPDATE:
       return { ...state, [action.payload.prop]: action.payload.value };
     case PROJECT_CREATE:
-      // clears out the form
       return INITIAL_STATE;
     case PROJECT_SAVE_SUCCESS:
       return INITIAL_STATE;

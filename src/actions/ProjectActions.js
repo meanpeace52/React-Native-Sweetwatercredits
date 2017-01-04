@@ -17,13 +17,13 @@ export const projectCreate = ({ name }) => {
   const { currentUser } = firebase.auth();
   // users/uidash34123872187/projects
   return (dispatch) => {
-    firebase.database().ref(`users/${currentUser.uid}/projects`)
-      .push({ name })
-      .then(() => {
-        dispatch({ type: PROJECT_CREATE });
-        Actions.projectsList({ type: 'reset' });
-      }
-    );
+        firebase.database().ref(`users/${currentUser.uid}/projects`)
+        .push({ name })
+       .then(() => {
+         dispatch({ type: PROJECT_CREATE });
+         Actions.projectsList({ type: 'reset' });
+       }
+     );
   };
 };
 
@@ -39,12 +39,12 @@ export const projectsFetch = () => {
   };
 };
 
-export const projectSave = ({ name, uid, zones }) => {
+export const projectSave = ({ name, uid }) => {
   const { currentUser } = firebase.auth();
 
   return (dispatch) => {
     firebase.database().ref(`/users/${currentUser.uid}/projects/${uid}`)
-      .set({ name, zones })
+      .set({ name })
       .then(() => {
           dispatch({ type: PROJECT_SAVE_SUCCESS });
           Actions.projectsList({ type: 'reset' });

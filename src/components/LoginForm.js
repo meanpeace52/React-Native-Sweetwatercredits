@@ -1,25 +1,21 @@
 import React, { Component } from 'react';
 import { Text, View } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import _ from 'lodash';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { connect } from 'react-redux';
-import { Container, BlueButton, Input, LogoTopMiddle, Spinner } from './common';
-import { emailChanged, passwordChanged, loginUser } from '../actions';
+import { Container, BlueButton, Button, Input, LogoTopMiddle, Spinner } from './common';
+import { loginFieldUpdate, loginUser } from '../actions';
 
 class LoginForm extends Component {
-  onEmailChange(text) {
-    // Redux way of saying dispatch actionCreate to do this.setState({ email })
-    this.props.emailChanged(text);
-  }
-
-  onPasswordChange(text) {
-    this.props.passwordChanged(text);
-  }
-
   onButtonPress() {
     const { email, password } = this.props;
 
     this.props.loginUser({ email, password });
+  }
+
+  navigateToRegister() {
+    Actions.registerForm();
   }
 
   renderButton() {
@@ -29,11 +25,10 @@ class LoginForm extends Component {
 
     return (
       <BlueButton
-      onPress={this.onButtonPress.bind(this)}
+        onPress={this.onButtonPress.bind(this)}
       >
-      <Icon name='person' size={14} />
-      {_.toUpper('Sign In')}
-    </BlueButton>
+        <Icon name="input" size={16} /> {_.toUpper('Sign In')}
+      </BlueButton>
     );
   }
 
@@ -44,14 +39,16 @@ class LoginForm extends Component {
         <LogoTopMiddle />
         <Input
           placeholder="Email"
-          onChangeText={this.onEmailChange.bind(this)}
+          onChangeText={value => this.props.loginFieldUpdate({ prop: 'email', value })}
           value={this.props.email}
+          icon="person-outline"
         />
 
         <Input
           placeholder="Password"
-          onChangeText={this.onPasswordChange.bind(this)}
+          onChangeText={value => this.props.loginFieldUpdate({ prop: 'password', value })}
           value={this.props.password}
+          icon="lock-outline"
           secureTextEntry
         />
 
@@ -59,10 +56,15 @@ class LoginForm extends Component {
 
         {this.renderButton()}
 
+        <Button
+          onPress={this.navigateToRegister.bind(this)}
+        >
+          <Icon name="person-add" size={16} /> {_.toUpper('Register')}
+        </Button>
+
         <View style={bottomTextContainer}>
           <Text style={centerText}>
-            Registration is required to save, edit and share calculations. To us
-            e the calculator without registering, click here.
+            Registration is required to save and edit calculations.
           </Text>
         </View>
       </Container>
@@ -97,7 +99,6 @@ const mapStateToProps = ({ auth }) => {
 };
 
 export default connect(mapStateToProps, {
-  emailChanged,
-  passwordChanged,
+  loginFieldUpdate,
   loginUser
 })(LoginForm);

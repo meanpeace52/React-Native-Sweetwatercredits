@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { BlueButton, Container, LogoTopLeft } from './common';
+import { BlueButton, Container, LogoTopMiddle } from './common';
 import { projectCreate } from '../actions';
 import ProjectForm from './ProjectForm';
 
@@ -15,13 +15,13 @@ class ProjectCreate extends Component {
   render() {
     return (
       <Container>
-        <LogoTopLeft />
-        
+        <LogoTopMiddle />
+
         <ProjectForm {...this.props} />
         <BlueButton
           onPress={this.onButtonPress.bind(this)}
         >
-          <Icon name='domain' size={14} />
+          <Icon name='domain' size={18} />
           {_.toUpper('Create New Project')}
         </BlueButton>
       </Container>

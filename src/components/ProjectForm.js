@@ -8,6 +8,7 @@ class ProjectForm extends Component {
   render() {
     return (
       <Input
+        icon="landscape"
         placeholder="Project Name"
         onChangeText={value => this.props.projectUpdate({ prop: 'name', value })}
         value={this.props.name}

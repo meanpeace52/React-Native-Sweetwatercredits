@@ -1,21 +1,28 @@
 import React from 'react';
-import { Actions, Router, Scene } from 'react-native-router-flux';
+import {
+  // Actions, 
+  Router,
+  Scene } from 'react-native-router-flux';
 import Splash from './components/Splash';
 import LoginForm from './components/LoginForm';
 import ProjectsList from './components/ProjectsList';
 import ProjectCreate from './components/ProjectCreate';
 import ProjectEdit from './components/ProjectEdit';
-import ZonesList from './components/ZonesList';
-import ZoneCreate from './components/ZoneCreate';
-import ZoneEdit from './components/ZoneEdit';
-import RuleViolationsList from './components/RuleViolationsList';
-import RuleViolationCreate from './components/RuleViolationCreate';
+import RegisterForm from './components/RegisterForm';
+import DisturbancesList from './components/DisturbancesList';
+import DisturbanceCreate from './components/DisturbanceCreate';
+import DisturbanceZoneForm from './components/DisturbanceZoneForm';
+import DisturbanceShow from './components/DisturbanceShow';
 
 const RouterComponent = () => {
   return (
     <Router>
       <Scene key="root">
-        <Scene key="splash" component={Splash} hideNavBar={true} initial />
+        <Scene key="splash"
+          component={Splash}
+          hideNavBar={true}
+          initial
+        />
 
         <Scene
           key="loginForm"
@@ -23,6 +30,14 @@ const RouterComponent = () => {
           title="Login"
           hideNavBar={false}
         />
+
+        <Scene
+          key="registerForm"
+          component={RegisterForm}
+          title="Register"
+          hideNavBar={false}
+        />
+
       </Scene>
 
       <Scene key="projects">
@@ -30,8 +45,8 @@ const RouterComponent = () => {
           key="projectsList"
           component={ProjectsList}
           title="Recent Projects"
-          // onRight={() => Actions.projectCreate()}
-          // rightTitle="Add"
+          //onRight={() => Actions.projectCreate()}
+          //rightTitle="Add"
           initial
         />
 
@@ -48,36 +63,30 @@ const RouterComponent = () => {
         />
 
         <Scene
-          key="zonesList"
-          component={ZonesList}
-          title="Project Zones"
+          key="disturbancesList"
+          component={DisturbancesList}
+          title="Disturbances"
         />
 
         <Scene
-          key="zoneCreate"
-          component={ZoneCreate}
-          title="Create a Zone"
+          key="disturbanceCreate"
+          component={DisturbanceCreate}
+          title="Add a Disturbance"
         />
 
         <Scene
-          key="zoneEdit"
-          component={ZoneEdit}
-          title="Edit Zone"
+          key="disturbanceZoneForm"
+          component={DisturbanceZoneForm}
+          title="Add Disturbance"
         />
 
         <Scene
-          key="ruleViolationsList"
-          component={RuleViolationsList}
-          title="Rule Violations"
+          key="disturbanceShow"
+          component={DisturbanceShow}
+          title="Show Disturbance"
         />
-
-        <Scene
-          key="ruleViolationCreate"
-          component={RuleViolationCreate}
-          title="Add Rule Violation"
-        />
-
       </Scene>
+
     </Router>
   );
 };

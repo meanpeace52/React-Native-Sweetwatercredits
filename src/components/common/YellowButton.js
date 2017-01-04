@@ -17,22 +17,23 @@ const YellowButton = ({ onPress, children }) => {
 };
 
 const styles = {
-  buttonStyle: {
-    alignItems: 'center',
-    alignSelf: 'center',
-    backgroundColor: '#FFC107',
-    borderRadius: 2,
-    height: 36,
-    justifyContent: 'center',
-    marginTop: 10,
-    marginBottom: 10,
-    width: 220
-  },
   textStyle: {
+    alignSelf: 'center',
     color: 'black',
-    fontFamily: 'Helvetica',
-    fontSize: 16,
-    textAlign: 'center'
+    fontSize: 20,
+    fontWeight: '600',
+    paddingTop: 10,
+    paddingBottom: 10
+  },
+  buttonStyle: {
+    flex: 1,
+    alignSelf: 'stretch',
+    backgroundColor: '#FFC107',
+    borderRadius: 5,
+    marginLeft: 5,
+    marginRight: 5,
+    elevation: 1,
+    marginTop: 5
   }
 };
 

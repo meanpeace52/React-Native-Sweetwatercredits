@@ -1,14 +1,11 @@
 import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
 
-const BlueButton = ({ onPress, children }) => {
+const Button = ({ onPress, children }) => {
   const { buttonStyle, textStyle } = styles;
 
   return (
-    <TouchableOpacity
-      style={buttonStyle}
-      onPress={onPress}
-    >
+    <TouchableOpacity onPress={onPress} style={buttonStyle}>
       <Text style={textStyle}>
         {children}
       </Text>
@@ -19,7 +16,7 @@ const BlueButton = ({ onPress, children }) => {
 const styles = {
   textStyle: {
     alignSelf: 'center',
-    color: 'white',
+    color: '#3F51B5',
     fontSize: 20,
     fontWeight: '600',
     paddingTop: 10,
@@ -28,8 +25,10 @@ const styles = {
   buttonStyle: {
     flex: 1,
     alignSelf: 'stretch',
-    backgroundColor: '#3F51B5',
+    backgroundColor: '#fff',
     borderRadius: 5,
+    borderWidth: 1,
+    borderColor: '#3F51B5',
     marginLeft: 5,
     marginRight: 5,
     elevation: 1,
@@ -37,4 +36,4 @@ const styles = {
   }
 };
 
-export { BlueButton };
+export { Button };

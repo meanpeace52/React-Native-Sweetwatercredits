@@ -1,10 +1,10 @@
-import { ZONE_FETCH_SUCCESS } from '../actions/types';
+import { DISTURBANCE_FETCH_SUCCESS } from '../actions/types';
 
 const INITIAL_STATE = {};
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case ZONE_FETCH_SUCCESS :
+    case DISTURBANCE_FETCH_SUCCESS :
       return action.payload;
     default:
       return state;

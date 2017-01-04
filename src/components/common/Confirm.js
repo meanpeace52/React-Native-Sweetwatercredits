@@ -2,7 +2,7 @@ import React from 'react';
 import _ from 'lodash';
 import { Text, View, Modal } from 'react-native';
 import { CardSection } from './CardSection';
-import { BlueButton } from './BlueButton';
+import { Button } from './Button';
 
 
 const Confirm = ({ children, visible, onAccept, onDecline }) => {
@@ -20,8 +20,8 @@ const Confirm = ({ children, visible, onAccept, onDecline }) => {
         </CardSection>
 
         <CardSection style={cardSectionStyle}>
-        <BlueButton onPress={onAccept}>{_.toUpper('yes')}</BlueButton>
-        <BlueButton onPress={onDecline}>{_.toUpper('no')}</BlueButton>
+          <Button onPress={onAccept}>{_.toUpper('yes')}</Button>
+          <Button onPress={onDecline}>{_.toUpper('no')}</Button>
         </CardSection>
       </View>
     </Modal>
