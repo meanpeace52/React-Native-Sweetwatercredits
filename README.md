@@ -2,6 +2,17 @@
 
 #### Mobile app source code for the Sweetwater River Conservancy. App users can calculate the amount of credits they have on a plot of land by filling out the forms in the app.
 
+**Build Status**
+
+Dev:
+[![BuddyBuild](https://dashboard.buddybuild.com/api/statusImage?appID=5841d75786fe870100f28e47&branch=dev&build=latest)](https://dashboard.buddybuild.com/apps/5841d75786fe870100f28e47/build/latest?branch=dev)
+
+Staging:
+[![BuddyBuild](https://dashboard.buddybuild.com/api/statusImage?appID=5841d75786fe870100f28e47&branch=staging&build=latest)](https://dashboard.buddybuild.com/apps/5841d75786fe870100f28e47/build/latest?branch=staging)
+
+Master:
+[![BuddyBuild](https://dashboard.buddybuild.com/api/statusImage?appID=5841d75786fe870100f28e47&branch=master&build=latest)](https://dashboard.buddybuild.com/apps/5841d75786fe870100f28e47/build/latest?branch=master)
+
 **Project Stack**
 
 * **ReactNative**
