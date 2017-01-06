@@ -1,48 +1,73 @@
-![swrc](docs/swrc-blue.gif)
+# SweetwaterCredits  
 
-# SweetwaterCredits
 #### Mobile app source code for the Sweetwater River Conservancy. App users can calculate the amount of credits they have on a plot of land by filling out the forms in the app.
 
 **Build Status**
 
-* Staging- > here
-* Production- > here
+Dev:
+[![BuddyBuild](https://dashboard.buddybuild.com/api/statusImage?appID=5841d75786fe870100f28e47&branch=dev&build=latest)](https://dashboard.buddybuild.com/apps/5841d75786fe870100f28e47/build/latest?branch=dev)
+
+Staging:
+[![BuddyBuild](https://dashboard.buddybuild.com/api/statusImage?appID=5841d75786fe870100f28e47&branch=staging&build=latest)](https://dashboard.buddybuild.com/apps/5841d75786fe870100f28e47/build/latest?branch=staging)
+
+Master:
+[![BuddyBuild](https://dashboard.buddybuild.com/api/statusImage?appID=5841d75786fe870100f28e47&branch=master&build=latest)](https://dashboard.buddybuild.com/apps/5841d75786fe870100f28e47/build/latest?branch=master)
 
 **Project Stack**
 
-* **ReactNative** (Typescript/ES6)
+* **ReactNative**
+* **Icons**: react-native-vector-icons
+* **Store**: react-redux & redux-thunk & redux & firebase
+* **Navigation**: react-native-router-flux
+* **Convenience**: lodash
 
-**How To Get Started**
+**Getting Started with ReactNative**
 
 * Assuming you're doing this on OSX and trying to run iOS  
 * Install Node and watchman
 
-```
-$ brew install node
+```bash
+brew install node
 ```
 
-```
-$ brew install watchman  
+```bash
+brew install watchman  
 ```
 
 * Install ReactNative Command Line Tools
 
-```
-$ npm install -g react-native-cli  
-```
-
-* Run the App
-
-```
-$ cd sweetwaterCredits  
+```bash
+npm install -g react-native-cli  
 ```
 
+**Running the App**
+
+```bash
+cd sweetwaterCredits  
 ```
-$ react-native run-ios   
+
+```bash
+npm install
 ```
 
+```bash
+react-native run-ios   
+```
+
+### TODO:
+
+* Anon users
+* Sign Up form, make it confirmable
+* App Icon
+* Launch Image
+* Sentry Raven (HIGH)
+* Store User credentials.
+* Add shadows to buttons
+* Explore test library options with JEST
+* Form styles
+* Refactor Actions
 
 
-**Andrew Vogel 2016**
+**Andrew Vogel - 2016**
 
-![elvamarketing](docs/elva-logo.png)
+###### Disclaimer: First time doing a javascript app so take it easy on me. :)
