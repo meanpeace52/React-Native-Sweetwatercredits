@@ -5,7 +5,7 @@ import {
 
 const INITIAL_STATE = {
   name: '',
-  distrubances: {}
+  disturbances: {}
 };
 
 export default (state = INITIAL_STATE, action) => {

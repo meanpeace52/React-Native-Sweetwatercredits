@@ -41,7 +41,9 @@ class LoginForm extends Component {
           placeholder="Email"
           onChangeText={value => this.props.loginFieldUpdate({ prop: 'email', value })}
           value={this.props.email}
+          autoCapitalize="none"
           icon="person-outline"
+          keyboardType="email-address"
         />
 
         <Input

@@ -21,15 +21,15 @@ class DisturbanceZoneForm extends Component {
           || ruleViolation === 'roads'
           || ruleViolation === 'activity') {
         if (vulnerableLocation === 'non-vulnerable') {
-          penalty = 12 * parseInt(acreage, 12);
+          penalty = 12 * parseFloat(acreage);
         } else {
-          penalty = 16 * parseInt(acreage, 10);
+          penalty = 16 * parseFloat(acreage);
         }
       } else if (ruleViolation === 'disturbance') {
         if (vulnerableLocation === 'non-vulnerable') {
-          penalty = 6 * parseInt(acreage, 12);
+          penalty = 6 * parseFloat(acreage);
         } else {
-          penalty = 8 * parseInt(acreage, 10);
+          penalty = 8 * parseFloat(acreage);
         }
       } else {
         penalty = 10;
@@ -38,9 +38,9 @@ class DisturbanceZoneForm extends Component {
       // non-core
       if (ruleViolation === 'impact') {
         if (vulnerableLocation === 'non-vulnerable') {
-          penalty = 12 * parseInt(acreage, 12);
+          penalty = 12 * parseFloat(acreage);
         } else {
-          penalty = 16 * parseInt(acreage, 10);
+          penalty = 16 * parseFloat(acreage);
         }
       } else {
         penalty = 10;

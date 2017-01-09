@@ -38,6 +38,8 @@ class RegisterForm extends Component {
           icon="person-outline"
           onChangeText={value => this.props.registerFieldUpdate({ prop: 'email', value })}
           value={this.props.email}
+          autoCapitalize="none"
+          keyboardType="email-address"
         />
 
         <Input

@@ -16,8 +16,8 @@ class ProjectListItem extends Component {
     });
 
     const disturbancesPenaltyTotal =
-      disturbances.reduce((acc, disturbance) => acc + parseInt(disturbance.penaltyAmount, 10), 0);
-    return disturbancesPenaltyTotal;
+      disturbances.reduce((acc, disturbance) => acc + parseFloat(disturbance.penaltyAmount), 0);
+    return disturbancesPenaltyTotal.toFixed(1);
   }
 
 

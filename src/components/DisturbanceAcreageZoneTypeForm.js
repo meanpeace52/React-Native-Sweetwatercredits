@@ -14,6 +14,7 @@ class DisturbanceAcreageZoneTypeForm extends Component {
           placeholder="Acreage"
           onChangeText={value => this.props.disturbanceUpdate({ prop: 'acreage', value })}
           value={this.props.acreage}
+          keyboardType="numbers-and-punctuation"
         />
 
         <Text
