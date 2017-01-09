@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 import _ from 'lodash';
-import { BlueButton, Container, SplashImageContainer, YellowButton, Input } from './common';
-
+import { connect } from 'react-redux';
+import { BlueButton, SplashImageContainer, YellowButton } from './common';
+import { checkIfLoggedIn } from '../actions';
 
 class Splash extends Component {
+  componentWillMount() {
+    this.props.checkIfLoggedIn();
+  }
+
   render() {
     const navigateToLoginForm = () => Actions.loginForm();
 
@@ -28,4 +31,5 @@ class Splash extends Component {
   }
 }
 
-export default Splash;
+// export default Splash;
+export default connect(null, { checkIfLoggedIn })(Splash);

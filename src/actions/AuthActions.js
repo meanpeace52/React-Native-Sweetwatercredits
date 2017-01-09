@@ -26,6 +26,16 @@ export const loginUser = ({ email, password }) => {
   };
 };
 
+export const checkIfLoggedIn = () => {
+  return (dispatch) => {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        loginUserSuccess(dispatch, user);
+      }
+    });
+  };
+};
+
 // Helper Methods Below vvvvvv
 // Deal with dispatching login_user_success
 const loginUserSuccess = (dispatch, user) => {
