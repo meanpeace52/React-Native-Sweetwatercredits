@@ -1,28 +1,25 @@
 import React, { Component } from 'react';
-import { Actions } from 'react-native-router-flux';
 import _ from 'lodash';
 import { connect } from 'react-redux';
 import { BlueButton, SplashImageContainer, YellowButton } from './common';
 import { checkIfLoggedIn } from '../actions';
 
 class Splash extends Component {
-  componentWillMount() {
+  navigateToLoginForm() {
     this.props.checkIfLoggedIn();
   }
 
   render() {
-    const navigateToLoginForm = () => Actions.loginForm();
-
     return (
       <SplashImageContainer>
         <BlueButton
-          onPress={navigateToLoginForm}
+          onPress={this.navigateToLoginForm.bind(this)}
         >
           {_.toUpper('Calculate Credits')}
         </BlueButton>
 
         <YellowButton
-          onPress={navigateToLoginForm}
+          onPress={this.navigateToLoginForm.bind(this)}
         >
           {_.toUpper('Sign In')}
         </YellowButton>

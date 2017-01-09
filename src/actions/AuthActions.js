@@ -31,6 +31,8 @@ export const checkIfLoggedIn = () => {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         loginUserSuccess(dispatch, user);
+      } else {
+        Actions.loginForm();
       }
     });
   };
