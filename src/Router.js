@@ -1,8 +1,9 @@
 import React from 'react';
 import {
-  // Actions, 
+  Actions,
   Router,
   Scene } from 'react-native-router-flux';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import Splash from './components/Splash';
 import LoginForm from './components/LoginForm';
 import ProjectsList from './components/ProjectsList';
@@ -13,12 +14,14 @@ import DisturbancesList from './components/DisturbancesList';
 import DisturbanceCreate from './components/DisturbanceCreate';
 import DisturbanceZoneForm from './components/DisturbanceZoneForm';
 import DisturbanceShow from './components/DisturbanceShow';
+import SettingsList from './components/SettingsList';
 
 const RouterComponent = () => {
   return (
     <Router>
       <Scene key="root">
-        <Scene key="splash"
+        <Scene
+          key="splash"
           component={Splash}
           hideNavBar={true}
           initial
@@ -45,8 +48,13 @@ const RouterComponent = () => {
           key="projectsList"
           component={ProjectsList}
           title="Recent Projects"
-          //onRight={() => Actions.projectCreate()}
-          //rightTitle="Add"
+          onRight={() => Actions.settingsList()}
+          rightTitle="Settings"
+          // renderRightButton={() => {
+          //   return (
+          //     <Icon name="settings" size={18} color="#007aff" />
+          //   );
+          // }}
           initial
         />
 
@@ -85,8 +93,14 @@ const RouterComponent = () => {
           component={DisturbanceShow}
           title="Show Disturbance"
         />
-      </Scene>
 
+        <Scene
+          key="settingsList"
+          component={SettingsList}
+          title="Settings"
+          // leftTitle="Projects"
+        />
+      </Scene>
     </Router>
   );
 };

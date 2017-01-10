@@ -4,7 +4,9 @@ import {
   LOGIN_FIELD_UPDATE,
   LOGIN_USER_SUCCESS,
   LOGIN_USER_FAIL,
-  LOGIN_USER } from './types';
+  LOGIN_USER,
+  LOGOUT_USER_FAIL,
+  LOGOUT_USER_SUCCESS } from './types';
 
 export const loginFieldUpdate = ({ prop, value }) => {
   return {
@@ -38,6 +40,17 @@ export const checkIfLoggedIn = () => {
   };
 };
 
+export const logoutUser = () => {
+  return (dispatch) => {
+    firebase.auth().signOut().then(() => {
+        logoutUserSuccess(dispatch);
+    }).catch(error => {
+      const errorMessage = error.message;
+      logoutUserFail(dispatch, errorMessage);
+    });
+  };
+};
+
 // Helper Methods Below vvvvvv
 // Deal with dispatching login_user_success
 const loginUserSuccess = (dispatch, user) => {
@@ -46,12 +59,27 @@ const loginUserSuccess = (dispatch, user) => {
     payload: user
    });
 
-   Actions.projects();
+  Actions.projects();
 };
 
 const loginUserFail = (dispatch, error) => {
   dispatch({
     type: LOGIN_USER_FAIL,
+    payload: error
+  });
+};
+
+const logoutUserSuccess = (dispatch) => {
+  dispatch({
+    type: LOGOUT_USER_SUCCESS
+   });
+
+   Actions.root({ type: 'reset' });
+};
+
+const logoutUserFail = (dispatch, error) => {
+  dispatch({
+    type: LOGOUT_USER_FAIL,
     payload: error
   });
 };

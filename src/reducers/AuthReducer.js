@@ -2,7 +2,9 @@ import {
   LOGIN_FIELD_UPDATE,
   LOGIN_USER_SUCCESS,
   LOGIN_USER_FAIL,
-  LOGIN_USER } from '../actions/types';
+  LOGIN_USER,
+  LOGOUT_USER_SUCCESS,
+  LOGOUT_USER_FAIL } from '../actions/types';
 
 const INITIAL_STATE = {
     email: '',
@@ -24,6 +26,12 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state,
         error: action.payload,
         password: '',
+        loading: false };
+    case LOGOUT_USER_SUCCESS:
+      return { ...state, ...INITIAL_STATE, error: 'You have been logged out.' };
+    case LOGOUT_USER_FAIL:
+      return { ...state,
+        error: action.payload,
         loading: false };
     default:
       return state;

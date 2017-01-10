@@ -8,6 +8,8 @@ export const LOGIN_USER_SUCCESS = 'login_user_success';
 export const LOGIN_USER_FAIL = 'login_user_fail';
 export const LOGIN_USER = 'login_user';
 export const LOGIN_FIELD_UPDATE = 'login_field_update';
+export const LOGOUT_USER_FAIL = 'logout_user_fail';
+export const LOGOUT_USER_SUCCESS = 'logout_user_success';
 
 // Register
 export const REGISTER_FIELD_UPDATE = 'register_field_update';
