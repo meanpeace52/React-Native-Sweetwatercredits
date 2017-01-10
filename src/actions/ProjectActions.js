@@ -39,12 +39,12 @@ export const projectsFetch = () => {
   };
 };
 
-export const projectSave = ({ name, uid }) => {
+export const projectSave = ({ name, uid, disturbances }) => {
   const { currentUser } = firebase.auth();
 
   return (dispatch) => {
     firebase.database().ref(`/users/${currentUser.uid}/projects/${uid}`)
-      .set({ name })
+      .set({ name, disturbances })
       .then(() => {
           dispatch({ type: PROJECT_SAVE_SUCCESS });
           Actions.projectsList({ type: 'reset' });
