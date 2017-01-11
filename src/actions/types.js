@@ -22,6 +22,7 @@ export const PROJECT_UPDATE = 'project_update';
 export const PROJECT_CREATE = 'project_create';
 export const PROJECT_FETCH_SUCCESS = 'project_fetch_sucess';
 export const PROJECT_SAVE_SUCCESS = 'project_save_success';
+export const PROJECT_NEW = 'project_new';
 
 // Disturbances
 export const DISTURBANCE_UPDATE = 'disturbance_update';

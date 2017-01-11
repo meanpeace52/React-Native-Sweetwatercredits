@@ -4,7 +4,8 @@ import {
   PROJECT_UPDATE,
   PROJECT_CREATE,
   PROJECT_FETCH_SUCCESS,
-  PROJECT_SAVE_SUCCESS } from './types';
+  PROJECT_SAVE_SUCCESS,
+  PROJECT_NEW } from './types';
 
 export const projectUpdate = ({ prop, value }) => {
   return {
@@ -61,5 +62,12 @@ export const projectDelete = ({ uid }) => {
       .then(() => {
         Actions.projectsList({ type: 'reset' });
       });
+  };
+};
+
+export const projectNew = () => {
+  return (dispatch) => {
+    dispatch({ type: PROJECT_NEW });
+    Actions.projectCreate();
   };
 };
