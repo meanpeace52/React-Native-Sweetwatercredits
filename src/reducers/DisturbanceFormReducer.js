@@ -1,4 +1,4 @@
-import { DISTURBANCE_CREATE, DISTURBANCE_UPDATE } from '../actions/types';
+import { DISTURBANCE_CREATE, DISTURBANCE_UPDATE, DISTURBANCE_NEW } from '../actions/types';
 
 const INITIAL_STATE = {
   projectUid: '',
@@ -14,6 +14,8 @@ export default(state = INITIAL_STATE, action) => {
     case DISTURBANCE_UPDATE:
       return { ...state, [action.payload.prop]: action.payload.value };
     case DISTURBANCE_CREATE:
+      return INITIAL_STATE;
+    case DISTURBANCE_NEW:
       return INITIAL_STATE;
     default:
       return state;

@@ -28,3 +28,4 @@ export const PROJECT_NEW = 'project_new';
 export const DISTURBANCE_UPDATE = 'disturbance_update';
 export const DISTURBANCE_CREATE = 'disturbance_create';
 export const DISTURBANCE_FETCH_SUCCESS = 'disturbance_fetch_success';
+export const DISTURBANCE_NEW = 'disturbance_new';

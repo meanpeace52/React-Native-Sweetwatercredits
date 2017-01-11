@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { BlueButton, Container, LogoTopMiddle, Card } from './common';
 import DisturbanceListItem from './DisturbanceListItem';
-import { disturbancesFetch } from '../actions';
+import { disturbancesFetch, disturbanceNew } from '../actions';
 
 class DisturbancesList extends Component {
   componentWillMount() {
@@ -22,7 +22,8 @@ class DisturbancesList extends Component {
 
   onButtonPress() {
     const { project } = this.props;
-    Actions.disturbanceCreate({ project });
+    // Actions.disturbanceCreate({ project });
+    this.props.disturbanceNew({ project });
   }
 
   createDataSource({ disturbances }) {
@@ -85,4 +86,4 @@ const mapStateToProps = state => {
   return { disturbances };
 };
 
-export default connect(mapStateToProps, { disturbancesFetch })(DisturbancesList);
+export default connect(mapStateToProps, { disturbancesFetch, disturbanceNew })(DisturbancesList);

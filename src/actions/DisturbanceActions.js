@@ -1,6 +1,10 @@
 import firebase from 'firebase';
-import { Actions, ActionConst } from 'react-native-router-flux';
-import { DISTURBANCE_CREATE, DISTURBANCE_UPDATE, DISTURBANCE_FETCH_SUCCESS } from './types';
+import { Actions } from 'react-native-router-flux';
+import {
+  DISTURBANCE_CREATE,
+  DISTURBANCE_UPDATE,
+  DISTURBANCE_FETCH_SUCCESS,
+  DISTURBANCE_NEW } from './types';
 
 export const disturbanceUpdate = ({ prop, value }) => {
   return {
@@ -30,10 +34,7 @@ export const disturbanceCreate = ({
          .then(() => {
            dispatch({ type: DISTURBANCE_CREATE });
           //  TODO: go to the disturbance
-
-          // TODO: Not this lol
           Actions.pop({ popNum: 2 });
-          //Actions.disturbanceShow({ disturbance });
          }
        );
     };
@@ -60,5 +61,12 @@ export const disturbanceDelete = ({ projectUid, uid }) => {
       .then(() => {
         Actions.pop();
       });
+  };
+};
+
+export const disturbanceNew = ({ project }) => {
+  return (dispatch) => {
+    dispatch({ type: DISTURBANCE_NEW });
+    Actions.disturbanceCreate({ project });
   };
 };
