@@ -3,7 +3,6 @@ import {
   Actions,
   Router,
   Scene } from 'react-native-router-flux';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 import Splash from './components/Splash';
 import LoginForm from './components/LoginForm';
 import ProjectsList from './components/ProjectsList';
@@ -11,10 +10,12 @@ import ProjectCreate from './components/ProjectCreate';
 import ProjectEdit from './components/ProjectEdit';
 import RegisterForm from './components/RegisterForm';
 import DisturbancesList from './components/DisturbancesList';
-import DisturbanceCreate from './components/DisturbanceCreate';
-import DisturbanceZoneForm from './components/DisturbanceZoneForm';
 import DisturbanceShow from './components/DisturbanceShow';
 import SettingsList from './components/SettingsList';
+import DisturbanceZoneType from './components/DisturbanceZoneType';
+import DisturbanceViolation from './components/DisturbanceViolation';
+import DisturbanceAcreage from './components/DisturbanceAcreage';
+import DisturbanceLocation from './components/DisturbanceLocation';
 
 const RouterComponent = () => {
   return (
@@ -50,11 +51,6 @@ const RouterComponent = () => {
           title="Recent Projects"
           onRight={() => Actions.settingsList()}
           rightTitle="Settings"
-          // renderRightButton={() => {
-          //   return (
-          //     <Icon name="settings" size={18} color="#007aff" />
-          //   );
-          // }}
           initial
         />
 
@@ -74,24 +70,38 @@ const RouterComponent = () => {
           key="disturbancesList"
           component={DisturbancesList}
           title="Disturbances"
-        />
-
-        <Scene
-          key="disturbanceCreate"
-          component={DisturbanceCreate}
-          title="Add a Disturbance"
-        />
-
-        <Scene
-          key="disturbanceZoneForm"
-          component={DisturbanceZoneForm}
-          title="Add Disturbance"
+          onBack={() => Actions.pop({ type: 'reset' })}
+          backTitle="Projects"
         />
 
         <Scene
           key="disturbanceShow"
           component={DisturbanceShow}
           title="Show Disturbance"
+        />
+
+        <Scene
+          key="disturbanceZoneType"
+          component={DisturbanceZoneType}
+          title="Zone Type"
+        />
+
+        <Scene
+          key="disturbanceViolation"
+          component={DisturbanceViolation}
+          title="Rule Violation"
+        />
+
+        <Scene
+          key="disturbanceAcreage"
+          component={DisturbanceAcreage}
+          title="Disturbance Acreage"
+        />
+
+        <Scene
+          key="disturbanceLocation"
+          component={DisturbanceLocation}
+          title="Disturbance Location"
         />
 
         <Scene

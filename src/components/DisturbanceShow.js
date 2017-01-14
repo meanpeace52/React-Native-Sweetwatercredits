@@ -58,11 +58,11 @@ class DisturbanceShow extends Component {
         <Card>
           <View style={mainView}>
             <Text style={titleText}>Disturbance Info</Text>
-            <Text style={infoText}>{disturbance.acreage} Acres </Text>
-            <Text style={infoText}>Type: {_.capitalize(disturbance.zoneType)} Zone</Text>
+            <Text style={infoText}>Acres: {disturbance.acreage}</Text>
+            <Text style={infoText}>Zone Type: {_.capitalize(disturbance.zoneType)}</Text>
             <Text style={infoText}>Rule Violation: {this.humanizeRuleViolation()} </Text>
             <Text style={infoText}>{this.humanizeVulnerableLandscape()}</Text>
-            <Text style={infoText}>Penalty Amount: {disturbance.penaltyAmount}</Text>
+            <Text style={infoText}>Debit Amount: {disturbance.debitAmount}</Text>
           </View>
         </Card>
 

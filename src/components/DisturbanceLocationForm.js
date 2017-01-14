@@ -1,57 +1,47 @@
 import React, { Component } from 'react';
-import { View, Switch, Text } from 'react-native';
+import { View, Picker } from 'react-native';
 import { connect } from 'react-redux';
 import { disturbanceUpdate } from '../actions';
-import { Card } from './common';
 
 class DisturbanceLocationForm extends Component {
+  componentWillMount() {
+    this.props.disturbanceUpdate({ prop: 'vulnerableLocation', value: 'Yes' });
+  }
+
   render() {
-    const { switchTitle, flexEndMarginFive } = styles;
     return (
       <View>
-      <Card>
-        <Text style={switchTitle}> Located in a Vulnerable Landscape? </Text>
-        <View style={{ flexDirection: 'row', alignSelf: 'flex-end' }}>
-          <Text
-            style={switchTitle}
-          >
-            {this.props.vulnerableLocation ? 'Yes' : 'No'}
-          </Text>
-          <Switch
-            onValueChange={
-              value => this.props.disturbanceUpdate({ prop: 'vulnerableLocation', value })
-            }
-            value={this.props.vulnerableLocation}
-            style={flexEndMarginFive}
-          />
-        </View>
-      </Card>
+        <Picker
+          selecteValue={this.props.vulnerableLocation}
+          onChangeValue={
+            value => this.props.disturbanceUpdate({ prop: 'vulnerableLocation', value })
+          }
+        >
+          <Picker.Item label="Yes" value="Yes" />
+          <Picker.Item label="No" value="No" />
+        </Picker>
+
       </View>
     );
   }
- }
+}
 
- const styles = {
-   switchTitle: {
-     fontSize: 18,
-     margin: 5
-   },
-   flexEndMarginFive: {
-     alignSelf: 'flex-end',
-     margin: 5
-   }
- };
+const mapStateToProps = (state) => {
+  const {
+    acreage,
+    zoneType,
+    ruleViolation,
+    vulnerableLocation,
+    debitAmount
+  } = state.disturbanceForm;
 
- const mapStateToProps = (state) => {
-   const {
-     projectUid,
-     acreage,
-     zoneType,
-     ruleViolation,
-     vulnerableLocation,
-     penaltyAmount } = state.disturbanceForm;
+  return {
+    acreage,
+    zoneType,
+    ruleViolation,
+    vulnerableLocation,
+    debitAmount
+  };
+};
 
-     return { projectUid, acreage, zoneType, ruleViolation, vulnerableLocation, penaltyAmount };
- };
-
- export default connect(mapStateToProps, { disturbanceUpdate })(DisturbanceLocationForm);
+export default connect(mapStateToProps, { disturbanceUpdate })(DisturbanceLocationForm);

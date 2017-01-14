@@ -15,7 +15,7 @@ class DisturbanceListItem extends Component {
       acreage,
       zoneType,
       ruleViolation,
-      penaltyAmount } = this.props.disturbance;
+      debitAmount } = this.props.disturbance;
 
     const { titleStyle, creditTitleStyle, sectionStyle } = styles;
     return (
@@ -29,7 +29,7 @@ class DisturbanceListItem extends Component {
               <View>
                 <Text style={titleStyle}> {_.capitalize(ruleViolation)} Disturbance </Text>
                 <Text style={creditTitleStyle}> {acreage} Acres</Text>
-                <Text style={creditTitleStyle}> {zoneType} Credits: {penaltyAmount}</Text>
+                <Text style={creditTitleStyle}> {zoneType} Credits: {debitAmount}</Text>
               </View>
             </View>
           </CardSection>

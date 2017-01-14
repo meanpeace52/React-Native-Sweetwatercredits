@@ -1,6 +1,6 @@
 # SweetwaterCredits  
 
-#### Mobile app source code for the Sweetwater River Conservancy. App users can calculate the amount of credits they have on a plot of land by filling out the forms in the app.
+#### Mobile app for the Sweetwater River Conservancy. App users can calculate the amount of credits they have on a plot of land by filling out the forms in the app.
 
 **Build Status**
 
@@ -16,10 +16,19 @@ Master:
 **Project Stack**
 
 * **ReactNative**
-* **Icons**: react-native-vector-icons
-* **Store**: react-redux & redux-thunk & redux & firebase
+* **Icons**: react-native-vector-icons/MaterialIcons
+* **Store**: react-redux, redux-thunk
 * **Navigation**: react-native-router-flux
 * **Convenience**: lodash
+* **Database**: firebase.google.com
+
+**Project Built For**
+
+* **iOS**: 8.0 (iPhone)
+* **Layout**: Portrait Only
+* **iPad Support**: (ComingSoon)
+* **Android**: (Coming Soon)
+* **Devices(Android)**: (TBD)
 
 **Getting Started with ReactNative**
 
@@ -58,15 +67,15 @@ react-native run-ios
 
 * Anon users
 * Sign Up form, make it confirmable
-* App Icon
-* Launch Image
 * Sentry Raven (HIGH)
-* Store User credentials.
-* Add shadows to buttons
 * Explore test library options with JEST
-* Form styles
-* Refactor Actions
+* React Native Vector Icons Button
 
+
+**Notes**
+
+ * Reusable Components live in the src/components/common directory
+ * Main Views (as defined in Router.js) live in the src/components directory
 
 **Andrew Vogel - 2016**
 

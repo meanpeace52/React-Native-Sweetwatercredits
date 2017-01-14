@@ -37,7 +37,7 @@ class DisturbancesList extends Component {
   sumPenaltys() {
     const { disturbances } = this.props;
     const disturbancesPenaltyTotal =
-      disturbances.reduce((acc, disturbance) => acc + parseFloat(disturbance.penaltyAmount), 0);
+      disturbances.reduce((acc, disturbance) => acc + parseFloat(disturbance.debitAmount), 0);
     return disturbancesPenaltyTotal.toFixed(1);
   }
 

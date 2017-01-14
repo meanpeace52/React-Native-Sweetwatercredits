@@ -20,8 +20,8 @@ class ProjectEdit extends Component {
 
   onButtonPress() {
     const { name } = this.props;
-    const { uid, disturbances } = this.props.project;
-    this.props.projectSave({ name, uid, disturbances });
+    const { uid } = this.props.project;
+    this.props.projectSave({ name, uid });
   }
 
   onAccept() {
@@ -39,8 +39,8 @@ class ProjectEdit extends Component {
     });
 
     const disturbancesPenaltyTotal =
-      disturbances.reduce((acc, disturbance) => acc + parseFloat(disturbance.penaltyAmount), 0);
-    return disturbancesPenaltyTotal.toFixed(1);
+      disturbances.reduce((acc, disturbance) => acc + parseInt(disturbance.debitAmount, 10), 0);
+    return disturbancesPenaltyTotal;
   }
 
   render() {
