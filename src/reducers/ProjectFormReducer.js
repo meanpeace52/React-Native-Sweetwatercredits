@@ -6,7 +6,8 @@ import {
 
 const INITIAL_STATE = {
   name: '',
-  disturbances: {}
+  disturbances: {},
+  nonEmpty: false
 };
 
 export default (state = INITIAL_STATE, action) => {

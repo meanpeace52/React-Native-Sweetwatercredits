@@ -56,13 +56,14 @@ class DisturbancesList extends Component {
           <Icon name="add" size={18} /> Add Disturbance
         </BlueButton>
 
-        <Text style={penaltyText}> Total Credit Amount: {this.sumPenaltys()}</Text>
+        <Text style={penaltyText}> Total Debit Amount: {this.sumPenaltys()}</Text>
 
         <Card>
           <ListView
             enableEmptySections
             dataSource={this.dataSource}
             renderRow={this.renderRow}
+            style={{height: 320}}
           />
         </Card>
       </Container>

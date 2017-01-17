@@ -33,7 +33,7 @@ const styles = {
     marginLeft: 5,
     marginRight: 5,
     elevation: 1,
-    marginTop: 5
+    marginTop: 5,
   }
 };
 

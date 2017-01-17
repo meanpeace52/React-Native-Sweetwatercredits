@@ -9,11 +9,11 @@ import {
 
 const INITIAL_STATE = {
   projectUid: '',
-  acreage: '0',
+  acreage: '',
   zoneType: 'Core',
   ruleViolation: '',
   vulnerableLocation: false,
-  debitAmount: '0'
+  debitAmount: '0.0'
 };
 
 export default(state = INITIAL_STATE, action) => {

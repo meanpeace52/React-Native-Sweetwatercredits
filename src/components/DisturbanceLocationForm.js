@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Picker } from 'react-native';
 import { connect } from 'react-redux';
+import { Card } from './common';
 import { disturbanceUpdate } from '../actions';
 
 class DisturbanceLocationForm extends Component {
@@ -11,15 +12,17 @@ class DisturbanceLocationForm extends Component {
   render() {
     return (
       <View>
-        <Picker
-          onValueChange={
-            value => this.props.disturbanceUpdate({ prop: 'vulnerableLocation', value })
-          }
-          selectedValue={this.props.vulnerableLocation}
-        >
-          <Picker.Item label="Yes" value="Yes" />
-          <Picker.Item label="No" value="No" />
-        </Picker>
+        <Card>
+          <Picker
+            onValueChange={
+              value => this.props.disturbanceUpdate({ prop: 'vulnerableLocation', value })
+            }
+            selectedValue={this.props.vulnerableLocation}
+          >
+            <Picker.Item label="Yes" value="Yes" />
+            <Picker.Item label="No" value="No" />
+          </Picker>
+        </Card>
 
       </View>
     );

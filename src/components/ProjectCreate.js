@@ -12,6 +12,7 @@ class ProjectCreate extends Component {
     this.props.projectCreate({ name });
   }
 
+
   render() {
     return (
       <Container>
@@ -21,8 +22,7 @@ class ProjectCreate extends Component {
         <BlueButton
           onPress={this.onButtonPress.bind(this)}
         >
-          <Icon name='domain' size={18} />
-          {_.toUpper('Create New Project')}
+          <Icon name='domain' size={18} /> {_.toUpper('Create A Project')}
         </BlueButton>
       </Container>
     );

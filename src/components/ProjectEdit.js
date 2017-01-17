@@ -67,7 +67,9 @@ class ProjectEdit extends Component {
           <Icon name='delete' size={18} /> Delete Project
         </YellowButton>
 
-        <Text style={penaltyText}> Total Credit Amount: {this.sumPenaltys()}</Text>
+        {
+          //<Text style={penaltyText}> Total Debit Amount: {this.sumPenaltys()}</Text>
+        }
 
         <Confirm
           visible={this.state.showModal}
