@@ -11,8 +11,7 @@ class DisturbanceLocation extends Component {
         acreage,
         zoneType,
         ruleViolation,
-        vulnerableLocation,
-        debitAmount
+        vulnerableLocation
     } = this.props;
 
     const projectUid = this.props.project.uid;
@@ -22,8 +21,7 @@ class DisturbanceLocation extends Component {
       acreage,
       zoneType,
       ruleViolation,
-      vulnerableLocation,
-      debitAmount
+      vulnerableLocation
     });
   }
 
@@ -33,7 +31,7 @@ class DisturbanceLocation extends Component {
       <Container>
         <LogoTopMiddle />
         <Text>Located in Vulnerable Landscape?</Text>
-        <DisturbanceLocationForm />
+        <DisturbanceLocationForm {...this.props} />
         <BlueButton
           onPress={this.onButtonPress.bind(this)}
         >
@@ -49,16 +47,14 @@ const mapStateToProps = (state) => {
       acreage,
       zoneType,
       ruleViolation,
-      vulnerableLocation,
-      debitAmount
+      vulnerableLocation
   } = state.disturbanceForm;
 
   return {
     acreage,
     zoneType,
     ruleViolation,
-    vulnerableLocation,
-    debitAmount
+    vulnerableLocation
   };
 };
 

@@ -34,7 +34,7 @@ class DisturbanceCoreViolations extends Component {
 
             <Picker.Item
               label="Surface disturbance > 5%?"
-              value="disturbance"
+              value="surface"
             />
 
             <Picker.Item

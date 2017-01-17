@@ -22,15 +22,13 @@ class DisturbanceViolation extends Component {
       } = this.props;
 
       const projectUid = this.props.project.uid;
-      const debitAmount = '10';
 
       this.props.disturbanceTlsCreate({
         projectUid,
         acreage,
         zoneType,
         ruleViolation,
-        vulnerableLocation,
-        debitAmount
+        vulnerableLocation
       });
     } else {
       const { zoneType, project } = this.props;

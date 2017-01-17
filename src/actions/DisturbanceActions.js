@@ -22,9 +22,24 @@ export const disturbanceCreate = ({
   acreage,
   zoneType,
   ruleViolation,
-  vulnerableLocation,
-  debitAmount }) => {
+  vulnerableLocation }) => {
     const { currentUser } = firebase.auth();
+
+    let debitAmount;
+    if (ruleViolation === 'siting' || ruleViolation === 'roads' || ruleViolation === 'activity') {
+      if (vulnerableLocation === 'Yes') {
+        debitAmount = parseFloat(acreage) * 16;
+      } else {
+        debitAmount = parseFloat(acreage) * 12;
+      }
+    } else {
+      if (vulnerableLocation === 'Yes') {
+        debitAmount = parseFloat(acreage) * 8;
+      } else {
+        debitAmount = parseFloat(acreage) * 6;
+      }
+    }
+
 
     return (dispatch) => {
           firebase.database().ref(`users/${currentUser.uid}/projects/${projectUid}/disturbances`)
@@ -123,9 +138,9 @@ export const disturbanceTlsCreate = ({
   acreage,
   zoneType,
   ruleViolation,
-  vulnerableLocation,
-  debitAmount }) => {
+  vulnerableLocation }) => {
     const { currentUser } = firebase.auth();
+    const debitAmount = '10.0';
 
     return (dispatch) => {
           firebase.database().ref(`users/${currentUser.uid}/projects/${projectUid}/disturbances`)
