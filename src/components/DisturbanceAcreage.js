@@ -22,6 +22,7 @@ class DisturbanceAcreage extends Component {
 
         <BlueButton
           onPress={this.onButtonPress.bind(this)}
+          inactive={this.props.acreage ? false : true}
         >
           Next
         </BlueButton>

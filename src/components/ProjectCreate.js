@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -12,7 +13,6 @@ class ProjectCreate extends Component {
     this.props.projectCreate({ name });
   }
 
-
   render() {
     return (
       <Container>
@@ -21,6 +21,7 @@ class ProjectCreate extends Component {
         <ProjectForm {...this.props} />
         <BlueButton
           onPress={this.onButtonPress.bind(this)}
+          inactive={this.props.name ? false : true}
         >
           <Icon name='domain' size={18} /> {_.toUpper('Create A Project')}
         </BlueButton>

@@ -1,13 +1,13 @@
 import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
 
-const BlueButton = ({ onPress, children }) => {
-  const { buttonStyle, textStyle } = styles;
+const BlueButton = ({ onPress, children, inactive }) => {
+  const { inactiveButtonStyle, buttonStyle, textStyle } = styles;
 
   return (
     <TouchableOpacity
-      style={buttonStyle}
-      onPress={onPress}
+      style={inactive ? inactiveButtonStyle : buttonStyle}
+      onPress={inactive ? undefined : onPress}
     >
       <Text style={textStyle}>
         {children}
@@ -29,6 +29,16 @@ const styles = {
     flex: 1,
     alignSelf: 'stretch',
     backgroundColor: '#3F51B5',
+    borderRadius: 5,
+    marginLeft: 5,
+    marginRight: 5,
+    elevation: 1,
+    marginTop: 5,
+  },
+  inactiveButtonStyle: {
+    flex: 1,
+    alignSelf: 'stretch',
+    backgroundColor: '#ddd',
     borderRadius: 5,
     marginLeft: 5,
     marginRight: 5,
