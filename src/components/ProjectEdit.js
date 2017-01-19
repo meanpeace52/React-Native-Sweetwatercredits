@@ -19,8 +19,8 @@ class ProjectEdit extends Component {
 
   onButtonPress() {
     const { name } = this.props;
-    const { uid, disturbances } = this.props.project;
-    this.props.projectSave({ name, uid, disturbances });
+    const { uid } = this.props.project;
+    this.props.projectSave({ name, uid });
   }
 
   onAccept() {
