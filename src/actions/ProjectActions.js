@@ -42,7 +42,11 @@ export const projectsFetch = () => {
 
 export const projectSave = ({ name, uid, disturbances }) => {
   const { currentUser } = firebase.auth();
-
+  console.log('-----');
+  console.log(name);
+  console.log(currentUser);
+  console.log(uid);
+  console.log('-----');
   return (dispatch) => {
     firebase.database().ref(`/users/${currentUser.uid}/projects/${uid}`)
       .set({ name, disturbances })

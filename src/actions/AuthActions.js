@@ -1,16 +1,17 @@
 import firebase from 'firebase';
 import { Actions } from 'react-native-router-flux';
 import {
-  LOGIN_FIELD_UPDATE,
+  AUTH_FIELD_UPDATE,
   LOGIN_USER_SUCCESS,
   LOGIN_USER_FAIL,
   LOGIN_USER,
   LOGOUT_USER_FAIL,
-  LOGOUT_USER_SUCCESS } from './types';
+  LOGOUT_USER_SUCCESS,
+  NAVIGATE_TO_PASSWORD_RESET } from './types';
 
-export const loginFieldUpdate = ({ prop, value }) => {
+export const authFieldUpdate = ({ prop, value }) => {
   return {
-    type: LOGIN_FIELD_UPDATE,
+    type: AUTH_FIELD_UPDATE,
     payload: { prop, value }
   };
 };
@@ -48,6 +49,19 @@ export const logoutUser = () => {
       const errorMessage = error.message;
       logoutUserFail(dispatch, errorMessage);
     });
+  };
+};
+
+export const navigateToPasswordReset = () => {
+  return (dispatch) => {
+    dispatch({ type: NAVIGATE_TO_PASSWORD_RESET });
+    Actions.passwordReset();
+  };
+};
+
+export const resetPassword = ({ code, newPassword }) => {
+  return (dispatch) => {
+    // stuff hur
   };
 };
 

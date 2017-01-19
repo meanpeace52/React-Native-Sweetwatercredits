@@ -1,22 +1,25 @@
 import {
-  LOGIN_FIELD_UPDATE,
+  AUTH_FIELD_UPDATE,
   LOGIN_USER_SUCCESS,
   LOGIN_USER_FAIL,
   LOGIN_USER,
   LOGOUT_USER_SUCCESS,
-  LOGOUT_USER_FAIL } from '../actions/types';
+  LOGOUT_USER_FAIL,
+  NAVIGATE_TO_PASSWORD_RESET } from '../actions/types';
 
 const INITIAL_STATE = {
     email: '',
     password: '',
     user: null, // User object returned from a successfull firebase login
     error: '',
-    loading: false
+    loading: false,
+    password_confirmation: '',
+    code: '' // email verification code sent for password reset
 };
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case LOGIN_FIELD_UPDATE:
+    case AUTH_FIELD_UPDATE:
       return { ...state, [action.payload.prop]: action.payload.value };
     case LOGIN_USER:
       return { ...state, loading: true, error: '' };
@@ -33,6 +36,8 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state,
         error: action.payload,
         loading: false };
+    case NAVIGATE_TO_PASSWORD_RESET:
+      return INITIAL_STATE;
     default:
       return state;
   }

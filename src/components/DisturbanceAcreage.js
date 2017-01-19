@@ -50,4 +50,5 @@ const mapStateToProps = (state) => {
 };
 
 
-export default connect(mapStateToProps, { disturbanceUpdate, disturbanceAcreageUpdate })(DisturbanceAcreage);
+export default connect(mapStateToProps,
+  { disturbanceUpdate, disturbanceAcreageUpdate })(DisturbanceAcreage);

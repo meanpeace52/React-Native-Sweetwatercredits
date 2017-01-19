@@ -16,6 +16,7 @@ import DisturbanceZoneType from './components/DisturbanceZoneType';
 import DisturbanceViolation from './components/DisturbanceViolation';
 import DisturbanceAcreage from './components/DisturbanceAcreage';
 import DisturbanceLocation from './components/DisturbanceLocation';
+import PasswordReset from './components/PasswordReset';
 
 const RouterComponent = () => {
   return (
@@ -42,6 +43,11 @@ const RouterComponent = () => {
           hideNavBar={false}
         />
 
+        <Scene
+          key="passwordReset"
+          component={PasswordReset}
+          title="Reset Password"
+        />
       </Scene>
 
       <Scene key="projects">

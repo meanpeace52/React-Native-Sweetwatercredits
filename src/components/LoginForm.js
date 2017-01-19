@@ -5,7 +5,7 @@ import _ from 'lodash';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { connect } from 'react-redux';
 import { Container, BlueButton, Button, Input, LogoTopMiddle, Spinner } from './common';
-import { loginFieldUpdate, loginUser } from '../actions';
+import { authFieldUpdate, loginUser, navigateToPasswordReset } from '../actions';
 
 class LoginForm extends Component {
   onButtonPress() {
@@ -34,13 +34,13 @@ class LoginForm extends Component {
 
   render() {
     console.log(this.props);
-    const { bottomTextContainer, centerText, errorTextStyle } = styles;
+    const { bottomTextContainer, centerText, errorTextStyle, forgotPasswordText } = styles;
     return (
       <Container>
         <LogoTopMiddle />
         <Input
           placeholder="Email"
-          onChangeText={value => this.props.loginFieldUpdate({ prop: 'email', value })}
+          onChangeText={value => this.props.authFieldUpdate({ prop: 'email', value })}
           value={this.props.email}
           autoCapitalize="none"
           icon="person-outline"
@@ -49,11 +49,18 @@ class LoginForm extends Component {
 
         <Input
           placeholder="Password"
-          onChangeText={value => this.props.loginFieldUpdate({ prop: 'password', value })}
+          onChangeText={value => this.props.authFieldUpdate({ prop: 'password', value })}
           value={this.props.password}
           icon="lock-outline"
           secureTextEntry
         />
+
+        <Text
+          style={forgotPasswordText}
+          onPress={() => this.props.navigateToPasswordReset()}
+        >
+          Forgot password?
+        </Text>
 
         <Text style={errorTextStyle}>{this.props.error}</Text>
 
@@ -87,6 +94,11 @@ const styles = {
     fontSize: 20,
     alignSelf: 'center',
     color: 'red'
+  },
+  forgotPasswordText: {
+    fontSize: 16,
+    alignSelf: 'flex-end',
+    color: 'gray'
   }
 };
 
@@ -102,6 +114,7 @@ const mapStateToProps = ({ auth }) => {
 };
 
 export default connect(mapStateToProps, {
-  loginFieldUpdate,
-  loginUser
+  authFieldUpdate,
+  loginUser,
+  navigateToPasswordReset
 })(LoginForm);
