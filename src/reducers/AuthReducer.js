@@ -14,7 +14,8 @@ const INITIAL_STATE = {
     error: '',
     loading: false,
     password_confirmation: '',
-    code: '' // email verification code sent for password reset
+    code: '', // email verification code sent for password reset
+    hasFirstLogin: false
 };
 
 export default (state = INITIAL_STATE, action) => {

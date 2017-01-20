@@ -43,8 +43,7 @@ class ProjectEdit extends Component {
   // }
 
   render() {
-    console.log(this.props);
-    const { penaltyText } = styles;
+    // const { penaltyText } = styles;
     return (
       <Container>
         <LogoTopMiddle />

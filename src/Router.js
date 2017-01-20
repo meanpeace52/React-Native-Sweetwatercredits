@@ -17,6 +17,7 @@ import DisturbanceViolation from './components/DisturbanceViolation';
 import DisturbanceAcreage from './components/DisturbanceAcreage';
 import DisturbanceLocation from './components/DisturbanceLocation';
 import PasswordReset from './components/PasswordReset';
+import Tutorial from './components/Tutorial';
 
 const RouterComponent = () => {
   return (
@@ -48,6 +49,18 @@ const RouterComponent = () => {
           component={PasswordReset}
           title="Reset Password"
         />
+
+      </Scene>
+
+      <Scene
+        key="tutorial"
+      >
+        <Scene
+          key="tutorialShow"
+          component={Tutorial}
+          title="Tutorial"
+          hideNavBar
+        />
       </Scene>
 
       <Scene key="projects">
@@ -70,6 +83,7 @@ const RouterComponent = () => {
           key="projectEdit"
           component={ProjectEdit}
           title="Edit Project"
+          backTitle="Projects"
         />
 
         <Scene
@@ -77,7 +91,7 @@ const RouterComponent = () => {
           component={DisturbancesList}
           title="Disturbances"
           onBack={() => Actions.pop({ type: 'reset' })}
-          backTitle="Projects"
+          backTitle="Edit Project"
         />
 
         <Scene

@@ -21,7 +21,9 @@ export const registerUser = ({ email, password, passwordConfirmation }) => {
       registerUserFail(dispatch, error);
     } else {
       firebase.auth().createUserWithEmailAndPassword(email, password)
-      .then(user => registerUserSuccess(dispatch, user))
+      .then(user => {
+        registerUserSuccess(dispatch, user);
+      })
       .catch(error => {
         const errorMessage = error.message;
         registerUserFail(dispatch, errorMessage);
@@ -30,7 +32,7 @@ export const registerUser = ({ email, password, passwordConfirmation }) => {
   };
 };
 
-export const registerUserSuccess = (dispatch, user) => {
+const registerUserSuccess = (dispatch, user) => {
   dispatch({
     type: REGISTER_USER_SUCCESS,
     payload: user
@@ -39,7 +41,7 @@ export const registerUserSuccess = (dispatch, user) => {
    Actions.projects();
 };
 
-export const registerUserFail = (dispatch, error) => {
+const registerUserFail = (dispatch, error) => {
   dispatch({
     type: REGISTER_USER_FAIL,
     payload: error

@@ -26,7 +26,6 @@ class DisturbanceLocation extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <Container>
         <LogoTopMiddle />

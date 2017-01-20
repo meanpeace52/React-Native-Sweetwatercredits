@@ -54,7 +54,6 @@ class DisturbanceViolation extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <Container>
         <LogoTopMiddle />

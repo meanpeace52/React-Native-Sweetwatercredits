@@ -33,7 +33,6 @@ class LoginForm extends Component {
   }
 
   render() {
-    console.log(this.props);
     const { bottomTextContainer, centerText, errorTextStyle, forgotPasswordText } = styles;
     return (
       <Container>

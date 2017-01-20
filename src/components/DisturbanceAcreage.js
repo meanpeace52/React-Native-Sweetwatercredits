@@ -13,7 +13,6 @@ class DisturbanceAcreage extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <Container>
         <LogoTopMiddle />

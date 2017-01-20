@@ -6,7 +6,6 @@ import { authFieldUpdate } from '../actions';
 
 class PasswordResetForm extends Component {
   render() {
-    console.log(this.props);
     const { code, password, password_confirmation, error } = this.props;
     const inputIcon = () => {
         if (password && password_confirmation) {
