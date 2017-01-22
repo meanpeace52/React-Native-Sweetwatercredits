@@ -10,6 +10,7 @@ class DisturbanceLocationForm extends Component {
   }
 
   render() {
+    const { vulnerableLocation } = this.props;
     return (
       <View>
         <Card>
@@ -17,7 +18,7 @@ class DisturbanceLocationForm extends Component {
             onValueChange={
               value => this.props.disturbanceUpdate({ prop: 'vulnerableLocation', value })
             }
-            selectedValue={this.props.vulnerableLocation}
+            selectedValue={vulnerableLocation}
           >
             <Picker.Item label="Yes" value="Yes" />
             <Picker.Item label="No" value="No" />
@@ -29,13 +30,13 @@ class DisturbanceLocationForm extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({ disturbanceForm }) => {
   const {
     acreage,
     zoneType,
     ruleViolation,
     vulnerableLocation
-  } = state.disturbanceForm;
+  } = disturbanceForm;
 
   return {
     acreage,

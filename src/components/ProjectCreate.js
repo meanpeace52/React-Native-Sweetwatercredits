@@ -14,6 +14,7 @@ class ProjectCreate extends Component {
   }
 
   render() {
+    const { name } = this.props;
     return (
       <Container>
         <LogoTopMiddle />
@@ -21,7 +22,7 @@ class ProjectCreate extends Component {
         <ProjectForm {...this.props} />
         <BlueButton
           onPress={this.onButtonPress.bind(this)}
-          inactive={this.props.name ? false : true}
+          inactive={name ? false : true}
         >
           <Icon name='domain' size={18} /> {_.toUpper('Create A Project')}
         </BlueButton>

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { KeyboardAvoidingView, Text } from 'react-native';
+import { KeyboardAvoidingView } from 'react-native';
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { authFieldUpdate, updatePassword } from '../actions';
-import { Container, BlueButton, LogoTopMiddle, Spinner } from './common';
+import { Container, BlueButton, LogoTopMiddle, Spinner, FlashMessages } from './common';
 import PasswordResetForm from './PasswordResetForm';
 
 class PasswordReset extends Component {
@@ -13,7 +13,7 @@ class PasswordReset extends Component {
   }
 
   render() {
-    console.log(this.props);
+    // Set button inactive status based on form inputs
     const submitFormReady = () => {
         const { password, newPassword, newPasswordConfirm } = this.props;
         if (password && newPassword && newPasswordConfirm) {
@@ -22,6 +22,7 @@ class PasswordReset extends Component {
         return true;
     };
 
+    // Render button or spinner dependent on loading flag
     const renderButton = () => {
       const { loading } = this.props;
       if (loading) {
@@ -38,7 +39,8 @@ class PasswordReset extends Component {
       );
     };
 
-    const { keyboardStyles, errorText, messageText } = styles;
+    const { keyboardStyles } = styles;
+    const { error, notice } = this.props;
     return (
 
         <Container>
@@ -50,14 +52,7 @@ class PasswordReset extends Component {
 
             <PasswordResetForm {...this.props} />
 
-            <Text
-              style={errorText}
-            >
-              {this.props.error}
-            </Text>
-
-            <Text style={messageText}> {this.props.notice}</Text>
-
+            <FlashMessages error={error} notice={notice} />
 
             {renderButton()}
           </KeyboardAvoidingView>
@@ -67,16 +62,6 @@ class PasswordReset extends Component {
 }
 
 const styles = {
-  errorText: {
-    fontSize: 18,
-    alignSelf: 'center',
-    color: 'red'
-  },
-  messageText: {
-    fontSize: 18,
-    alignSelf: 'center',
-    color: 'green'
-  },
   keyboardStyles: {
     flex: 1,
     justifyContent: 'center',

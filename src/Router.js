@@ -4,11 +4,11 @@ import {
   Router,
   Scene } from 'react-native-router-flux';
 import Splash from './components/Splash';
-import LoginForm from './components/LoginForm';
+import Login from './components/Login';
 import ProjectsList from './components/ProjectsList';
 import ProjectCreate from './components/ProjectCreate';
 import ProjectEdit from './components/ProjectEdit';
-import RegisterForm from './components/RegisterForm';
+import Register from './components/Register';
 import DisturbancesList from './components/DisturbancesList';
 import DisturbanceShow from './components/DisturbanceShow';
 import SettingsList from './components/SettingsList';
@@ -32,15 +32,15 @@ const RouterComponent = () => {
         />
 
         <Scene
-          key="loginForm"
-          component={LoginForm}
+          key="login"
+          component={Login}
           title="Login"
           hideNavBar={false}
         />
 
         <Scene
-          key="registerForm"
-          component={RegisterForm}
+          key="register"
+          component={Register}
           title="Register"
           hideNavBar={false}
         />

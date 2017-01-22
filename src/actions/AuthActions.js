@@ -39,7 +39,7 @@ export const checkIfLoggedIn = () => {
       if (user) {
         loginUserSuccess(dispatch, user);
       } else {
-        Actions.loginForm();
+        Actions.login();
       }
     });
   };

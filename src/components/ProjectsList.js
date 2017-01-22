@@ -53,7 +53,8 @@ class ProjectsList extends Component {
               enableEmptySections
               dataSource={this.dataSource}
               renderRow={this.renderRow}
-              style={{height: 350}}
+              // TODO: make the height responsive
+              style={{ height: 350 }}
             />
           </Card>
         </Container>

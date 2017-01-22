@@ -7,7 +7,7 @@ import { BlueButton, SplashImageContainer, YellowButton } from './common';
 import { checkIfLoggedIn } from '../actions';
 
 class Splash extends Component {
-  navigateToLoginForm() {
+  navigateToLogin() {
     this.props.checkIfLoggedIn();
   }
 
@@ -16,13 +16,13 @@ class Splash extends Component {
     return (
       <SplashImageContainer>
         <BlueButton
-          onPress={this.navigateToLoginForm.bind(this)}
+          onPress={this.navigateToLogin.bind(this)}
         >
           {_.toUpper('Calculate Credits')}
         </BlueButton>
 
         <YellowButton
-          onPress={this.navigateToLoginForm.bind(this)}
+          onPress={this.navigateToLogin.bind(this)}
         >
           {_.toUpper('Sign In')}
         </YellowButton>

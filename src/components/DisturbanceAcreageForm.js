@@ -6,13 +6,14 @@ import { Input } from './common';
 
 class DisturbanceAcreageForm extends Component {
   render() {
+    const { acreage } = this.props;
     return (
       <View>
         <Input
           icon="nature"
           placeholder="Acreage"
           onChangeText={value => this.props.disturbanceUpdate({ prop: 'acreage', value })}
-          value={this.props.acreage}
+          value={acreage}
           keyboardType="numbers-and-punctuation"
         />
       </View>
@@ -20,14 +21,14 @@ class DisturbanceAcreageForm extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({ disturbanceForm }) => {
   const {
     acreage,
     zoneType,
     ruleViolation,
     vulnerableLocation,
     debitAmount
-  } = state.disturbanceForm;
+  } = disturbanceForm;
 
   return {
     acreage,

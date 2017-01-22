@@ -41,13 +41,13 @@ class DisturbanceLocation extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({ disturbanceForm }) => {
   const {
       acreage,
       zoneType,
       ruleViolation,
       vulnerableLocation
-  } = state.disturbanceForm;
+  } = disturbanceForm;
 
   return {
     acreage,

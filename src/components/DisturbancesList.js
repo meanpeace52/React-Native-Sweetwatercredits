@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { ListView, Text } from 'react-native';
-import { Actions } from 'react-native-router-flux';
 import _ from 'lodash';
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -15,14 +14,11 @@ class DisturbancesList extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    // nextProps are the next set of props that this component will be rendered with
-    // this.props is still the old set of props
     this.createDataSource(nextProps);
   }
 
   onButtonPress() {
     const { project } = this.props;
-    // Actions.disturbanceCreate({ project });
     this.props.disturbanceNew({ project });
   }
 
@@ -63,7 +59,8 @@ class DisturbancesList extends Component {
             enableEmptySections
             dataSource={this.dataSource}
             renderRow={this.renderRow}
-            style={{height: 320}}
+            // TODO: responsive height
+            style={{ height: 320 }}
           />
         </Card>
       </Container>
@@ -79,7 +76,7 @@ const styles = {
   }
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   const disturbances = _.map(state.disturbances, (val, uid) => {
     return { ...val, uid };
   });

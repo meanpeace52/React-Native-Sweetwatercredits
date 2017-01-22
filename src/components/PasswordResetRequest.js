@@ -12,23 +12,25 @@ class PasswordResetRequest extends Component {
     this.props.sendPasswordResetEmail({ email });
   }
 
-  renderButton() {
-    const { loading } = this.props;
-    if (loading) {
-      return <Spinner />;
+  render() {
+    const { errorText, keyboardStyles, padding15TopAndBottom } = styles;
+    const { error, loading } = this.props;
+
+    // Render button or spinner based on value in loading flag
+    const renderButton = () => {
+      if (loading) {
+        return <Spinner />;
+      }
+
+      return (
+        <BlueButton
+          onPress={this.onButtonPress.bind(this)}
+        >
+          <Icon name="send" size={18} /> Send Reset Email
+        </BlueButton>
+      );
     }
 
-    return (
-      <BlueButton
-        onPress={this.onButtonPress.bind(this)}
-      >
-        <Icon name="send" size={18} /> Send Reset Email
-      </BlueButton>
-    );
-  }
-
-  render() {
-    const { errorText, keyboardStyles } = styles;
     return (
 
         <Container>
@@ -38,15 +40,15 @@ class PasswordResetRequest extends Component {
           >
             <LogoTopMiddle />
 
-            <Text style={{ paddingTop: 15, paddingBottom: 15 }}>
+            <Text style={padding15TopAndBottom}>
               Enter your email below to request a password reset. We will send you and email with instructions to reset your password.
             </Text>
 
             <PasswordResetRequestForm {...this.props} />
 
-            <Text style={errorText}>{this.props.error}</Text>
+            <Text style={errorText}>{error}</Text>
 
-            {this.renderButton()}
+            {renderButton()}
 
           </KeyboardAvoidingView>
         </Container>
@@ -64,6 +66,10 @@ const styles = {
     flex: 1,
     justifyContent: 'center',
     paddingBottom: 80,
+  },
+  padding15TopAndBottom: {
+    paddingTop: 15,
+    paddingBottom: 15
   }
 };
 

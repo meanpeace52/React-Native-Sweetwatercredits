@@ -32,18 +32,7 @@ class ProjectEdit extends Component {
     this.setState({ showModal: false });
   }
 
-  // sumPenaltys() {
-  //   const disturbances = _.map(this.props.project.disturbances, (val, uid) => {
-  //       return { ...val, uid };
-  //   });
-  //
-  //   const disturbancesPenaltyTotal =
-  //     disturbances.reduce((acc, disturbance) => acc + parseInt(disturbance.debitAmount, 10), 0);
-  //   return disturbancesPenaltyTotal;
-  // }
-
   render() {
-    // const { penaltyText } = styles;
     return (
       <Container>
         <LogoTopMiddle />
@@ -78,16 +67,8 @@ class ProjectEdit extends Component {
   }
 }
 
-const styles = {
-  penaltyText: {
-    textAlign: 'center',
-    fontSize: 18,
-    paddingTop: 15
-  }
-};
-
-const mapStateToProps = (state) => {
-  const { name } = state.projectForm;
+const mapStateToProps = ({ projectForm }) => {
+  const { name } = projectForm;
   return { name };
 };
 

@@ -26,14 +26,14 @@ class DisturbanceZoneType extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({ disturbanceForm }) => {
   const {
     acreage,
     zoneType,
     ruleViolation,
     vulnerableLocation,
     debitAmount
-  } = state.disturbanceForm;
+  } = disturbanceForm;
 
   return {
     acreage,

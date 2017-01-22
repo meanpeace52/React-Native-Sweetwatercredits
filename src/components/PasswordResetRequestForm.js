@@ -7,12 +7,13 @@ import { Input } from './common';
 
 class PasswordResetRequestForm extends Component {
   render() {
+    const { email } = this.props;
     return (
       <View>
         <Input
           placeholder="Email"
           onChangeText={value => this.props.authFieldUpdate({ prop: 'email', value })}
-          value={this.props.email}
+          value={email}
           autoCapitalize="none"
           icon="person-outline"
           keyboardType="email-address"
@@ -22,8 +23,8 @@ class PasswordResetRequestForm extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  const { email, error } = state.auth;
+const mapStateToProps = ({ auth }) => {
+  const { email, error } = auth;
   return { email, error };
 };
 

@@ -7,11 +7,6 @@ import DisturbanceCoreViolationsForm from './DisturbanceCoreViolationsForm';
 import DisturbanceNonCoreViolationsForm from './DisturbanceNonCoreViolationsForm';
 
 class DisturbanceViolation extends Component {
-
-  /*
-  * If this is a short term or tls then we will create that disturbance and redirect
-  * else we continue filling out the form
-  */
   onButtonPress() {
     const { ruleViolation } = this.props;
     if (ruleViolation === 'tls' || ruleViolation === 'short-term') {
@@ -70,13 +65,13 @@ class DisturbanceViolation extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({ disturbanceForm }) => {
   const {
     acreage,
     zoneType,
     ruleViolation,
     vulnerableLocation
-  } = state.disturbanceForm;
+  } = disturbanceForm;
 
   return {
     acreage,

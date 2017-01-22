@@ -8,11 +8,11 @@ import { disturbanceUpdate, disturbanceAcreageUpdate } from '../actions';
 class DisturbanceAcreage extends Component {
   onButtonPress() {
     const { zoneType, acreage, ruleViolation, project } = this.props;
-
     this.props.disturbanceAcreageUpdate({ zoneType, acreage, ruleViolation, project });
   }
 
   render() {
+    const { acreage } = this.props;
     return (
       <Container>
         <LogoTopMiddle />
@@ -21,7 +21,7 @@ class DisturbanceAcreage extends Component {
 
         <BlueButton
           onPress={this.onButtonPress.bind(this)}
-          inactive={this.props.acreage ? false : true}
+          inactive={acreage ? false : true}
         >
           Next
         </BlueButton>
@@ -30,14 +30,14 @@ class DisturbanceAcreage extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({ disturbanceForm }) => {
   const {
     acreage,
     zoneType,
     ruleViolation,
     vulnerableLocation,
     debitAmount
-  } = state.disturbanceForm;
+  } = disturbanceForm;
 
   return {
     acreage,

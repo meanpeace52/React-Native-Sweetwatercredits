@@ -6,12 +6,13 @@ import { disturbanceUpdate } from '../actions';
 
 class DisturbanceZoneTypeForm extends Component {
   render() {
+    const { zoneType } = this.props;
     return (
       <View>
         <Text> Select a Zone Type: </Text>
         <Card>
           <Picker
-            selectedValue={this.props.zoneType}
+            selectedValue={zoneType}
             onValueChange={value => this.props.disturbanceUpdate({ prop: 'zoneType', value })}
           >
             <Picker.Item label="Core" value="Core" />
@@ -23,10 +24,9 @@ class DisturbanceZoneTypeForm extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  const { zoneType } = state.disturbanceForm;
-
-    return { zoneType };
+const mapStateToProps = ({ disturbanceForm }) => {
+  const { zoneType } = disturbanceForm;
+  return { zoneType };
 };
 
 export default connect(mapStateToProps, { disturbanceUpdate })(DisturbanceZoneTypeForm);

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import { connect } from 'react-redux';
 import { Input } from './common';
 import { authFieldUpdate } from '../actions';
@@ -8,6 +8,7 @@ class PasswordResetForm extends Component {
   render() {
     const { password, newPassword, newPasswordConfirm } = this.props;
 
+    // Render different lock icons if password and confirm match
     const inputIcon = () => {
         if (newPassword && newPasswordConfirm) {
           if (newPassword === newPasswordConfirm) {
