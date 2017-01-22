@@ -30,6 +30,20 @@ class SettingsList extends Component {
               </Button>
             </CardSection>
 
+            <CardSection>
+              <Button
+                // onPress={() => Actions.passwordReset()}
+              >
+                <Icon name="person-outline" size={16} /> Change Email
+              </Button>
+            </CardSection>
+
+            <CardSection>
+              <Button onPress={() => Actions.passwordReset()}>
+                <Icon name="lock-outline" size={16} /> Change Password
+              </Button>
+            </CardSection>
+
           </Container>
         </ScrollView>
       </View>

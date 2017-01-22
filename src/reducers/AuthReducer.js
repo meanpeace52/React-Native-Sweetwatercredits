@@ -7,7 +7,9 @@ import {
   LOGOUT_USER_FAIL,
   NAVIGATE_TO_PASSWORD_RESET,
   PASSWORD_RESET_EMAIL_SENT,
-  PASSWORD_RESET_EMAIL_ERROR } from '../actions/types';
+  PASSWORD_RESET_EMAIL_ERROR,
+  UPDATE_PASSWORD_SUCESS,
+  UPDATE_PASSWORD_FAIL } from '../actions/types';
 
 const INITIAL_STATE = {
     email: '',
@@ -15,8 +17,9 @@ const INITIAL_STATE = {
     user: null, // User object returned from a successfull firebase login
     error: '',
     loading: false,
-    password_confirmation: '',
-    notice: ''
+    notice: '',
+    newPassword: '',
+    newPasswordConfirm: ''
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -43,11 +46,19 @@ export default (state = INITIAL_STATE, action) => {
     case PASSWORD_RESET_EMAIL_SENT:
       return { ...state,
         ...INITIAL_STATE,
-        message: 'An email has been sent with instructions to reset your password.' };
+        notice: 'An email has been sent with instructions to reset your password.' };
     case PASSWORD_RESET_EMAIL_ERROR:
       return { ...state,
         email: '',
         loading: false,
+        error: action.payload };
+    case UPDATE_PASSWORD_SUCESS:
+      return { ...state,
+        ...INITIAL_STATE,
+        notice: 'Password successfully updated.' };
+    case UPDATE_PASSWORD_FAIL:
+      return { ...state,
+        ...INITIAL_STATE,
         error: action.payload };
     default:
       return state;

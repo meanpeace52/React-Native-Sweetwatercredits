@@ -69,7 +69,7 @@ class LoginForm extends Component {
 
         <Text style={errorText}>{this.props.error}</Text>
 
-        <Text style={messageText}> {this.props.message}</Text>
+        <Text style={messageText}> {this.props.notice}</Text>
 
         {this.renderButton()}
 

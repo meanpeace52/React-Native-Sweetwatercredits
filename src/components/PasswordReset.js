@@ -1,22 +1,44 @@
 import React, { Component } from 'react';
-import { KeyboardAvoidingView } from 'react-native';
+import { KeyboardAvoidingView, Text } from 'react-native';
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { authFieldUpdate } from '../actions';
-import { Container, BlueButton, LogoTopMiddle } from './common';
+import { authFieldUpdate, updatePassword } from '../actions';
+import { Container, BlueButton, LogoTopMiddle, Spinner } from './common';
 import PasswordResetForm from './PasswordResetForm';
 
 class PasswordReset extends Component {
+  onButtonPress() {
+      const { password, newPassword } = this.props;
+      this.props.updatePassword({ password, newPassword });
+  }
+
   render() {
+    console.log(this.props);
     const submitFormReady = () => {
-        const { code, password, password_confirmation } = this.props;
-        if (code && password && password_confirmation) {
+        const { password, newPassword, newPasswordConfirm } = this.props;
+        if (password && newPassword && newPasswordConfirm) {
           return false;
         }
         return true;
     };
 
-    const { keyboardStyles } = styles;
+    const renderButton = () => {
+      const { loading } = this.props;
+      if (loading) {
+        return <Spinner />;
+      }
+
+      return (
+        <BlueButton
+          onPress={this.onButtonPress.bind(this)}
+          inactive={submitFormReady()}
+        >
+          <Icon name="lock-outline" size={18} /> Reset Password
+        </BlueButton>
+      );
+    };
+
+    const { keyboardStyles, errorText, messageText } = styles;
     return (
 
         <Container>
@@ -28,11 +50,16 @@ class PasswordReset extends Component {
 
             <PasswordResetForm {...this.props} />
 
-            <BlueButton
-              inactive={submitFormReady()}
+            <Text
+              style={errorText}
             >
-              <Icon name="lock-outline" size={18} /> Reset Password
-            </BlueButton>
+              {this.props.error}
+            </Text>
+
+            <Text style={messageText}> {this.props.notice}</Text>
+
+
+            {renderButton()}
           </KeyboardAvoidingView>
         </Container>
     );
@@ -40,16 +67,26 @@ class PasswordReset extends Component {
 }
 
 const styles = {
+  errorText: {
+    fontSize: 18,
+    alignSelf: 'center',
+    color: 'red'
+  },
+  messageText: {
+    fontSize: 18,
+    alignSelf: 'center',
+    color: 'green'
+  },
   keyboardStyles: {
     flex: 1,
     justifyContent: 'center',
-    paddingBottom: 80,
+    paddingBottom: 80
   }
 };
 
-const mapStateToProps = state => {
-  const { code, password, password_confirmation, error } = state.auth;
-  return { code, password, password_confirmation, error };
+const mapStateToProps = ({ auth }) => {
+  const { password, newPassword, newPasswordConfirm, error, notice } = auth;
+  return { password, newPassword, newPasswordConfirm, error, notice };
 };
 
-export default connect(mapStateToProps, { authFieldUpdate })(PasswordReset);
+export default connect(mapStateToProps, { authFieldUpdate, updatePassword })(PasswordReset);

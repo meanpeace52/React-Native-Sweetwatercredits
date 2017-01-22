@@ -13,6 +13,8 @@ export const LOGOUT_USER_SUCCESS = 'logout_user_success';
 export const NAVIGATE_TO_PASSWORD_RESET = 'navigate_to_password_reset';
 export const PASSWORD_RESET_EMAIL_SENT = 'password_reset_email_sent';
 export const PASSWORD_RESET_EMAIL_ERROR = 'password_reset_email_error';
+export const UPDATE_PASSWORD_SUCESS = 'update_password_success';
+export const UPDATE_PASSWORD_FAIL = 'update_password_fail';
 
 // Register
 export const REGISTER_FIELD_UPDATE = 'register_field_update';

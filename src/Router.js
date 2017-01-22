@@ -18,6 +18,7 @@ import DisturbanceAcreage from './components/DisturbanceAcreage';
 import DisturbanceLocation from './components/DisturbanceLocation';
 import PasswordResetRequest from './components/PasswordResetRequest';
 import Tutorial from './components/Tutorial';
+import PasswordReset from './components/PasswordReset';
 
 const RouterComponent = () => {
   return (
@@ -45,7 +46,7 @@ const RouterComponent = () => {
         />
 
         <Scene
-          key="passwordReset"
+          key="passwordResetRequest"
           component={PasswordResetRequest}
           title="Request Password"
         />
@@ -130,6 +131,13 @@ const RouterComponent = () => {
           title="Settings"
           // leftTitle="Projects"
         />
+
+        <Scene
+          key="passwordReset"
+          component={PasswordReset}
+          title="Reset Password"
+        />
+
       </Scene>
     </Router>
   );

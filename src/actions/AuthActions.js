@@ -9,7 +9,9 @@ import {
   LOGOUT_USER_SUCCESS,
   NAVIGATE_TO_PASSWORD_RESET,
   PASSWORD_RESET_EMAIL_SENT,
-  PASSWORD_RESET_EMAIL_ERROR } from './types';
+  PASSWORD_RESET_EMAIL_ERROR,
+  UPDATE_PASSWORD_SUCESS,
+  UPDATE_PASSWORD_FAIL } from './types';
 
 export const authFieldUpdate = ({ prop, value }) => {
   return {
@@ -57,7 +59,7 @@ export const logoutUser = () => {
 export const navigateToPasswordReset = () => {
   return (dispatch) => {
     dispatch({ type: NAVIGATE_TO_PASSWORD_RESET });
-    Actions.passwordReset();
+    Actions.passwordResetRequest();
   };
 };
 
@@ -68,15 +70,42 @@ export const sendPasswordResetEmail = ({ email }) => {
     firebase.auth().sendPasswordResetEmail(email).then(() => {
       passwordResetEmailSent(dispatch);
     }).catch(error => {
-      console.log('caught error');
       const errorMessage = error.message;
       passwordResetEmailError(dispatch, errorMessage);
     });
   };
 };
 
-// Helper Methods Below vvvvvv
-// Deal with dispatching login_user_success
+export const updatePassword = ({ password, newPassword }) => {
+  return (dispatch) => {
+    dispatch({ type: LOGIN_USER });
+    const { currentUser } = firebase.auth();
+
+    // grab user credential
+    const credential = firebase.auth.EmailAuthProvider.credential(currentUser.email,
+    password);
+
+    // reauthenticate using the credential
+    currentUser.reauthenticate(credential)
+    .then(() => {
+      // update the users password
+      currentUser.updatePassword(newPassword)
+      .then(() => {
+        updatePasswordSucess(dispatch);
+      })
+      .catch(error => {
+        const errorMessage = error.message;
+        updatePasswordFail(dispatch, errorMessage);
+      });
+    })
+    .catch(error => {
+      const errorMessage = error.message;
+      updatePasswordFail(dispatch, errorMessage);
+    });
+  };
+};
+
+// Helper Methods - Dispatch Actions to Reducers
 const loginUserSuccess = (dispatch, user) => {
   dispatch({
     type: LOGIN_USER_SUCCESS,
@@ -119,6 +148,19 @@ const passwordResetEmailSent = (dispatch) => {
 const passwordResetEmailError = (dispatch, error) => {
   dispatch({
     type: PASSWORD_RESET_EMAIL_ERROR,
+    payload: error
+  });
+};
+
+const updatePasswordSucess = (dispatch) => {
+  dispatch({
+    type: UPDATE_PASSWORD_SUCESS
+  });
+};
+
+const updatePasswordFail = (dispatch, error) => {
+  dispatch({
+    type: UPDATE_PASSWORD_FAIL,
     payload: error
   });
 };
