@@ -19,7 +19,8 @@ class LoginForm extends Component {
   }
 
   renderButton() {
-    if (this.props.loading) {
+    const { loading } = this.props;
+    if (loading) {
       return <Spinner />;
     }
 
@@ -33,7 +34,12 @@ class LoginForm extends Component {
   }
 
   render() {
-    const { bottomTextContainer, centerText, errorTextStyle, forgotPasswordText } = styles;
+    const {
+      bottomTextContainer,
+      centerText,
+      errorText,
+      messageText,
+      forgotPasswordText } = styles;
     return (
       <Container>
         <LogoTopMiddle />
@@ -61,7 +67,9 @@ class LoginForm extends Component {
           Forgot password?
         </Text>
 
-        <Text style={errorTextStyle}>{this.props.error}</Text>
+        <Text style={errorText}>{this.props.error}</Text>
+
+        <Text style={messageText}> {this.props.message}</Text>
 
         {this.renderButton()}
 
@@ -89,10 +97,15 @@ const styles = {
   centerText: {
     textAlign: 'center'
   },
-  errorTextStyle: {
-    fontSize: 20,
+  errorText: {
+    fontSize: 18,
     alignSelf: 'center',
     color: 'red'
+  },
+  messageText: {
+    fontSize: 18,
+    alignSelf: 'center',
+    color: 'green'
   },
   forgotPasswordText: {
     fontSize: 16,
@@ -102,13 +115,14 @@ const styles = {
 };
 
 const mapStateToProps = ({ auth }) => {
-  const { email, password, error, loading } = auth;
+  const { email, password, error, loading, message } = auth;
 
   return {
     email,
     password,
     error,
-    loading
+    loading,
+    message
   };
 };
 

@@ -29,6 +29,17 @@ class RegisterForm extends Component {
 
   render() {
     const { errorTextStyle } = styles;
+
+    const inputIcon = () => {
+        const { password, passwordConfirmation } = this.props;
+        if (password && passwordConfirmation) {
+          if (password === passwordConfirmation) {
+            return 'lock-outline';
+          }
+        }
+        return 'lock-open';
+    };
+
     return (
       <Container>
         <LogoTopMiddle />
@@ -44,7 +55,7 @@ class RegisterForm extends Component {
 
         <Input
           placeholder="Password"
-          icon="lock-outline"
+          icon={inputIcon()}
           onChangeText={value => this.props.registerFieldUpdate({ prop: 'password', value })}
           value={this.props.password}
           secureTextEntry
@@ -52,7 +63,7 @@ class RegisterForm extends Component {
 
         <Input
           placeholder="Password Confirmation"
-          icon="lock-open"
+          icon={inputIcon()}
           onChangeText={value =>
             this.props.registerFieldUpdate({ prop: 'passwordConfirmation', value })}
           value={this.props.passwordConfirmation}

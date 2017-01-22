@@ -8,8 +8,11 @@ export const LOGIN_USER = 'login_user';
 export const AUTH_FIELD_UPDATE = 'auth_field_update';
 export const LOGOUT_USER_FAIL = 'logout_user_fail';
 export const LOGOUT_USER_SUCCESS = 'logout_user_success';
-// Auth, Password reset
+
+// Auth - Password reset
 export const NAVIGATE_TO_PASSWORD_RESET = 'navigate_to_password_reset';
+export const PASSWORD_RESET_EMAIL_SENT = 'password_reset_email_sent';
+export const PASSWORD_RESET_EMAIL_ERROR = 'password_reset_email_error';
 
 // Register
 export const REGISTER_FIELD_UPDATE = 'register_field_update';

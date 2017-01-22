@@ -50,6 +50,6 @@ const styles = {
 const mapStateToProps = state => {
   const { code, password, password_confirmation, error } = state.auth;
   return { code, password, password_confirmation, error };
-}
+};
 
 export default connect(mapStateToProps, { authFieldUpdate })(PasswordReset);

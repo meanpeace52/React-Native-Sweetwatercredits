@@ -5,7 +5,9 @@ import {
   LOGIN_USER,
   LOGOUT_USER_SUCCESS,
   LOGOUT_USER_FAIL,
-  NAVIGATE_TO_PASSWORD_RESET } from '../actions/types';
+  NAVIGATE_TO_PASSWORD_RESET,
+  PASSWORD_RESET_EMAIL_SENT,
+  PASSWORD_RESET_EMAIL_ERROR } from '../actions/types';
 
 const INITIAL_STATE = {
     email: '',
@@ -14,8 +16,7 @@ const INITIAL_STATE = {
     error: '',
     loading: false,
     password_confirmation: '',
-    code: '', // email verification code sent for password reset
-    hasFirstLogin: false
+    notice: ''
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -38,7 +39,16 @@ export default (state = INITIAL_STATE, action) => {
         error: action.payload,
         loading: false };
     case NAVIGATE_TO_PASSWORD_RESET:
-      return INITIAL_STATE;
+      return INITIAL_STATE; // TODO: change dis
+    case PASSWORD_RESET_EMAIL_SENT:
+      return { ...state,
+        ...INITIAL_STATE,
+        message: 'An email has been sent with instructions to reset your password.' };
+    case PASSWORD_RESET_EMAIL_ERROR:
+      return { ...state,
+        email: '',
+        loading: false,
+        error: action.payload };
     default:
       return state;
   }

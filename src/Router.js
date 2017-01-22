@@ -16,7 +16,7 @@ import DisturbanceZoneType from './components/DisturbanceZoneType';
 import DisturbanceViolation from './components/DisturbanceViolation';
 import DisturbanceAcreage from './components/DisturbanceAcreage';
 import DisturbanceLocation from './components/DisturbanceLocation';
-import PasswordReset from './components/PasswordReset';
+import PasswordResetRequest from './components/PasswordResetRequest';
 import Tutorial from './components/Tutorial';
 
 const RouterComponent = () => {
@@ -46,8 +46,8 @@ const RouterComponent = () => {
 
         <Scene
           key="passwordReset"
-          component={PasswordReset}
-          title="Reset Password"
+          component={PasswordResetRequest}
+          title="Request Password"
         />
 
       </Scene>

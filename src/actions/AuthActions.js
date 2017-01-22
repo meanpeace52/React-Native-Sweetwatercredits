@@ -7,7 +7,9 @@ import {
   LOGIN_USER,
   LOGOUT_USER_FAIL,
   LOGOUT_USER_SUCCESS,
-  NAVIGATE_TO_PASSWORD_RESET } from './types';
+  NAVIGATE_TO_PASSWORD_RESET,
+  PASSWORD_RESET_EMAIL_SENT,
+  PASSWORD_RESET_EMAIL_ERROR } from './types';
 
 export const authFieldUpdate = ({ prop, value }) => {
   return {
@@ -59,9 +61,17 @@ export const navigateToPasswordReset = () => {
   };
 };
 
-export const resetPassword = ({ code, newPassword }) => {
+export const sendPasswordResetEmail = ({ email }) => {
   return (dispatch) => {
-    // stuff hur
+    dispatch({ type: LOGIN_USER }); // get the loading animation
+
+    firebase.auth().sendPasswordResetEmail(email).then(() => {
+      passwordResetEmailSent(dispatch);
+    }).catch(error => {
+      console.log('caught error');
+      const errorMessage = error.message;
+      passwordResetEmailError(dispatch, errorMessage);
+    });
   };
 };
 
@@ -94,6 +104,21 @@ const logoutUserSuccess = (dispatch) => {
 const logoutUserFail = (dispatch, error) => {
   dispatch({
     type: LOGOUT_USER_FAIL,
+    payload: error
+  });
+};
+
+const passwordResetEmailSent = (dispatch) => {
+  dispatch({
+    type: PASSWORD_RESET_EMAIL_SENT
+  });
+
+  Actions.pop();
+};
+
+const passwordResetEmailError = (dispatch, error) => {
+  dispatch({
+    type: PASSWORD_RESET_EMAIL_ERROR,
     payload: error
   });
 };
