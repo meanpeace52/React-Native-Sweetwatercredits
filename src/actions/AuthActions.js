@@ -7,7 +7,7 @@ import {
   LOGIN_USER,
   LOGOUT_USER_FAIL,
   LOGOUT_USER_SUCCESS,
-  NAVIGATE_TO_PASSWORD_RESET,
+  NAVIGATE_TO_AUTH_UPDATE_FORM,
   PASSWORD_RESET_EMAIL_SENT,
   PASSWORD_RESET_EMAIL_ERROR,
   UPDATE_PASSWORD_SUCCESS,
@@ -59,8 +59,15 @@ export const logoutUser = () => {
 
 export const navigateToPasswordReset = () => {
   return (dispatch) => {
-    dispatch({ type: NAVIGATE_TO_PASSWORD_RESET });
-    Actions.passwordResetRequest();
+    dispatch({ type: NAVIGATE_TO_AUTH_UPDATE_FORM });
+    Actions.passwordReset();
+  };
+};
+
+export const navigateToEmailReset = () => {
+  return (dispatch) => {
+    dispatch({ type: NAVIGATE_TO_AUTH_UPDATE_FORM });
+    Actions.emailReset();
   };
 };
 

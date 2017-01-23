@@ -6,7 +6,7 @@ import _ from 'lodash';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { connect } from 'react-redux';
 import { Container, BlueButton, Button, LogoTopMiddle, Spinner, FlashMessages } from './common';
-import { authFieldUpdate, loginUser, navigateToPasswordReset } from '../actions';
+import { authFieldUpdate, loginUser, navigateToAuthUpdateForm } from '../actions';
 import LoginForm from './LoginForm';
 
 class Login extends Component {
@@ -95,5 +95,5 @@ const mapStateToProps = ({ auth }) => {
 export default connect(mapStateToProps, {
   authFieldUpdate,
   loginUser,
-  navigateToPasswordReset
+  navigateToAuthUpdateForm
 })(Login);

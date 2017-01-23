@@ -10,7 +10,7 @@ export const LOGOUT_USER_FAIL = 'logout_user_fail';
 export const LOGOUT_USER_SUCCESS = 'logout_user_success';
 
 // Auth - Password reset
-export const NAVIGATE_TO_PASSWORD_RESET = 'navigate_to_password_reset';
+export const NAVIGATE_TO_AUTH_UPDATE_FORM = 'navigate_to_auth_update_form';
 export const PASSWORD_RESET_EMAIL_SENT = 'password_reset_email_sent';
 export const PASSWORD_RESET_EMAIL_ERROR = 'password_reset_email_error';
 export const UPDATE_PASSWORD_SUCCESS = 'update_password_success';

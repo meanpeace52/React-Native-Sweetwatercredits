@@ -5,7 +5,7 @@ import {
   LOGIN_USER,
   LOGOUT_USER_SUCCESS,
   LOGOUT_USER_FAIL,
-  NAVIGATE_TO_PASSWORD_RESET,
+  NAVIGATE_TO_AUTH_UPDATE_FORM,
   PASSWORD_RESET_EMAIL_SENT,
   PASSWORD_RESET_EMAIL_ERROR,
   UPDATE_EMAIL_SUCCESS,
@@ -44,7 +44,7 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state,
         error: action.payload,
         loading: false };
-    case NAVIGATE_TO_PASSWORD_RESET:
+    case NAVIGATE_TO_AUTH_UPDATE_FORM:
       return INITIAL_STATE; // TODO: change dis
     case PASSWORD_RESET_EMAIL_SENT:
       return { ...state,
