@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, TouchableOpacity, Text, Image, ScrollView } from 'react-native';
-import { Container, LogoTopMiddle } from './common';
+import { Container, LogoTopMiddleMedium } from './common';
 import Swiper from 'react-native-swiper';
 import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -34,8 +34,10 @@ class Tutorial extends Component {
         // prevButton={<Text style={buttonText}>‹</Text>}
       >
         <ScrollView>
+          {this.renderCloseIcon()}
+
           <Container>
-            <LogoTopMiddle />
+            <LogoTopMiddleMedium />
 
             <Text style={titleText}>Wyoming Sage-Grouse Mitigation Credit Calculator</Text>
             <Text style={bodyText}>
@@ -89,8 +91,10 @@ class Tutorial extends Component {
 
 
         <ScrollView>
+          {this.renderCloseIcon()}
+
           <Container>
-            <LogoTopMiddle />
+            <LogoTopMiddleMedium />
             <Text style={titleText}>
               About Sage-Grouse Mitigation Credits
             </Text>

@@ -10,3 +10,4 @@ export * from './CardSection';
 export * from './Confirm';
 export * from './Button';
 export * from './FlashMessages';
+export * from './LogoTopMiddleMedium';
