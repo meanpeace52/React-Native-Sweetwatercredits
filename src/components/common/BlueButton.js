@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, TouchableOpacity } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
 
 const BlueButton = ({ onPress, children, inactive }) => {
   const { inactiveButtonStyle, buttonStyle, textStyle } = styles;
@@ -26,7 +26,7 @@ const styles = {
     paddingBottom: 10
   },
   buttonStyle: {
-    flex: 1,
+    // flex: 1,
     alignSelf: 'stretch',
     backgroundColor: '#3F51B5',
     borderRadius: 5,

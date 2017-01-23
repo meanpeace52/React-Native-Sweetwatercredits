@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { authFieldUpdate, updateEmail } from '../actions';
@@ -39,16 +40,18 @@ class EmailReset extends Component {
     };
 
     return (
-      <Container>
-        <LogoTopMiddle />
+      <KeyboardAwareScrollView>
+        <Container>
+          <LogoTopMiddle />
 
-        <EmailResetForm {...this.props} />
+          <EmailResetForm {...this.props} />
 
-        <FlashMessages error={error} notice={notice} />
+          <FlashMessages error={error} notice={notice} />
 
-        {renderButton()}
+          {renderButton()}
 
-      </Container>
+        </Container>
+      </KeyboardAwareScrollView>
     );
   }
 }

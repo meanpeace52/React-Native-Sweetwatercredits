@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { KeyboardAvoidingView } from 'react-native';
+import { View } from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { authFieldUpdate, updatePassword } from '../actions';
@@ -39,35 +40,25 @@ class PasswordReset extends Component {
       );
     };
 
-    const { keyboardStyles } = styles;
     const { error, notice } = this.props;
     return (
-
+      <KeyboardAwareScrollView>
         <Container>
-          <KeyboardAvoidingView
-            behavior='padding'
-            style={keyboardStyles}
-          >
-            <LogoTopMiddle />
+          <LogoTopMiddle />
 
-            <PasswordResetForm {...this.props} />
+          <PasswordResetForm {...this.props} />
 
-            <FlashMessages error={error} notice={notice} />
+          <FlashMessages error={error} notice={notice} />
 
-            {renderButton()}
-          </KeyboardAvoidingView>
+          {renderButton()}
+
+          <View style={{ paddingTop:15 }} />
+
         </Container>
+      </KeyboardAwareScrollView>
     );
   }
 }
-
-const styles = {
-  keyboardStyles: {
-    flex: 1,
-    justifyContent: 'center',
-    paddingBottom: 80
-  }
-};
 
 const mapStateToProps = ({ auth }) => {
   const { password, newPassword, newPasswordConfirm, error, notice } = auth;

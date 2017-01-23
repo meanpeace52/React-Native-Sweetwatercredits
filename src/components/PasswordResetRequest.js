@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { KeyboardAvoidingView, Text } from 'react-native';
+import { Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { authFieldUpdate, sendPasswordResetEmail } from '../actions';
 import { Container, BlueButton, LogoTopMiddle, Spinner } from './common';
 import PasswordResetRequestForm from './PasswordResetRequestForm';
@@ -13,7 +14,7 @@ class PasswordResetRequest extends Component {
   }
 
   render() {
-    const { errorText, keyboardStyles, padding15TopAndBottom } = styles;
+    const { errorText, padding15TopAndBottom } = styles;
     const { error, loading } = this.props;
 
     // Render button or spinner based on value in loading flag
@@ -29,29 +30,28 @@ class PasswordResetRequest extends Component {
           <Icon name="send" size={18} /> Send Reset Email
         </BlueButton>
       );
-    }
+    };
 
     return (
-
+      <KeyboardAwareScrollView>
         <Container>
-          <KeyboardAvoidingView
-            behavior='padding'
-            style={keyboardStyles}
-          >
-            <LogoTopMiddle />
 
-            <Text style={padding15TopAndBottom}>
-              Enter your email below to request a password reset. We will send you and email with instructions to reset your password.
-            </Text>
+          <LogoTopMiddle />
 
-            <PasswordResetRequestForm {...this.props} />
+          <Text style={padding15TopAndBottom}>
+            Enter your email below to request a password reset. We will send you and email with instructions to reset your password.
+          </Text>
 
-            <Text style={errorText}>{error}</Text>
+          <PasswordResetRequestForm {...this.props} />
 
-            {renderButton()}
+          <Text style={errorText}>{error}</Text>
 
-          </KeyboardAvoidingView>
+          {renderButton()}
+
+          <View style={{ paddingTop: 15 }} />
+
         </Container>
+      </KeyboardAwareScrollView>
     );
   }
 }
@@ -61,11 +61,6 @@ const styles = {
     fontSize: 18,
     alignSelf: 'center',
     color: 'red'
-  },
-  keyboardStyles: {
-    flex: 1,
-    justifyContent: 'center',
-    paddingBottom: 80,
   },
   padding15TopAndBottom: {
     paddingTop: 15,

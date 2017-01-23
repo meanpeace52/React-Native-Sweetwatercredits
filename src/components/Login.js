@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import _ from 'lodash';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { connect } from 'react-redux';
@@ -37,34 +38,36 @@ class Login extends Component {
     };
 
     return (
-      <Container>
-        <LogoTopMiddle />
+      <KeyboardAwareScrollView>
+        <Container>
+          <LogoTopMiddle />
 
-        <LoginForm {...this.props} />
+          <LoginForm {...this.props} />
 
-        <Text
-          style={forgotPasswordText}
-          onPress={() => Actions.passwordResetRequest()}
-        >
-          Forgot password?
-        </Text>
-
-        <FlashMessages error={error} notice={notice} />
-
-        {renderButton()}
-
-        <Button
-          onPress={() => Actions.register()}
-        >
-          <Icon name="person-add" size={16} /> {_.toUpper('Register')}
-        </Button>
-
-        <View style={bottomTextContainer}>
-          <Text style={centerText}>
-            Registration is required to save and edit calculations.
+          <Text
+            style={forgotPasswordText}
+            onPress={() => Actions.passwordResetRequest()}
+          >
+            Forgot password?
           </Text>
-        </View>
-      </Container>
+
+          <FlashMessages error={error} notice={notice} />
+
+          {renderButton()}
+
+          <Button
+            onPress={() => Actions.register()}
+          >
+            <Icon name="person-add" size={16} /> {_.toUpper('Register')}
+          </Button>
+
+          <View style={bottomTextContainer}>
+            <Text style={centerText}>
+              Registration is required to save and edit calculations.
+            </Text>
+          </View>
+        </Container>
+      </KeyboardAwareScrollView>
     );
   }
 }
