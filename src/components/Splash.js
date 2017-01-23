@@ -1,18 +1,25 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { Text, Modal, View, TouchableOpacity } from 'react-native';
 import _ from 'lodash';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { BlueButton, SplashImageContainer, YellowButton } from './common';
 import { checkIfLoggedIn } from '../actions';
+import AboutModalContent from './AboutModalContent';
 
 class Splash extends Component {
+  state = { showModal: false };
+
+  onClose() {
+    this.setState({ showModal: false });
+  }
+
   navigateToLogin() {
     this.props.checkIfLoggedIn();
   }
 
   render() {
-    const { tutorialButton } = styles;
+    const { tutorialButton, modalCloseText } = styles;
     return (
       <SplashImageContainer>
         <BlueButton
@@ -34,8 +41,31 @@ class Splash extends Component {
           First time user?
         </Text>
 
+        <Text
+          style={tutorialButton}
+          onPress={() => this.setState({ showModal: !this.state.showModal })}
+        >
+          About SRC
+        </Text>
 
+        <Modal
+          visible={this.state.showModal}
+          animationType="slide"
+          onRequestClose={() => {}} // require prop for android
+        >
 
+          <TouchableOpacity
+            onPress={this.onClose.bind(this)}
+          >
+            <Text
+              style={modalCloseText}
+            >
+              DONE
+            </Text>
+          </TouchableOpacity>
+
+          <AboutModalContent {...this.props} />
+        </Modal>
       </SplashImageContainer>
     );
   }
@@ -51,6 +81,13 @@ const styles = {
     textAlign: 'right',
     fontWeight: 'bold',
     paddingTop: 10
+  },
+  modalCloseText: {
+    paddingTop: 22,
+    paddingRight: 10,
+    textAlign: 'right',
+    color: '#007aff',
+    fontSize: 16
   }
 };
 

@@ -20,7 +20,6 @@ import PasswordResetRequest from './components/PasswordResetRequest';
 import Tutorial from './components/Tutorial';
 import PasswordReset from './components/PasswordReset';
 import EmailReset from './components/EmailReset';
-import About from './components/About';
 
 const RouterComponent = () => {
   return (
@@ -144,12 +143,6 @@ const RouterComponent = () => {
           key="emailReset"
           component={EmailReset}
           title="Reset Email"
-        />
-
-        <Scene
-          key="about"
-          component={About}
-          title="About"
         />
       </Scene>
     </Router>
