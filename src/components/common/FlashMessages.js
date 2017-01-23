@@ -6,7 +6,7 @@ const FlashMessages = ({ error, notice }) => {
   return (
     <View>
       <Text style={errorText}>{error}</Text>
-      <Text style={noticeText}> {notice}</Text>
+      <Text style={noticeText}>{notice}</Text>
     </View>
 
   );

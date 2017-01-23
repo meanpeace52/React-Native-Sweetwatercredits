@@ -32,7 +32,7 @@ class SettingsList extends Component {
 
             <CardSection>
               <Button
-                // onPress={() => Actions.passwordReset()}
+                onPress={() => Actions.emailReset()}
               >
                 <Icon name="person-outline" size={16} /> Change Email
               </Button>

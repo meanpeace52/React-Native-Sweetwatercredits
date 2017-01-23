@@ -32,7 +32,7 @@ class PasswordResetForm extends Component {
 
         <Input
           icon={inputIcon()}
-          placeholder="Password"
+          placeholder="New Password"
           onChangeText={
             value => this.props.authFieldUpdate({ prop: 'newPassword', value })
           }
@@ -42,7 +42,7 @@ class PasswordResetForm extends Component {
 
         <Input
           icon={inputIcon()}
-          placeholder="Password Confirmation"
+          placeholder="Confirm New Password"
           onChangeText={
             value => this.props.authFieldUpdate({ prop: 'newPasswordConfirm', value })
           }

@@ -1,6 +1,7 @@
 import firebase from 'firebase';
 import { Actions } from 'react-native-router-flux';
-import { REGISTER_FIELD_UPDATE,
+import {
+  REGISTER_FIELD_UPDATE,
   REGISTER_USER,
   REGISTER_USER_SUCCESS,
   REGISTER_USER_FAIL } from './types';

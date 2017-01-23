@@ -13,8 +13,9 @@ export const LOGOUT_USER_SUCCESS = 'logout_user_success';
 export const NAVIGATE_TO_PASSWORD_RESET = 'navigate_to_password_reset';
 export const PASSWORD_RESET_EMAIL_SENT = 'password_reset_email_sent';
 export const PASSWORD_RESET_EMAIL_ERROR = 'password_reset_email_error';
-export const UPDATE_PASSWORD_SUCESS = 'update_password_success';
-export const UPDATE_PASSWORD_FAIL = 'update_password_fail';
+export const UPDATE_PASSWORD_SUCCESS = 'update_password_success';
+export const UPDATE_EMAIL_SUCCESS = 'update_email_success';
+export const UPDATE_CREDENTIAL_FAIL = 'update_credential_fail';
 
 // Register
 export const REGISTER_FIELD_UPDATE = 'register_field_update';
@@ -25,7 +26,7 @@ export const REGISTER_USER_FAIL = 'register_user_fail';
 //  Projects
 export const PROJECT_UPDATE = 'project_update';
 export const PROJECT_CREATE = 'project_create';
-export const PROJECT_FETCH_SUCCESS = 'project_fetch_sucess';
+export const PROJECT_FETCH_SUCCESS = 'project_fetch_success';
 export const PROJECT_SAVE_SUCCESS = 'project_save_success';
 export const PROJECT_NEW = 'project_new';
 export const PROJECT_SUM_DISTURBANCE_PENALTY_TOTAL = 'project_sum_disturbance_penalty_total';

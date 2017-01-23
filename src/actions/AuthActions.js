@@ -10,8 +10,9 @@ import {
   NAVIGATE_TO_PASSWORD_RESET,
   PASSWORD_RESET_EMAIL_SENT,
   PASSWORD_RESET_EMAIL_ERROR,
-  UPDATE_PASSWORD_SUCESS,
-  UPDATE_PASSWORD_FAIL } from './types';
+  UPDATE_PASSWORD_SUCCESS,
+  UPDATE_EMAIL_SUCCESS,
+  UPDATE_CREDENTIAL_FAIL } from './types';
 
 export const authFieldUpdate = ({ prop, value }) => {
   return {
@@ -91,16 +92,40 @@ export const updatePassword = ({ password, newPassword }) => {
       // update the users password
       currentUser.updatePassword(newPassword)
       .then(() => {
-        updatePasswordSucess(dispatch);
+        updatePasswordSuccess(dispatch);
       })
       .catch(error => {
         const errorMessage = error.message;
-        updatePasswordFail(dispatch, errorMessage);
+        updateCredentialFail(dispatch, errorMessage);
       });
     })
     .catch(error => {
       const errorMessage = error.message;
-      updatePasswordFail(dispatch, errorMessage);
+      updateCredentialFail(dispatch, errorMessage);
+    });
+  };
+};
+
+export const updateEmail = ({ password, newEmail }) => {
+  return (dispatch) => {
+    dispatch({ type: LOGIN_USER });
+    const { currentUser } = firebase.auth();
+
+    // grab user credential
+    const credential = firebase.auth.EmailAuthProvider.credential(currentUser.email,
+    password);
+
+    currentUser.reauthenticate(credential)
+    .then(() => {
+      currentUser.updateEmail(newEmail).then(() => {
+        updateEmailSuccess(dispatch);
+      }).catch(error => {
+        const errorMessage = error.message;
+        updateCredentialFail(dispatch, errorMessage);
+      });
+    }).catch(error => {
+      const errorMessage = error.message;
+      updateCredentialFail(dispatch, errorMessage);
     });
   };
 };
@@ -152,15 +177,21 @@ const passwordResetEmailError = (dispatch, error) => {
   });
 };
 
-const updatePasswordSucess = (dispatch) => {
+const updatePasswordSuccess = (dispatch) => {
   dispatch({
-    type: UPDATE_PASSWORD_SUCESS
+    type: UPDATE_PASSWORD_SUCCESS
   });
 };
 
-const updatePasswordFail = (dispatch, error) => {
+const updateEmailSuccess = (dispatch) => {
   dispatch({
-    type: UPDATE_PASSWORD_FAIL,
+    type: UPDATE_EMAIL_SUCCESS
+  });
+};
+
+const updateCredentialFail = (dispatch, error) => {
+  dispatch({
+    type: UPDATE_CREDENTIAL_FAIL,
     payload: error
   });
 };

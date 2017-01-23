@@ -44,7 +44,7 @@ class Login extends Component {
 
         <Text
           style={forgotPasswordText}
-          onPress={() => Actions.register()}
+          onPress={() => Actions.passwordResetRequest()}
         >
           Forgot password?
         </Text>
@@ -85,8 +85,8 @@ const styles = {
 };
 
 const mapStateToProps = ({ auth }) => {
-  const { email, password, error, loading, message } = auth;
-  return { email, password, error, loading, message };
+  const { email, password, error, loading, notice } = auth;
+  return { email, password, error, loading, notice };
 };
 
 export default connect(mapStateToProps, {

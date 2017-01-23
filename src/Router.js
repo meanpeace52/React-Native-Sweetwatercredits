@@ -19,6 +19,7 @@ import DisturbanceLocation from './components/DisturbanceLocation';
 import PasswordResetRequest from './components/PasswordResetRequest';
 import Tutorial from './components/Tutorial';
 import PasswordReset from './components/PasswordReset';
+import EmailReset from './components/EmailReset';
 
 const RouterComponent = () => {
   return (
@@ -136,6 +137,12 @@ const RouterComponent = () => {
           key="passwordReset"
           component={PasswordReset}
           title="Reset Password"
+        />
+
+        <Scene
+          key="emailReset"
+          component={EmailReset}
+          title="Reset Email"
         />
 
       </Scene>

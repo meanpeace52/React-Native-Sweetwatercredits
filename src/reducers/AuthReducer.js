@@ -8,8 +8,9 @@ import {
   NAVIGATE_TO_PASSWORD_RESET,
   PASSWORD_RESET_EMAIL_SENT,
   PASSWORD_RESET_EMAIL_ERROR,
-  UPDATE_PASSWORD_SUCESS,
-  UPDATE_PASSWORD_FAIL } from '../actions/types';
+  UPDATE_EMAIL_SUCCESS,
+  UPDATE_PASSWORD_SUCCESS,
+  UPDATE_CREDENTIAL_FAIL } from '../actions/types';
 
 const INITIAL_STATE = {
     email: '',
@@ -19,7 +20,8 @@ const INITIAL_STATE = {
     loading: false,
     notice: '',
     newPassword: '',
-    newPasswordConfirm: ''
+    newPasswordConfirm: '',
+    newEmail: ''
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -34,9 +36,10 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state,
         error: action.payload,
         password: '',
-        loading: false };
+        loading: false,
+        notice: '' };
     case LOGOUT_USER_SUCCESS:
-      return { ...state, ...INITIAL_STATE, error: 'You have been logged out.' };
+      return { ...state, ...INITIAL_STATE, notice: 'You have been logged out.' };
     case LOGOUT_USER_FAIL:
       return { ...state,
         error: action.payload,
@@ -52,11 +55,15 @@ export default (state = INITIAL_STATE, action) => {
         email: '',
         loading: false,
         error: action.payload };
-    case UPDATE_PASSWORD_SUCESS:
+    case UPDATE_PASSWORD_SUCCESS:
       return { ...state,
         ...INITIAL_STATE,
         notice: 'Password successfully updated.' };
-    case UPDATE_PASSWORD_FAIL:
+    case UPDATE_EMAIL_SUCCESS:
+    return { ...state,
+      ...INITIAL_STATE,
+      notice: 'Email successfully updated.' };
+    case UPDATE_CREDENTIAL_FAIL:
       return { ...state,
         ...INITIAL_STATE,
         error: action.payload };
