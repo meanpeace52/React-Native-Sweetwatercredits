@@ -58,6 +58,7 @@ class SettingsList extends Component {
               visible={this.state.showModal}
               animationType="slide"
               onRequestClose={() => {}} // require prop for android
+              // TODO: refactor into own component
             >
 
               <TouchableOpacity
