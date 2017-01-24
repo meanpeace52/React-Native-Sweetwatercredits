@@ -4,7 +4,7 @@ import { Container, LogoTopMiddle } from './common';
 
 class AboutModalContent extends Component {
   render() {
-    const { bodyText } = styles;
+    const { bodyText, titleText } = styles;
     return (
       <ScrollView>
         <Container>
@@ -18,6 +18,17 @@ class AboutModalContent extends Component {
             SRC actions and investments to date reflect this commitment and philosophy. The development of this nonproprietary APP, by SRC, reflects this as well.   This APP is designed to be a tool for project proponents and others, to better understand how the requirements of the Wyoming Greater Sage-grouse Core Area Strategy (WY EO 2015-04) and the Wyoming Greater Sage-grouse Compensatory Mitigation Framework interact to determine the number of Wyoming Credits needed to offset impacts that will ensure a net conservation gain for Greater sage-grouse and the Wyoming Greater Sage-grouse core areas.
           </Text>
 
+          <Text style={titleText}>Contact Us</Text>
+          <Text style={bodyText}>
+            Mr. Ryan Lance{"\n"}
+            Sweetwater River Conservancy{"\n"}
+            P.O. Box 768{"\n"}
+            Cheyenne, Wyoming 82003-0768{"\n"}
+            307-459-3636{"\n"}
+
+            rlance@sweetwaterriverconservancy.com
+          </Text>
+
         </Container>
       </ScrollView>
     );
@@ -28,6 +39,10 @@ const styles = {
   bodyText: {
     fontSize: 18,
     paddingBottom: 15
+  },
+  titleText: {
+    fontSize: 18,
+    fontWeight: 'bold'
   }
 };
 
