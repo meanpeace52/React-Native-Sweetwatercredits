@@ -6,12 +6,17 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Container, CardSection, Button } from './common';
 import { logoutUser, navigateToPasswordReset, navigateToEmailReset } from '../actions';
 import AboutModalContent from './AboutModalContent';
+import AboutCreditsModalContent from './AboutCreditsModalContent';
 
 class SettingsList extends Component {
-  state = { showModal: false };
+  state = { showSrcModal: false, showCreditModal: false };
 
-  onClose() {
-    this.setState({ showModal: false });
+  onSrcClose() {
+    this.setState({ showSrcModal: false });
+  }
+
+  onCreditClose() {
+    this.setState({ showCreditModal: false });
   }
 
   render() {
@@ -49,30 +54,59 @@ class SettingsList extends Component {
             </CardSection>
 
             <CardSection>
-              <Button onPress={() => this.setState({ showModal: !this.state.showModal })}>
+              <Button onPress={() => this.setState({ showSrcModal: !this.state.showSrcModal })}>
                 <Icon name="info-outline" size={16} /> About Sweetwater
               </Button>
             </CardSection>
 
+            <CardSection>
+              <Button
+                onPress={() => this.setState({ showCreditModal: !this.state.showCreditModal })}
+              >
+                <Icon name="credit-card" size={16} /> About Credits
+              </Button>
+            </CardSection>
+
             <Modal
-              visible={this.state.showModal}
+              visible={this.state.showSrcModal}
               animationType="slide"
               onRequestClose={() => {}} // require prop for android
               // TODO: refactor into own component
             >
 
               <TouchableOpacity
-                onPress={this.onClose.bind(this)}
+                onPress={this.onSrcClose.bind(this)}
               >
                 <Text
                   style={modalCloseText}
                 >
-                  DONE
+                  Done
                 </Text>
               </TouchableOpacity>
 
               <AboutModalContent {...this.props} />
             </Modal>
+
+            <Modal
+              visible={this.state.showCreditModal}
+              animationType="slide"
+              onRequestClose={() => {}} // require prop for android
+              // TODO: refactor into own component
+            >
+
+              <TouchableOpacity
+                onPress={this.onCreditClose.bind(this)}
+              >
+                <Text
+                  style={modalCloseText}
+                >
+                  Done
+                </Text>
+              </TouchableOpacity>
+
+              <AboutCreditsModalContent {...this.props} />
+            </Modal>
+
 
           </Container>
         </ScrollView>
@@ -87,7 +121,8 @@ const styles = {
     paddingRight: 10,
     textAlign: 'right',
     color: '#007aff',
-    fontSize: 16
+    fontSize: 16,
+    fontWeight: 'bold'
   }
 };
 

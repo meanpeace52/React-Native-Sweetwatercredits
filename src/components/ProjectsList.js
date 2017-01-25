@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ListView, View } from 'react-native';
+import { ListView, View, Dimensions } from 'react-native';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -36,6 +36,7 @@ class ProjectsList extends Component {
   }
 
   render() {
+    const windowDims = Dimensions.get('window');
     return (
       <View>
         <LogoTopMiddle />
@@ -53,8 +54,7 @@ class ProjectsList extends Component {
               enableEmptySections
               dataSource={this.dataSource}
               renderRow={this.renderRow}
-              // TODO: make the height responsive
-              style={{ height: 350 }}
+              style={{ height: windowDims.height - 285 }}
             />
           </Card>
         </Container>

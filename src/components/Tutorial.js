@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { View, TouchableOpacity, Text, Image, ScrollView } from 'react-native';
-import { Container, LogoTopMiddleMedium } from './common';
+import { View, TouchableOpacity, Text, Image, ScrollView, Dimensions } from 'react-native';
 import Swiper from 'react-native-swiper';
 import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { LogoTopMiddleMedium } from './common';
 
 class Tutorial extends Component {
   renderCloseIcon() {
@@ -24,7 +24,7 @@ class Tutorial extends Component {
   }
 
   render() {
-    const { bodyText, titleText } = styles;
+    const { bodyText, titleText, containerWithPadding, fillScreenSize } = styles;
     return (
       <Swiper
         // style={wrapper}
@@ -36,7 +36,7 @@ class Tutorial extends Component {
         <ScrollView>
           {this.renderCloseIcon()}
 
-          <Container>
+          <View style={containerWithPadding}>
             <LogoTopMiddleMedium />
 
             <Text style={titleText}>Wyoming Sage-Grouse Mitigation Credit Calculator</Text>
@@ -50,41 +50,41 @@ class Tutorial extends Component {
               style={{ paddingTop: 40 }}
               // TODO: hacky
             />
-          </Container>
+          </View>
         </ScrollView>
 
         <View>
-          <Image source={require('./images/Tutorial/Sweetwater_Signin_Register.png')}>
+          <Image source={require('./images/Tutorial/Sweetwater_Signin_Register.png')} style={fillScreenSize}>
             {this.renderCloseIcon()}
           </Image>
         </View>
 
         <View>
-          <Image source={require('./images/Tutorial/Sweetwater_Projects.png')}>
+          <Image source={require('./images/Tutorial/Sweetwater_Projects.png')} style={fillScreenSize}>
             {this.renderCloseIcon()}
           </Image>
         </View>
 
         <View>
-          <Image source={require('./images/Tutorial/Sweetwater_Project_Create.png')}>
+          <Image source={require('./images/Tutorial/Sweetwater_Project_Create.png')} style={fillScreenSize}>
             {this.renderCloseIcon()}
           </Image>
         </View>
 
         <View>
-          <Image source={require('./images/Tutorial/Sweetwater_Disturbance.png')}>
+          <Image source={require('./images/Tutorial/Sweetwater_Disturbance.png')} style={fillScreenSize}>
             {this.renderCloseIcon()}
           </Image>
         </View>
 
         <View>
-          <Image source={require('./images/Tutorial/Sweetwater_ZoneType.png')}>
+          <Image source={require('./images/Tutorial/Sweetwater_ZoneType.png')} style={fillScreenSize}>
             {this.renderCloseIcon()}
           </Image>
         </View>
 
         <View>
-          <Image source={require('./images/Tutorial/Sweetwater_Delete_Disturbance.png')}>
+          <Image source={require('./images/Tutorial/Sweetwater_Delete_Disturbance.png')} style={fillScreenSize}>
             {this.renderCloseIcon()}
           </Image>
         </View>
@@ -93,7 +93,7 @@ class Tutorial extends Component {
         <ScrollView>
           {this.renderCloseIcon()}
 
-          <Container>
+          <View style={containerWithPadding}>
             <LogoTopMiddleMedium />
             <Text style={titleText}>
               About Sage-Grouse Mitigation Credits
@@ -118,12 +118,14 @@ class Tutorial extends Component {
               style={{ paddingTop: 40 }}
               // TODO: hacky
             />
-          </Container>
+          </View>
         </ScrollView>
       </Swiper>
     );
   }
 }
+
+const windowDims = Dimensions.get('window');
 
 const styles = {
   closeIcon: {
@@ -141,6 +143,18 @@ const styles = {
     fontWeight: 'bold',
     paddingBottom: 15,
     textAlign: 'center'
+  },
+  containerWithPadding: {
+    flex: 1,
+    flexDirection: 'column',
+    marginRight: 15,
+    marginLeft: 15
+  },
+  fillScreenSize: {
+    flex: 1,
+    flexDirection: 'column',
+    height: windowDims.height,
+    width: windowDims.width
   }
 };
 

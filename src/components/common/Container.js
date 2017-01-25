@@ -12,8 +12,9 @@ const Container = (props) => {
 
 const styles = {
   containerStyles: {
-    marginLeft: 25,
-    marginRight: 25
+    flex: 1,
+    flexDirection: 'column',
+    // margin: 25
   }
 };
 

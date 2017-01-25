@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { ScrollView, Text } from 'react-native';
-import { Container, LogoTopMiddle } from './common';
+import { LogoTopMiddle } from './common';
 
 class AboutModalContent extends Component {
   render() {
-    const { bodyText, titleText } = styles;
+    const { bodyText, titleText, containerWithPadding } = styles;
     return (
       <ScrollView>
-        <Container>
+        <View style={containerWithPadding}>
           <LogoTopMiddle />
 
           <Text style={bodyText}>
@@ -29,7 +29,7 @@ class AboutModalContent extends Component {
             rlance@sweetwaterriverconservancy.com
           </Text>
 
-        </Container>
+        </View>
       </ScrollView>
     );
   }
@@ -43,6 +43,12 @@ const styles = {
   titleText: {
     fontSize: 18,
     fontWeight: 'bold'
+  },
+  containerWithPadding: {
+    flex: 1,
+    flexDirection: 'column',
+    marginRight: 15,
+    marginLeft: 15
   }
 };
 

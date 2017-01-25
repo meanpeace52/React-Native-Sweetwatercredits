@@ -36,7 +36,7 @@ const styles = {
     marginTop: 5,
   },
   inactiveButtonStyle: {
-    flex: 1,
+    // flex: 1,
     alignSelf: 'stretch',
     backgroundColor: '#ddd',
     borderRadius: 5,

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ListView, Text } from 'react-native';
+import { ListView, Text, Dimensions } from 'react-native';
 import _ from 'lodash';
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -43,6 +43,7 @@ class DisturbancesList extends Component {
 
   render() {
     const { penaltyText } = styles;
+    const windowDims = Dimensions.get('window');
     return (
       <Container>
         <LogoTopMiddle />
@@ -59,8 +60,7 @@ class DisturbancesList extends Component {
             enableEmptySections
             dataSource={this.dataSource}
             renderRow={this.renderRow}
-            // TODO: responsive height
-            style={{ height: 320 }}
+            style={{ height: windowDims.height - 322 }}
           />
         </Card>
       </Container>
