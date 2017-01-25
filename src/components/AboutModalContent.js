@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, Text } from 'react-native';
+import { ScrollView, Text, View } from 'react-native';
 import { LogoTopMiddle } from './common';
 
 class AboutModalContent extends Component {
