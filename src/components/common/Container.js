@@ -14,7 +14,8 @@ const styles = {
   containerStyles: {
     flex: 1,
     flexDirection: 'column',
-    // margin: 25
+    marginLeft: 25,
+    marginRight: 25
   }
 };
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { ScrollView, Text, View } from 'react-native';
-import { LogoTopMiddle } from './common';
+import { LogoTopMiddleMedium } from './common';
 
 class AboutModalContent extends Component {
   render() {
@@ -8,7 +8,7 @@ class AboutModalContent extends Component {
     return (
       <ScrollView>
         <View style={containerWithPadding}>
-          <LogoTopMiddle />
+          <LogoTopMiddleMedium />
 
           <Text style={bodyText}>
             The Sweetwater River Conservancy understands that establishing a market based valuation of habitat, and the conservation services that habitat provides, is a necessary, yet heretofore missing component of landscape conservation.   SRC believes this component of landscape conservation is necessary to ensure sustained and meaningful conservation of both habitat and species at the appropriate scale; while simultaneously balancing the demands of responsible development.
