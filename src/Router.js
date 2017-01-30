@@ -111,7 +111,7 @@ const RouterComponent = () => {
         <Scene
           key="disturbanceViolation"
           component={DisturbanceViolation}
-          title="Rule Violation"
+          title="Rule"
         />
 
         <Scene

@@ -60,7 +60,7 @@ class DisturbancesList extends Component {
             enableEmptySections
             dataSource={this.dataSource}
             renderRow={this.renderRow}
-            style={{ height: windowDims.height - 322 }}
+            style={{ height: windowDims.height - 367 }}
           />
         </Card>
       </Container>

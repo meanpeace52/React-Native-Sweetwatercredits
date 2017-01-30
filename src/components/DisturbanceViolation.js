@@ -52,7 +52,7 @@ class DisturbanceViolation extends Component {
     return (
       <Container>
         <LogoTopMiddle />
-        <Text> Select a {this.props.zoneType} Rule Violation: </Text>
+        <Text> Select a {this.props.zoneType} Rule: </Text>
         {this.renderViolationByRuleType()}
 
         <BlueButton
