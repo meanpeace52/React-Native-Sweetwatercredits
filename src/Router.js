@@ -142,7 +142,7 @@ const RouterComponent = () => {
         <Scene
           key="emailReset"
           component={EmailReset}
-          title="Reset Email"
+          title="Update Email"
         />
       </Scene>
     </Router>
