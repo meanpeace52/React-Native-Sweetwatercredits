@@ -20,11 +20,11 @@ export default (state = INITIAL_STATE, action) => {
     case REGISTER_USER_SUCCESS:
       return state;
     case REGISTER_USER_FAIL:
-    return { ...state,
-      error: action.payload,
-      password: '',
-      passwordConfirmation: '',
-      loading: false };
+      return { ...state,
+        error: action.payload,
+        password: '',
+        passwordConfirmation: '',
+        loading: false };
     default:
       return state;
   }

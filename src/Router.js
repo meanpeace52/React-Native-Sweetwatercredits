@@ -3,18 +3,23 @@ import {
   Actions,
   Router,
   Scene } from 'react-native-router-flux';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 import Splash from './components/Splash';
-import LoginForm from './components/LoginForm';
+import Login from './components/Login';
 import ProjectsList from './components/ProjectsList';
 import ProjectCreate from './components/ProjectCreate';
 import ProjectEdit from './components/ProjectEdit';
-import RegisterForm from './components/RegisterForm';
+import Register from './components/Register';
 import DisturbancesList from './components/DisturbancesList';
-import DisturbanceCreate from './components/DisturbanceCreate';
-import DisturbanceZoneForm from './components/DisturbanceZoneForm';
 import DisturbanceShow from './components/DisturbanceShow';
 import SettingsList from './components/SettingsList';
+import DisturbanceZoneType from './components/DisturbanceZoneType';
+import DisturbanceViolation from './components/DisturbanceViolation';
+import DisturbanceAcreage from './components/DisturbanceAcreage';
+import DisturbanceLocation from './components/DisturbanceLocation';
+import PasswordResetRequest from './components/PasswordResetRequest';
+import Tutorial from './components/Tutorial';
+import PasswordReset from './components/PasswordReset';
+import EmailReset from './components/EmailReset';
 
 const RouterComponent = () => {
   return (
@@ -28,19 +33,36 @@ const RouterComponent = () => {
         />
 
         <Scene
-          key="loginForm"
-          component={LoginForm}
+          key="login"
+          component={Login}
           title="Login"
           hideNavBar={false}
         />
 
         <Scene
-          key="registerForm"
-          component={RegisterForm}
+          key="register"
+          component={Register}
           title="Register"
           hideNavBar={false}
         />
 
+        <Scene
+          key="passwordResetRequest"
+          component={PasswordResetRequest}
+          title="Request Password"
+        />
+
+      </Scene>
+
+      <Scene
+        key="tutorial"
+      >
+        <Scene
+          key="tutorialShow"
+          component={Tutorial}
+          title="Tutorial"
+          hideNavBar
+        />
       </Scene>
 
       <Scene key="projects">
@@ -49,12 +71,7 @@ const RouterComponent = () => {
           component={ProjectsList}
           title="Recent Projects"
           onRight={() => Actions.settingsList()}
-          rightTitle="Settings"
-          // renderRightButton={() => {
-          //   return (
-          //     <Icon name="settings" size={18} color="#007aff" />
-          //   );
-          // }}
+          rightTitle="Menu"
           initial
         />
 
@@ -68,24 +85,15 @@ const RouterComponent = () => {
           key="projectEdit"
           component={ProjectEdit}
           title="Edit Project"
+          backTitle="Projects"
         />
 
         <Scene
           key="disturbancesList"
           component={DisturbancesList}
           title="Disturbances"
-        />
-
-        <Scene
-          key="disturbanceCreate"
-          component={DisturbanceCreate}
-          title="Add a Disturbance"
-        />
-
-        <Scene
-          key="disturbanceZoneForm"
-          component={DisturbanceZoneForm}
-          title="Add Disturbance"
+          onBack={() => Actions.pop({ type: 'reset' })}
+          backTitle="Edit Project"
         />
 
         <Scene
@@ -95,10 +103,46 @@ const RouterComponent = () => {
         />
 
         <Scene
+          key="disturbanceZoneType"
+          component={DisturbanceZoneType}
+          title="Zone Type"
+        />
+
+        <Scene
+          key="disturbanceViolation"
+          component={DisturbanceViolation}
+          title="Rule"
+        />
+
+        <Scene
+          key="disturbanceAcreage"
+          component={DisturbanceAcreage}
+          title="Disturbance Acreage"
+        />
+
+        <Scene
+          key="disturbanceLocation"
+          component={DisturbanceLocation}
+          title="Disturbance Location"
+        />
+
+        <Scene
           key="settingsList"
           component={SettingsList}
           title="Settings"
           // leftTitle="Projects"
+        />
+
+        <Scene
+          key="passwordReset"
+          component={PasswordReset}
+          title="Reset Password"
+        />
+
+        <Scene
+          key="emailReset"
+          component={EmailReset}
+          title="Reset Email"
         />
       </Scene>
     </Router>

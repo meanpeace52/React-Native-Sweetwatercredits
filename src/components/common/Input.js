@@ -28,6 +28,7 @@ const Input = ({
             autoCapitalize={autoCapitalize}
             keyboardType={keyboardType}
             returnKeyType={returnKeyType}
+            underlineColorAndroid='rgba(0,0,0,0)'
           />
         </TouchableHighlight>
       </View>

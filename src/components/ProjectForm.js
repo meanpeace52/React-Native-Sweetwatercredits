@@ -6,19 +6,20 @@ import { projectUpdate } from '../actions';
 
 class ProjectForm extends Component {
   render() {
+    const { name } = this.props;
     return (
       <Input
         icon="landscape"
         placeholder="Project Name"
         onChangeText={value => this.props.projectUpdate({ prop: 'name', value })}
-        value={this.props.name}
+        value={name}
       />
     );
   }
 }
 
-const mapStateToProps = (state) => {
-  const { name } = state.projectForm;
+const mapStateToProps = ({ projectForm }) => {
+  const { name } = projectForm;
   return { name };
 };
 

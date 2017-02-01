@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image, View } from 'react-native';
 
-const LogoTopLeft = (props) => {
+const LogoTopMiddleMedium = (props) => {
   const { logo, logoNavContainer } = styles;
 
   return (
@@ -15,9 +15,9 @@ const LogoTopLeft = (props) => {
 const styles = {
   logoNavContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     marginBottom: 30,
-    paddingTop: 95
+    paddingTop: 35
   },
   logo: {
     height: 92,
@@ -25,4 +25,4 @@ const styles = {
   }
 };
 
-export { LogoTopLeft };
+export { LogoTopMiddleMedium };

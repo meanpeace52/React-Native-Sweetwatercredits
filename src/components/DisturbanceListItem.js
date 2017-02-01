@@ -10,12 +10,21 @@ class DisturbanceListItem extends Component {
     Actions.disturbanceShow({ disturbance: this.props.disturbance });
   }
 
+  renderAcreageAmount() {
+    const { ruleViolation, acreage } = this.props.disturbance;
+    const { creditTitleStyle } = styles;
+
+    if (ruleViolation === 'tls' || ruleViolation === 'short-term') {
+      return (<Text style={creditTitleStyle}> No Acreage </Text>);
+    }
+    return (<Text style={creditTitleStyle}> {acreage} Acres</Text>);
+  }
+
   render() {
     const {
-      acreage,
       zoneType,
       ruleViolation,
-      penaltyAmount } = this.props.disturbance;
+      debitAmount } = this.props.disturbance;
 
     const { titleStyle, creditTitleStyle, sectionStyle } = styles;
     return (
@@ -28,8 +37,8 @@ class DisturbanceListItem extends Component {
               <Icon name='nature-people' size={50} />
               <View>
                 <Text style={titleStyle}> {_.capitalize(ruleViolation)} Disturbance </Text>
-                <Text style={creditTitleStyle}> {acreage} Acres</Text>
-                <Text style={creditTitleStyle}> {zoneType} Credits: {penaltyAmount}</Text>
+                {this.renderAcreageAmount()}
+                <Text style={creditTitleStyle}> {zoneType} Credits: {debitAmount}</Text>
               </View>
             </View>
           </CardSection>
