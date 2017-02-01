@@ -1,17 +1,17 @@
 import React from 'react';
-import { Image, Text, View } from 'react-native';
+import { Image, Text, View, Dimensions } from 'react-native';
 
 const SplashImageContainer = (props) => {
-  const { splash } = styles;
-
+  const { splash, main, logo, underLogoText } = styles;
   return (
     <Image source={require('../images/sage-bg.jpg')} style={splash}>
-      <View style={styles.main}>
+      <View style={main}>
         <Image
           source={require('../images/logo-impression.png')}
-          style={styles.logo} />
+          style={logo}
+        />
 
-        <Text style={styles.underLogoText}>
+        <Text style={underLogoText}>
           Greater Sage-Grouse Credit Calculator
         </Text>
 
@@ -21,6 +21,8 @@ const SplashImageContainer = (props) => {
   );
 };
 
+
+const windowDims = Dimensions.get('window');
 const styles = {
   logo: {
     alignSelf: 'center',
@@ -30,13 +32,13 @@ const styles = {
   main: {
     marginLeft: 25,
     marginRight: 25,
-    marginTop: 200
+    marginTop: windowDims.height / 5
   },
   splash: {
-    backgroundColor: 'transparent',
     flex: 1,
-    height: undefined,
-    width: undefined
+    backgroundColor: 'transparent',
+    height: windowDims.height,
+    width: windowDims.width
   },
   titleText: {
     fontSize: 24,
@@ -51,9 +53,6 @@ const styles = {
     textShadowColor: 'black',
     textShadowOffset: { width: 1, height: 1 },
     textShadowRadius: 6
-  },
-  viewText: {
-    marginTop: 70
   }
 };
 

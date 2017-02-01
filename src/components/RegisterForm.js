@@ -1,89 +1,62 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import { View } from 'react-native';
 import { connect } from 'react-redux';
-import _ from 'lodash';
-import { Input, BlueButton, Container, LogoTopMiddle, Spinner } from './common';
-import { registerFieldUpdate, registerUser } from '../actions';
+import { Input } from './common';
+import { registerFieldUpdate } from '../actions';
 
 class RegisterForm extends Component {
   onButtonPress() {
     const { email, password, passwordConfirmation } = this.props;
-
     this.props.registerUser({ email, password, passwordConfirmation });
   }
 
-  renderButton() {
-    if (this.props.loading) {
-      return <Spinner />;
-    }
-
-    return (
-      <BlueButton
-        onPress={this.onButtonPress.bind(this)}
-      >
-        <Icon name="person-add" size={16} /> {_.toUpper('Register')}
-      </BlueButton>
-    );
-  }
-
   render() {
-    const { errorTextStyle } = styles;
-    return (
-      <Container>
-        <LogoTopMiddle />
+    const { email, password, passwordConfirmation } = this.props;
 
+    const inputIcon = () => {
+        if (password && passwordConfirmation) {
+          if (password === passwordConfirmation) {
+            return 'lock-outline';
+          }
+        }
+        return 'lock-open';
+    };
+
+    return (
+      <View>
         <Input
           placeholder="Email"
           icon="person-outline"
           onChangeText={value => this.props.registerFieldUpdate({ prop: 'email', value })}
-          value={this.props.email}
+          value={email}
+          autoCapitalize="none"
+          keyboardType="email-address"
         />
 
         <Input
           placeholder="Password"
-          icon="lock-outline"
+          icon={inputIcon()}
           onChangeText={value => this.props.registerFieldUpdate({ prop: 'password', value })}
-          value={this.props.password}
+          value={password}
           secureTextEntry
         />
 
         <Input
           placeholder="Password Confirmation"
-          icon="lock-open"
+          icon={inputIcon()}
           onChangeText={value =>
             this.props.registerFieldUpdate({ prop: 'passwordConfirmation', value })}
-          value={this.props.passwordConfirmation}
+          value={passwordConfirmation}
           secureTextEntry
         />
-
-        <Text style={errorTextStyle}>{this.props.error}</Text>
-
-        {this.renderButton()}
-
-      </Container>
+      </View>
     );
   }
 }
 
-const styles = {
-  errorTextStyle: {
-    fontSize: 20,
-    alignSelf: 'center',
-    color: 'red'
-  }
-};
-
 const mapStateToProps = ({ register }) => {
   const { email, password, passwordConfirmation, error, loading } = register;
-
-  return {
-    email,
-    password,
-    passwordConfirmation,
-    error,
-    loading
-  };
+  return { email, password, passwordConfirmation, error, loading };
 };
 
-export default connect(mapStateToProps, { registerFieldUpdate, registerUser })(RegisterForm);
+export default connect(mapStateToProps, { registerFieldUpdate })(RegisterForm);

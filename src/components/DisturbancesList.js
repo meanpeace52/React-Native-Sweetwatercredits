@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import { ListView, Text } from 'react-native';
-import { Actions } from 'react-native-router-flux';
+import { ListView, Text, Dimensions } from 'react-native';
 import _ from 'lodash';
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { BlueButton, Container, LogoTopMiddle, Card } from './common';
 import DisturbanceListItem from './DisturbanceListItem';
-import { disturbancesFetch } from '../actions';
+import { disturbancesFetch, disturbanceNew } from '../actions';
 
 class DisturbancesList extends Component {
   componentWillMount() {
@@ -15,14 +14,12 @@ class DisturbancesList extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    // nextProps are the next set of props that this component will be rendered with
-    // this.props is still the old set of props
     this.createDataSource(nextProps);
   }
 
   onButtonPress() {
     const { project } = this.props;
-    Actions.disturbanceCreate({ project });
+    this.props.disturbanceNew({ project });
   }
 
   createDataSource({ disturbances }) {
@@ -36,8 +33,8 @@ class DisturbancesList extends Component {
   sumPenaltys() {
     const { disturbances } = this.props;
     const disturbancesPenaltyTotal =
-      disturbances.reduce((acc, disturbance) => acc + parseInt(disturbance.penaltyAmount, 10), 0);
-    return disturbancesPenaltyTotal;
+      disturbances.reduce((acc, disturbance) => acc + parseFloat(disturbance.debitAmount), 0);
+    return disturbancesPenaltyTotal.toFixed(1);
   }
 
   renderRow(disturbance) {
@@ -46,6 +43,7 @@ class DisturbancesList extends Component {
 
   render() {
     const { penaltyText } = styles;
+    const windowDims = Dimensions.get('window');
     return (
       <Container>
         <LogoTopMiddle />
@@ -55,15 +53,16 @@ class DisturbancesList extends Component {
           <Icon name="add" size={18} /> Add Disturbance
         </BlueButton>
 
+        <Text style={penaltyText}> Total Debit Amount: {this.sumPenaltys()}</Text>
+
         <Card>
           <ListView
             enableEmptySections
             dataSource={this.dataSource}
             renderRow={this.renderRow}
+            style={{ height: windowDims.height - 367 }}
           />
         </Card>
-
-        <Text style={penaltyText}> Total Credit Amount: {this.sumPenaltys()}</Text>
       </Container>
     );
   }
@@ -77,7 +76,7 @@ const styles = {
   }
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   const disturbances = _.map(state.disturbances, (val, uid) => {
     return { ...val, uid };
   });
@@ -85,4 +84,4 @@ const mapStateToProps = state => {
   return { disturbances };
 };
 
-export default connect(mapStateToProps, { disturbancesFetch })(DisturbancesList);
+export default connect(mapStateToProps, { disturbancesFetch, disturbanceNew })(DisturbancesList);

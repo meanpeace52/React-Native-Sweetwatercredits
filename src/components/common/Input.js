@@ -2,7 +2,15 @@ import React from 'react';
 import { TextInput, View, TouchableHighlight, Text } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-const Input = ({ icon, value, onChangeText, placeholder, secureTextEntry }) => {
+const Input = ({
+    icon,
+    value,
+    onChangeText,
+    placeholder,
+    secureTextEntry,
+    autoCapitalize,
+    keyboardType,
+    returnKeyType }) => {
   const { inputStyle, containerStyle } = styles;
 
   return (
@@ -17,6 +25,10 @@ const Input = ({ icon, value, onChangeText, placeholder, secureTextEntry }) => {
             style={inputStyle}
             value={value}
             onChangeText={onChangeText}
+            autoCapitalize={autoCapitalize}
+            keyboardType={keyboardType}
+            returnKeyType={returnKeyType}
+            underlineColorAndroid='rgba(0,0,0,0)'
           />
         </TouchableHighlight>
       </View>

@@ -1,6 +1,14 @@
 import firebase from 'firebase';
-import { Actions, ActionConst } from 'react-native-router-flux';
-import { DISTURBANCE_CREATE, DISTURBANCE_UPDATE, DISTURBANCE_FETCH_SUCCESS } from './types';
+import { Actions } from 'react-native-router-flux';
+import {
+  DISTURBANCE_CREATE,
+  DISTURBANCE_UPDATE,
+  DISTURBANCE_FETCH_SUCCESS,
+  DISTURBANCE_NEW,
+  DISTURBANCE_ZONE_TYPE_UPDATE,
+  DISTURBANCE_VIOLATION_UPDATE,
+  DISTURBANCE_ACREAGE_UPDATE
+} from './types';
 
 export const disturbanceUpdate = ({ prop, value }) => {
   return {
@@ -14,9 +22,24 @@ export const disturbanceCreate = ({
   acreage,
   zoneType,
   ruleViolation,
-  vulnerableLocation,
-  penaltyAmount }) => {
+  vulnerableLocation }) => {
     const { currentUser } = firebase.auth();
+
+    let debitAmount;
+    if (ruleViolation === 'siting' || ruleViolation === 'roads' || ruleViolation === 'activity') {
+      if (vulnerableLocation === 'Yes') {
+        debitAmount = parseFloat(acreage) * 16;
+      } else {
+        debitAmount = parseFloat(acreage) * 12;
+      }
+    } else {
+      if (vulnerableLocation === 'Yes') {
+        debitAmount = parseFloat(acreage) * 8;
+      } else {
+        debitAmount = parseFloat(acreage) * 6;
+      }
+    }
+
 
     return (dispatch) => {
           firebase.database().ref(`users/${currentUser.uid}/projects/${projectUid}/disturbances`)
@@ -26,14 +49,10 @@ export const disturbanceCreate = ({
             zoneType,
             ruleViolation,
             vulnerableLocation,
-            penaltyAmount })
+            debitAmount })
          .then(() => {
            dispatch({ type: DISTURBANCE_CREATE });
-          //  TODO: go to the disturbance
-
-          // TODO: Not this lol
-          Actions.pop({ popNum: 2 });
-          //Actions.disturbanceShow({ disturbance });
+           Actions.pop({ popNum: 4 });
          }
        );
     };
@@ -62,3 +81,80 @@ export const disturbanceDelete = ({ projectUid, uid }) => {
       });
   };
 };
+
+// Below Actions are directly related to the multipart form for disturbances
+export const disturbanceNew = ({ project }) => {
+  return (dispatch) => {
+    dispatch({ type: DISTURBANCE_NEW });
+    Actions.disturbanceZoneType({ project });
+  };
+};
+
+export const disturbanceZoneTypeUpdate = ({ zoneType, project }) => {
+  return (dispatch) => {
+    dispatch({
+      type: DISTURBANCE_ZONE_TYPE_UPDATE,
+      payload: zoneType
+    });
+
+    Actions.disturbanceViolation({ project });
+  };
+};
+
+export const disturbanceViolationUpdate = ({ zoneType, ruleViolation, project }) => {
+  return (dispatch) => {
+    dispatch({
+      type: DISTURBANCE_VIOLATION_UPDATE,
+      payload: {
+        zoneType,
+        ruleViolation
+      }
+    });
+
+
+    Actions.disturbanceAcreage({ project });
+  };
+};
+
+export const disturbanceAcreageUpdate = ({ zoneType, ruleViolation, acreage, project }) => {
+  return (dispatch) => {
+    dispatch({
+      type: DISTURBANCE_ACREAGE_UPDATE,
+      payload: {
+        zoneType,
+        ruleViolation,
+        acreage
+      }
+    });
+
+    Actions.disturbanceLocation({ project });
+  };
+};
+
+// this is a special create designed to work around the UI and accompnaying logic
+// of creating a tls or short-term disturbance
+export const disturbanceTlsCreate = ({
+  projectUid,
+  acreage,
+  zoneType,
+  ruleViolation,
+  vulnerableLocation }) => {
+    const { currentUser } = firebase.auth();
+    const debitAmount = '10.0';
+
+    return (dispatch) => {
+          firebase.database().ref(`users/${currentUser.uid}/projects/${projectUid}/disturbances`)
+          .push({
+            projectUid,
+            acreage,
+            zoneType,
+            ruleViolation,
+            vulnerableLocation,
+            debitAmount })
+         .then(() => {
+           dispatch({ type: DISTURBANCE_CREATE });
+           Actions.pop({ popNum: 2 });
+         }
+       );
+    };
+  };

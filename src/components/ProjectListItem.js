@@ -12,23 +12,23 @@ class ProjectListItem extends Component {
 
   sumPenaltys() {
     const disturbances = _.map(this.props.project.disturbances, (val, uid) => {
-        return { ...val, uid };
+      return { ...val, uid };
     });
 
     const disturbancesPenaltyTotal =
-      disturbances.reduce((acc, disturbance) => acc + parseInt(disturbance.penaltyAmount, 10), 0);
-    return disturbancesPenaltyTotal;
+      disturbances.reduce((acc, disturbance) => acc + parseFloat(disturbance.debitAmount), 0);
+    return disturbancesPenaltyTotal.toFixed(1);
   }
 
 
   render() {
     const { name } = this.props.project;
-    const { titleStyle, creditTitleStyle, sectionStyle } = styles;
+    const { titleStyle, creditTitleStyle, sectionStyle, flexRowFlexStart } = styles;
     return (
       <TouchableWithoutFeedback onPress={this.onRowPress.bind(this)}>
         <View>
           <CardSection style={sectionStyle}>
-            <View style={{ flexDirection: 'row', justifyContent: 'flex-start' }}>
+            <View style={flexRowFlexStart}>
               <Icon name='landscape' size={50} />
               <View>
                 <Text style={titleStyle}> {name} </Text>
@@ -55,6 +55,10 @@ const styles = {
   sectionStyle: {
     justifyContent: 'space-between',
     marginTop: 5
+  },
+  flexRowFlexStart: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start'
   }
 };
 

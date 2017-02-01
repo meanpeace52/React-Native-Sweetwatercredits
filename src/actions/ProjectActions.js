@@ -4,7 +4,8 @@ import {
   PROJECT_UPDATE,
   PROJECT_CREATE,
   PROJECT_FETCH_SUCCESS,
-  PROJECT_SAVE_SUCCESS } from './types';
+  PROJECT_SAVE_SUCCESS,
+  PROJECT_NEW } from './types';
 
 export const projectUpdate = ({ prop, value }) => {
   return {
@@ -41,10 +42,9 @@ export const projectsFetch = () => {
 
 export const projectSave = ({ name, uid }) => {
   const { currentUser } = firebase.auth();
-
   return (dispatch) => {
     firebase.database().ref(`/users/${currentUser.uid}/projects/${uid}`)
-      .set({ name })
+      .update({ name })
       .then(() => {
           dispatch({ type: PROJECT_SAVE_SUCCESS });
           Actions.projectsList({ type: 'reset' });
@@ -61,5 +61,12 @@ export const projectDelete = ({ uid }) => {
       .then(() => {
         Actions.projectsList({ type: 'reset' });
       });
+  };
+};
+
+export const projectNew = () => {
+  return (dispatch) => {
+    dispatch({ type: PROJECT_NEW });
+    Actions.projectCreate();
   };
 };

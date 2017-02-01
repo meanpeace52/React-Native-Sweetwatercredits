@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import { ListView, View } from 'react-native';
+import { ListView, View, Dimensions } from 'react-native';
 import { connect } from 'react-redux';
-import { Actions } from 'react-native-router-flux';
 import _ from 'lodash';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { BlueButton, Card, Container, LogoTopMiddle } from './common';
 import ProjectListItem from './ProjectListItem';
-import { projectsFetch } from '../actions';
+import { projectsFetch, projectNew } from '../actions';
 
 class ProjectsList extends Component {
   componentWillMount() {
@@ -20,6 +19,10 @@ class ProjectsList extends Component {
     this.createDataSource(nextProps);
   }
 
+  onButtonPress() {
+      this.props.projectNew();
+  }
+
   createDataSource({ projects }) {
     const ds = new ListView.DataSource({
       rowHasChanged: (r1, r2) => r1 !== r2
@@ -28,22 +31,19 @@ class ProjectsList extends Component {
     this.dataSource = ds.cloneWithRows(projects);
   }
 
-  navigateToProjectCreate() {
-    Actions.projectCreate();
-  }
-
   renderRow(project) {
     return <ProjectListItem project={project} />;
   }
 
   render() {
+    const windowDims = Dimensions.get('window');
     return (
       <View>
         <LogoTopMiddle />
 
         <Container>
           <BlueButton
-            onPress={this.navigateToProjectCreate.bind(this)}
+            onPress={this.onButtonPress.bind(this)}
           >
             <Icon name='add' size={18} />
             Add Project
@@ -54,6 +54,7 @@ class ProjectsList extends Component {
               enableEmptySections
               dataSource={this.dataSource}
               renderRow={this.renderRow}
+              style={{ height: windowDims.height - 330 }}
             />
           </Card>
         </Container>
@@ -73,4 +74,4 @@ const mapStateToProps = state => {
 };
 
 
-export default connect(mapStateToProps, { projectsFetch })(ProjectsList);
+export default connect(mapStateToProps, { projectsFetch, projectNew })(ProjectsList);

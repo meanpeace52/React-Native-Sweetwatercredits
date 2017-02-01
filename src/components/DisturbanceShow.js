@@ -24,15 +24,17 @@ class DisturbanceShow extends Component {
       message = 'Impact within 0.25 miles of lek';
     } else if (ruleViolation === 'timing') {
       message = 'One year of timing stipulations';
-    } else if (ruleViolation === 'sitting') {
-      message = 'Sitting within 0.6 miles of a lek';
+    } else if (ruleViolation === 'siting') {
+      message = 'Siting within 0.6 miles of a lek';
     } else if (ruleViolation === 'roads') {
       message = 'Roads within 1.9 miles of a lek';
     } else if (ruleViolation === 'activity') {
       message = 'Greater than 1 activity per 640 acres on average';
     } else if (ruleViolation === 'disturbance') {
       message = 'Surface disturbance greather than 5%';
-    } else {
+    } else if (ruleViolation === 'tls') {
+      message = 'Timing Stipulation';
+    } else if (ruleViolation === 'short-term') {
       message = 'Short Term Impacts';
     }
     return (
@@ -41,10 +43,11 @@ class DisturbanceShow extends Component {
   }
 
   humanizeVulnerableLandscape() {
+    const { infoText } = styles;
     const { vulnerableLocation } = this.props.disturbance;
-    if (vulnerableLocation) {
+    if (vulnerableLocation === 'Yes') {
       return (
-        <Text>Located in a vulnerable landscape</Text>
+        <Text style={infoText}>Located in a vulnerable landscape</Text>
       );
     }
   }
@@ -58,11 +61,11 @@ class DisturbanceShow extends Component {
         <Card>
           <View style={mainView}>
             <Text style={titleText}>Disturbance Info</Text>
-            <Text style={infoText}>{disturbance.acreage} Acres </Text>
-            <Text style={infoText}>Type: {_.capitalize(disturbance.zoneType)} Zone</Text>
-            <Text style={infoText}>Rule Violation: {this.humanizeRuleViolation()} </Text>
-            <Text style={infoText}>{this.humanizeVulnerableLandscape()}</Text>
-            <Text style={infoText}>Penalty Amount: {disturbance.penaltyAmount}</Text>
+            <Text style={infoText}>Acres: {disturbance.acreage}</Text>
+            <Text style={infoText}>Zone Type: {_.capitalize(disturbance.zoneType)}</Text>
+            <Text style={infoText}>Rule: {this.humanizeRuleViolation()} </Text>
+            {this.humanizeVulnerableLandscape()}
+            <Text style={infoText}>Debit Amount: {disturbance.debitAmount}</Text>
           </View>
         </Card>
 
