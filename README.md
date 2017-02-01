@@ -17,7 +17,7 @@ Master:
 
 * **ReactNative**
 * **Icons**: react-native-vector-icons/MaterialIcons
-* **Store**: react-redux, redux-thunk
+* **State Management**: react-redux, redux-thunk
 * **Navigation**: react-native-router-flux
 * **Convenience**: lodash
 * **Database**: firebase.google.com
@@ -30,30 +30,9 @@ Master:
 * **Android**: (Coming Soon)
 * **Devices(Android)**: (TBD)
 
-**Getting Started with ReactNative**
-
-* Assuming you're doing this on OSX and trying to run iOS  
-* Install Node and watchman
-
-```bash
-brew install node
-```
-
-```bash
-brew install watchman  
-```
-
-* Install ReactNative Command Line Tools
-
-```bash
-npm install -g react-native-cli  
-```
-
 **Running the App**
 
-```bash
-cd sweetwaterCredits  
-```
+* [Startup Guides](https://facebook.github.io/react-native/docs/getting-started.html)
 
 ```bash
 npm install
@@ -66,11 +45,8 @@ react-native run-ios
 ### TODO:
 
 * Anon users
-* Sign Up form, make it confirmable
-* Sentry Raven (HIGH)
-* Explore test library options with JEST
-* React Native Vector Icons Button
-
+* JEST
+* Sentry Raven
 
 **Notes**
 
