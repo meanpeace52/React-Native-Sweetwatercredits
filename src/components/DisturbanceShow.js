@@ -24,7 +24,7 @@ class DisturbanceShow extends Component {
     if (ruleViolation === 'timing') {
       message = 'One year of timing stipulations';
     } else if (ruleViolation === 'siting') {
-      if (zoneType === 'non-core') {
+      if (zoneType === 'Non-Core') {
         message = 'Siting within < 0.25 miles of a lek';
       } else {
         message = 'Siting within < 0.6 miles of a lek';
