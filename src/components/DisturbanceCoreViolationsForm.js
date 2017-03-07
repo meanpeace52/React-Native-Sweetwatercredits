@@ -3,10 +3,17 @@ import { View, Picker } from 'react-native';
 import { connect } from 'react-redux';
 import { disturbanceUpdate } from '../actions';
 import { Card } from './common';
+import { RULE_VIOLATIONS } from '../ruleViolations';
+
 
 class DisturbanceCoreViolations extends Component {
   componentWillMount() {
     this.props.disturbanceUpdate({ prop: 'ruleViolation', value: 'siting' });
+    this.renderPickerItems();
+  }
+
+  renderPickerItems() {
+    RULE_VIOLATIONS.forEach((ruleViolation) => console.log(ruleViolation));
   }
 
   render() {
