@@ -18,7 +18,7 @@ class DisturbanceNonCoreViolations extends Component {
             onValueChange={value => this.props.disturbanceUpdate({ prop: 'ruleViolation', value })}
             selectedValue={ruleViolation}
           >
-            <Picker.Item label="Siting within < 0.25 miles of lek?" value="siting" />
+            <Picker.Item label="Siting within < 0.25 miles of a lek?" value="siting" />
             <Picker.Item label="Timing Stipulations (TLS)" value="tls" />
           </Picker>
         </Card>
