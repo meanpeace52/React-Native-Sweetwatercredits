@@ -93,7 +93,7 @@ const RouterComponent = () => {
           component={DisturbancesList}
           title="Disturbances"
           onBack={() => Actions.pop({ type: 'reset' })}
-          backTitle="Edit Project"
+          backTitle="Edit"
         />
 
         <Scene
@@ -130,7 +130,6 @@ const RouterComponent = () => {
           key="settingsList"
           component={SettingsList}
           title="Settings"
-          // leftTitle="Projects"
         />
 
         <Scene

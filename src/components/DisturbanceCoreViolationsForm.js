@@ -19,12 +19,12 @@ class DisturbanceCoreViolations extends Component {
             selectedValue={ruleViolation}
           >
             <Picker.Item
-              label="Siting within < 0.6 of a lek?"
+              label="Siting within < 0.6 miles of a lek?"
               value="siting"
             />
 
             <Picker.Item
-              label="Roads within 1.9 miles of a lek?"
+              label="Roads within < 1.9 miles of a lek?"
               value="roads"
             />
 
@@ -44,7 +44,7 @@ class DisturbanceCoreViolations extends Component {
             />
 
             <Picker.Item
-              label="Timing Stipulation (TLS)"
+              label="Timing Stipulations (TLS)"
               value="tls"
             />
           </Picker>

@@ -20,14 +20,17 @@ class DisturbanceShow extends Component {
   humanizeRuleViolation() {
     const { zoneType, ruleViolation } = this.props.disturbance;
     let message = '';
-    if (zoneType === 'impact' && zoneType === 'non-core') {
-      message = 'Impact within 0.25 miles of lek';
-    } else if (ruleViolation === 'timing') {
+
+    if (ruleViolation === 'timing') {
       message = 'One year of timing stipulations';
     } else if (ruleViolation === 'siting') {
-      message = 'Siting within 0.6 miles of a lek';
+      if (zoneType === 'Non-Core') {
+        message = 'Siting within < 0.25 miles of a lek';
+      } else {
+        message = 'Siting within < 0.6 miles of a lek';
+      }
     } else if (ruleViolation === 'roads') {
-      message = 'Roads within 1.9 miles of a lek';
+      message = 'Roads within < 1.9 miles of a lek';
     } else if (ruleViolation === 'activity') {
       message = 'Greater than 1 activity per 640 acres on average';
     } else if (ruleViolation === 'disturbance') {
